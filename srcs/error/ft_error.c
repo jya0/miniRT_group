@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/31 12:59:23 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/02 13:14:00 by jyao             ###   ########.fr       */
+/*   Created: 2023/05/02 13:09:32 by jyao              #+#    #+#             */
+/*   Updated: 2023/05/02 13:14:48 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include	"minirt.h"
 
-# include	<unistd.h>
-# include	<stdlib.h>
-# include	<errno.h>
-# include	<math.h>
-# include	"libft.h"
-# include	"mlx.h"
-# include	"rt_tuple.h"
-# include	"rt_float.h"
-# include	"rt_error.h"
-
-#endif
+int	rt_error_write(char const *msg)
+{
+	if (msg != NULL)
+		write(STDERR_FILENO, msg, ft_strlen(msg));
+	exit(EXIT_FAILURE);
+	return (EXIT_FAILURE);
+}

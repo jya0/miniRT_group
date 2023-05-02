@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   rt_float.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/31 12:59:23 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/02 13:14:00 by jyao             ###   ########.fr       */
+/*   Created: 2023/05/01 14:46:37 by jyao              #+#    #+#             */
+/*   Updated: 2023/05/02 13:19:47 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include	"minirt.h"
 
-# include	<unistd.h>
-# include	<stdlib.h>
-# include	<errno.h>
-# include	<math.h>
-# include	"libft.h"
-# include	"mlx.h"
-# include	"rt_tuple.h"
-# include	"rt_float.h"
-# include	"rt_error.h"
+double	rt_float_abs(double d)
+{
+	return (d * (1 - 2 * (d < 0)));
+}
 
-#endif
+int	rt_float_equal(double d1, double d2)
+{
+	return (rt_float_abs(d1 - d2) < RT_EPSILON);
+}
+
+
