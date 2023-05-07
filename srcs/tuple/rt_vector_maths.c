@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:22:55 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/02 15:36:34 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/07 13:46:19 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,32 @@ t_tuple	rt_vector_normalize(t_tuple vector)
 	if (vector.w != 0)
 		rt_error_write(ERROR_NOT_VECTOR);
 	return (rt_tuple_divide(vector, rt_vector_magnitude(vector)));
+}
+
+/* w is still included in the calculation as the guide mentioned
+** the dot product calculates up to any dimensions
+** however I still included the error check as we will only be
+** using 3D vectors.
+*/
+double	rt_vector_dot(t_tuple vector1, t_tuple vector2)
+{
+	if (vector1.w != 0 || vector2.w != 0)
+		rt_error_write(ERROR_NOT_VECTOR);
+	return (vector1.x * vector2.x + \
+			vector1.y * vector2.y + \
+			vector1.z * vector2.z + \
+			vector1.w * vector2.w);
+}
+
+/* cross product gets more complex with 4 dimensions,
+** as we only need 3D vectors here we keep it simple.
+*/
+t_tuple	rt_vector_cross(t_tuple vector1, t_tuple vector2)
+{
+	if (vector1.w != 0 || vector2.w != 0)
+		rt_error_write(ERROR_NOT_VECTOR);
+	return (rt_vector_make(\
+			vector1.y * vector2.z - vector1.z * vector2.y, \
+			vector1.z * vector2.x - vector1.x * vector2.z, \
+			vector1.x * vector2.y - vector1.y * vector2.x));
 }

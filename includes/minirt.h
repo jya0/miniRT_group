@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 12:59:23 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/02 13:14:00 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/07 13:53:58 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@
 # include	"rt_tuple.h"
 # include	"rt_float.h"
 # include	"rt_error.h"
+# include	"rt_test.h"
 
 #endif

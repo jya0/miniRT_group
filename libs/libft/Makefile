@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fkhan <fkhan@student.42abudhabi.ae>        +#+  +:+       +#+         #
+#    By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/19 13:01:55 by fkhan             #+#    #+#              #
-#    Updated: 2022/06/19 14:05:17 by fkhan            ###   ########.fr        #
+#    Updated: 2023/05/07 14:27:47 by jyao             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,33 +37,22 @@ OBJECTS_DIRECTORY 	= ./objects/
 OBJECTS_LIST 		= $(patsubst %.c, %.o, $(SOURCES_LIST))
 OBJECTS				= $(addprefix $(OBJECTS_DIRECTORY), $(OBJECTS_LIST))
 
-# COLORS
-GREEN 				= \033[0;32m
-RED					= \033[0;31m
-RESET 				= \033[0m
-
 all: $(NAME)
 
 $(NAME): $(OBJECTS_DIRECTORY) $(OBJECTS)
 	@$(LIB) $(NAME) $(OBJECTS)
-	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
-	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
 $(OBJECTS_DIRECTORY):
 	@mkdir -p $(OBJECTS_DIRECTORY)
-	@echo "$(NAME): $(GREEN)$(OBJECTS_DIRECTORY) was created$(RESET)"
 
-$(OBJECTS_DIRECTORY)%.o : $(SOURCES_DIRECTORY)%.c $(HEADERS)
+$(OBJECTS_DIRECTORY)%.o: $(SOURCES_DIRECTORY)%.c $(HEADERS)
 	@$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
-	@echo ".\c"
 
 clean:
 	@rm -rf $(OBJECTS_DIRECTORY)
-	@echo "$(NAME): $(RED)object files were deleted$(RESET)"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
 
 re: fclean all
 
