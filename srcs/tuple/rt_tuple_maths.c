@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 12:54:52 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/07 10:41:40 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/08 11:52:36 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ t_tuple	rt_tuple_negate(t_tuple	a)
 t_tuple	rt_tuple_divide(t_tuple a, double scale)
 {
 	if (scale == 0)
-		rt_error_write(ERROR_DIVISOR);
+		rt_error_write(ERROR_DIVISOR, NULL);
 	return (rt_tuple_times(a, 1 / scale));
 }

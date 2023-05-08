@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_tuple_test.c                                    :+:      :+:    :+:   */
+/*   rt_render.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/07 10:31:50 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/08 11:38:13 by jyao             ###   ########.fr       */
+/*   Created: 2023/05/08 12:31:50 by jyao              #+#    #+#             */
+/*   Updated: 2023/05/08 13:17:51 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"minirt.h"
+#ifndef RT_RENDER_H
+# define RT_RENDER_H
 
-void	rt_tuple_print(t_tuple	tuple)
-{
-	printf("tuple value: x=%f y=%f z=%f w=%f\n"\
-	, tuple.x, tuple.y, tuple.z, tuple.w);
-}
+# include	"minirt.h"
+
+typedef struct s_minirt	t_minirt;
+
+typedef struct s_mlx_struct {
+	void	*init;
+	void	*window;
+}				t_mlx_struct;
+
+int	rt_render(t_minirt	*minirt);
+
+#endif

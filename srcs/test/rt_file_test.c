@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_tuple_test.c                                    :+:      :+:    :+:   */
+/*   rt_file_test.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/07 10:31:50 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/08 11:38:13 by jyao             ###   ########.fr       */
+/*   Created: 2023/05/08 15:19:14 by jyao              #+#    #+#             */
+/*   Updated: 2023/05/08 16:48:39 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minirt.h"
 
-void	rt_tuple_print(t_tuple	tuple)
+void	rt_file_print(t_element *head_element)
 {
-	printf("tuple value: x=%f y=%f z=%f w=%f\n"\
-	, tuple.x, tuple.y, tuple.z, tuple.w);
+	int			i;
+	t_element	*tmp;
+
+	tmp = head_element;
+	while (tmp != NULL)
+	{
+		i = 0;
+		while (tmp->info[i] != NULL)
+		{
+			printf("%s", tmp->info[i]);
+			i++;
+		}
+		tmp = tmp->next;
+	}
 }

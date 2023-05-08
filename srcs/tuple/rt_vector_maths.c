@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:22:55 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/07 13:46:19 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/08 11:53:04 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ double	rt_vector_magnitude(t_tuple	vector)
 	double	pythagoras_product;
 
 	if (vector.w != 0)
-		rt_error_write(ERROR_NOT_VECTOR);
+		rt_error_write(ERROR_NOT_VECTOR, NULL);
 	pythagoras_product = vector.x * vector.x + vector.y * vector.y \
 	+ vector.z * vector.z + vector.w * vector.w;
 	return (sqrt(pythagoras_product));
@@ -26,7 +26,7 @@ double	rt_vector_magnitude(t_tuple	vector)
 t_tuple	rt_vector_normalize(t_tuple vector)
 {
 	if (vector.w != 0)
-		rt_error_write(ERROR_NOT_VECTOR);
+		rt_error_write(ERROR_NOT_VECTOR, NULL);
 	return (rt_tuple_divide(vector, rt_vector_magnitude(vector)));
 }
 
@@ -38,7 +38,7 @@ t_tuple	rt_vector_normalize(t_tuple vector)
 double	rt_vector_dot(t_tuple vector1, t_tuple vector2)
 {
 	if (vector1.w != 0 || vector2.w != 0)
-		rt_error_write(ERROR_NOT_VECTOR);
+		rt_error_write(ERROR_NOT_VECTOR, NULL);
 	return (vector1.x * vector2.x + \
 			vector1.y * vector2.y + \
 			vector1.z * vector2.z + \
@@ -51,7 +51,7 @@ double	rt_vector_dot(t_tuple vector1, t_tuple vector2)
 t_tuple	rt_vector_cross(t_tuple vector1, t_tuple vector2)
 {
 	if (vector1.w != 0 || vector2.w != 0)
-		rt_error_write(ERROR_NOT_VECTOR);
+		rt_error_write(ERROR_NOT_VECTOR, NULL);
 	return (rt_vector_make(\
 			vector1.y * vector2.z - vector1.z * vector2.y, \
 			vector1.z * vector2.x - vector1.x * vector2.z, \

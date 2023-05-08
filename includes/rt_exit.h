@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_tuple_test.c                                    :+:      :+:    :+:   */
+/*   rt_exit.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/07 10:31:50 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/08 11:38:13 by jyao             ###   ########.fr       */
+/*   Created: 2023/05/08 14:41:28 by jyao              #+#    #+#             */
+/*   Updated: 2023/05/08 16:26:28 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"minirt.h"
+#ifndef RT_EXIT_H
+# define RT_EXIT_H
 
-void	rt_tuple_print(t_tuple	tuple)
-{
-	printf("tuple value: x=%f y=%f z=%f w=%f\n"\
-	, tuple.x, tuple.y, tuple.z, tuple.w);
-}
+# include	"minirt.h"
+
+typedef struct s_minirt	t_minirt;
+
+void	rt_free(t_minirt *minirt);
+
+void	rt_exit(t_minirt *minirt);
+
+#endif
