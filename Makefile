@@ -6,7 +6,7 @@
 #    By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 13:03:29 by jyao              #+#    #+#              #
-#    Updated: 2023/05/08 19:05:25 by jyao             ###   ########.fr        #
+#    Updated: 2023/05/09 20:21:02 by jyao             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,11 +52,14 @@ TUPLE_FOLDER		=	tuple/
 
 SRCS_LIST			=	main	\
 						$(ERROR_FOLDER)rt_error	\
-						$(EXIT_FOLDER)rt_exit	$(EXIT_FOLDER)rt_free	\
+						$(EXIT_FOLDER)rt_exit			$(EXIT_FOLDER)rt_free	\
 						$(FLOAT_FOLDER)rt_float	\
-						$(PARSE_FOLDER)rt_parse	$(PARSE_FOLDER)rt_gnl	$(PARSE_FOLDER)rt_parse_load	$(PARSE_FOLDER)rt_parse_check	\
+						$(PARSE_FOLDER)rt_parse			$(PARSE_FOLDER)rt_gnl			$(PARSE_FOLDER)rt_atoi	\
+						$(PARSE_FOLDER)rt_parse_load	$(PARSE_FOLDER)rt_parse_check	$(PARSE_FOLDER)rt_parse_element_utils	\
+						$(PARSE_FOLDER)rt_parse_element_set_1							$(PARSE_FOLDER)rt_parse_element_set_2	\
+						$(PARSE_FOLDER)rt_check_range	$(PARSE_FOLDER)rt_split	\
 						$(RENDER_FOLDER)rt_render	\
-						$(TEST_FOLDER)rt_tuple_test	$(TEST_FOLDER)rt_file_test	\
+						$(TEST_FOLDER)rt_tuple_test		$(TEST_FOLDER)rt_file_test	\
 						$(TUPLE_FOLDER)rt_tuple_make	$(TUPLE_FOLDER)rt_tuple_maths	$(TUPLE_FOLDER)rt_vector_maths	\
 
 SRCS = $(addprefix $(SRCS_FOLDER), $(addsuffix .c, $(SRCS_LIST)))

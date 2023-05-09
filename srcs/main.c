@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 12:58:48 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/08 16:26:00 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/09 19:17:33 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char *argv[])
 	else
 	{
 		minirt = (t_minirt){0};
-		minirt.head_element = rt_parse(argv[1]);
+		rt_parse(&minirt, argv[1]);
 		rt_render(&minirt);
 		test_tuple();
 		rt_exit(&minirt);

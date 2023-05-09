@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:39:10 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/08 16:29:27 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/09 15:57:04 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 void	rt_exit(t_minirt *minirt)
 {
 	rt_free(minirt);
-	perror(strerror(errno));
+	// perror(strerror(errno));
 	exit(errno);
 }

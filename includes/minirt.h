@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 12:59:23 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/08 16:29:13 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/09 15:47:42 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include	<math.h>
 # include	<stdio.h>
 # include	<fcntl.h>
+# include	<stdint.h>
+# include	<float.h>
 # include	"libft.h"
 # include	"mlx.h"
 # include	"rt_error.h"

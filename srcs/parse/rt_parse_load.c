@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_parse_read.c                                    :+:      :+:    :+:   */
+/*   rt_parse_load.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 13:12:27 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/08 17:09:11 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/09 20:22:53 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ static t_element	*new_element(char *line)
 
 	if (line == NULL || *line == '\n')
 		return (NULL);
-	info = ft_split(line, ' ');
-	if (info == NULL || *info == NULL)
-		return (NULL);
+	info = rt_split(line, SPACE_CHARSET);
+	if (info == NULL)
+		return (rt_error_write(ERROR_MEM_ALLOC, NULL), NULL);
 	new_element = (t_element *)ft_calloc(1, sizeof(t_element));
 	if (new_element == NULL)
-		return (NULL);
+		return (rt_error_write(ERROR_MEM_ALLOC, NULL), NULL);
 	new_element->info = info;
 	new_element->id_str = info[0];
 	new_element->next = NULL;

@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:41:28 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/08 16:26:28 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/09 20:15:24 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include	"minirt.h"
 
 typedef struct s_minirt	t_minirt;
+
+void	rt_free_rt_split_arr(char **arr);
 
 void	rt_free(t_minirt *minirt);
 

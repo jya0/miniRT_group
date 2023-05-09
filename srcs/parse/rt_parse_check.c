@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 17:04:49 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/08 18:14:53 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/09 15:20:10 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	is_supported_element(t_element *element)
 	if (ft_strnstr(\
 	RT_SUPPORTED_ELEMENTS, element->id_str, \
 	ft_strlen(RT_SUPPORTED_ELEMENTS)) == NULL)
-		return (1);
+		return (rt_error_write(ERROR_ELEMENT_FORMAT, element->id_str), 1);
 	return (0);
 }
 
@@ -33,12 +33,15 @@ static t_parse_fun	get_parse_fun(char *id_str)
 		return (rt_parse_sphere);
 	else if (ft_strncmp(id_str, "pl", ft_strlen(id_str)) == 0)
 		return (rt_parse_plane);
-	return (rt_parse_cyclinder);
+	else if (ft_strncmp(id_str, "cy", ft_strlen(id_str)) == 0)
+		return (rt_parse_cylinder);
+	return (NULL);
 }
 
 int	rt_parse_check(t_element *head_element)
 {
 	t_element	*tmp_element;
+	t_parse_fun	parse_fun;
 
 	if (head_element == NULL)
 		return (1);
@@ -48,7 +51,10 @@ int	rt_parse_check(t_element *head_element)
 	{
 		if (is_supported_element(tmp_element) != 0)
 			return (1);
-		if (get_parse_fun(tmp_element->id_str)(tmp_element) != 0)
+		parse_fun = get_parse_fun(tmp_element->id_str);
+		if (parse_fun == NULL)
+			return (1);
+		if (parse_fun(tmp_element) != 0)
 			return (1);
 		tmp_element = tmp_element->next;
 	}
