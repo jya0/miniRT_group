@@ -6,7 +6,7 @@
 #    By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 13:03:29 by jyao              #+#    #+#              #
-#    Updated: 2023/05/09 20:21:02 by jyao             ###   ########.fr        #
+#    Updated: 2023/05/10 13:04:05 by jyao             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ HEADERS 			=	$(addprefix $(HEADERS_FOLDER), $(HEADERS_LIST))
 
 #DECLARE DEFINE ALL SRCS FOLDER PATHS
 SRCS_FOLDER			:=	./srcs/
+COLOR_FOLDER		=	color/
 ERROR_FOLDER		=	error/
 EXIT_FOLDER			=	exit/
 FLOAT_FOLDER		=	float/
@@ -51,6 +52,7 @@ TEST_FOLDER			=	test/
 TUPLE_FOLDER		=	tuple/
 
 SRCS_LIST			=	main	\
+						$(COLOR_FOLDER)rt_color_math	\
 						$(ERROR_FOLDER)rt_error	\
 						$(EXIT_FOLDER)rt_exit			$(EXIT_FOLDER)rt_free	\
 						$(FLOAT_FOLDER)rt_float	\
@@ -87,6 +89,7 @@ $(LIBRARY_FILES):
 
 $(OBJS_FOLDER):
 	mkdir $(OBJS_FOLDER)
+	mkdir $(OBJS_FOLDER)$(COLOR_FOLDER)
 	mkdir $(OBJS_FOLDER)$(ERROR_FOLDER)
 	mkdir $(OBJS_FOLDER)$(EXIT_FOLDER)
 	mkdir $(OBJS_FOLDER)$(FLOAT_FOLDER)

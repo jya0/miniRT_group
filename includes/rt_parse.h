@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 15:36:03 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/09 20:23:37 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/10 12:19:51 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,13 @@
 # define SPACE_CHARSET				"\n\t \v\f\r"
 # define RT_SUPPORTED_ELEMENTS		"A C L sp pl cy"
 # define DIMENSION_NUMBER			3
-# define COLOR_NUMBER				3
 # define RT_ATOI_FAIL_FLAG			"RT_ATOI_FAIL_FLAG"
 
 /*element ranges*/
 # define INTENSITY_MIN				0.0f
 # define INTENSITY_MAX				1.0f
-# define RGB_MIN					0
-# define RGB_MAX					255
+# define TRGB_MIN					0
+# define TRGB_MAX					255
 # define FOV_MIN					0
 # define FOV_MAX					180
 
@@ -40,13 +39,21 @@ enum e_element_argc {
 	ARGC_CYLINDER	=	6
 };
 
+enum e_trgb {
+	TRSPT,
+	RED,
+	GREEN,
+	BLUE,
+	TRGB_COUNT
+};
+
 typedef struct s_element {
 	char				**info;
 	char				*id_str;
 	union u_element_type {
 		struct s_ambient {
 			double	intensity;
-			int		rgb[COLOR_NUMBER];
+			int		trgb[TRGB_COUNT];
 		}			ambient;
 		struct s_camera {
 			double	coord[DIMENSION_NUMBER];
@@ -60,19 +67,19 @@ typedef struct s_element {
 		struct s_sphere {
 			double	coord[DIMENSION_NUMBER];
 			double	diameter;
-			int		rgb[COLOR_NUMBER];
+			int		trgb[TRGB_COUNT];
 		}			sphere;
 		struct s_plane {
 			double	coord[DIMENSION_NUMBER];
 			double	norm_vect[DIMENSION_NUMBER];
-			int		rgb[COLOR_NUMBER];
+			int		trgb[TRGB_COUNT];
 		}			plane;
 		struct s_cylinder {
 			double	coord[DIMENSION_NUMBER];
 			double	norm_vect[DIMENSION_NUMBER];
 			double	diameter;
 			double	height;
-			int		rgb[COLOR_NUMBER];
+			int		trgb[TRGB_COUNT];
 		}			cylinder;
 	}					element_type;
 	struct s_element	*next;

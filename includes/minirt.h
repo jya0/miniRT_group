@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 12:59:23 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/09 15:47:42 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/10 13:01:15 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include	<float.h>
 # include	"libft.h"
 # include	"mlx.h"
+# include	"rt_color.h"
 # include	"rt_error.h"
 # include	"rt_exit.h"
 # include	"rt_float.h"

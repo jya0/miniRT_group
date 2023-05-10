@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_float.c                                         :+:      :+:    :+:   */
+/*   rt_color.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/01 14:46:37 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/10 12:53:55 by jyao             ###   ########.fr       */
+/*   Created: 2023/05/10 12:58:52 by jyao              #+#    #+#             */
+/*   Updated: 2023/05/10 13:03:51 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"minirt.h"
+#ifndef RT_COLOR_H
+# define RT_COLOR_H
 
-double	rt_float_abs(double d)
-{
-	return (d * (1 - 2 * (d < 0)));
-}
+typedef struct s_tuple	t_tuple;
 
-int	rt_float_equal(double d1, double d2)
-{
-	return (rt_float_abs(d1 - d2) < RT_EPSILON);
-}
+t_tuple			rt_color_clamp(t_tuple color);
 
-double	rt_float_inverse(double divisor)
-{
-	if (divisor == 0)
-		rt_error_write(ERROR_DIVISOR, NULL);
-	return (1 / divisor);
-}
+t_tuple			rt_color_add(t_tuple color1, t_tuple color2);
+
+t_tuple			rt_color_minus(t_tuple color1, t_tuple color2);
+
+t_tuple			rt_color_times(t_tuple color, double scale);
+
+t_tuple			rt_color_times_color(t_tuple color1, t_tuple color2);
+
+#endif
