@@ -6,7 +6,7 @@
 #    By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 13:03:29 by jyao              #+#    #+#              #
-#    Updated: 2023/05/10 13:04:05 by jyao             ###   ########.fr        #
+#    Updated: 2023/05/12 15:37:58 by jyao             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ COLOR_FOLDER		=	color/
 ERROR_FOLDER		=	error/
 EXIT_FOLDER			=	exit/
 FLOAT_FOLDER		=	float/
+MATRIX_FOLDER		=	matrix/
 PARSE_FOLDER		=	parse/
 RENDER_FOLDER		=	render/
 TEST_FOLDER			=	test/
@@ -56,13 +57,14 @@ SRCS_LIST			=	main	\
 						$(ERROR_FOLDER)rt_error	\
 						$(EXIT_FOLDER)rt_exit			$(EXIT_FOLDER)rt_free	\
 						$(FLOAT_FOLDER)rt_float	\
+						$(MATRIX_FOLDER)rt_matrix		$(MATRIX_FOLDER)rt_matrix_get	$(MATRIX_FOLDER)rt_matrix_maths	\
 						$(PARSE_FOLDER)rt_parse			$(PARSE_FOLDER)rt_gnl			$(PARSE_FOLDER)rt_atoi	\
 						$(PARSE_FOLDER)rt_parse_load	$(PARSE_FOLDER)rt_parse_check	$(PARSE_FOLDER)rt_parse_element_utils	\
 						$(PARSE_FOLDER)rt_parse_element_set_1							$(PARSE_FOLDER)rt_parse_element_set_2	\
 						$(PARSE_FOLDER)rt_check_range	$(PARSE_FOLDER)rt_split	\
 						$(RENDER_FOLDER)rt_render	\
-						$(TEST_FOLDER)rt_tuple_test		$(TEST_FOLDER)rt_file_test	\
-						$(TUPLE_FOLDER)rt_tuple_make	$(TUPLE_FOLDER)rt_tuple_maths	$(TUPLE_FOLDER)rt_vector_maths	\
+						$(TEST_FOLDER)rt_tuple_test		$(TEST_FOLDER)rt_file_test		$(TEST_FOLDER)rt_matrix_test	\
+						$(TUPLE_FOLDER)rt_tuple			$(TUPLE_FOLDER)rt_tuple_maths	$(TUPLE_FOLDER)rt_vector_maths	\
 
 SRCS = $(addprefix $(SRCS_FOLDER), $(addsuffix .c, $(SRCS_LIST)))
 
@@ -93,6 +95,7 @@ $(OBJS_FOLDER):
 	mkdir $(OBJS_FOLDER)$(ERROR_FOLDER)
 	mkdir $(OBJS_FOLDER)$(EXIT_FOLDER)
 	mkdir $(OBJS_FOLDER)$(FLOAT_FOLDER)
+	mkdir $(OBJS_FOLDER)$(MATRIX_FOLDER)
 	mkdir $(OBJS_FOLDER)$(PARSE_FOLDER)
 	mkdir $(OBJS_FOLDER)$(RENDER_FOLDER)
 	mkdir $(OBJS_FOLDER)$(TEST_FOLDER)

@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 12:58:48 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/09 19:17:33 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/12 16:43:02 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,37 @@ static void	test_tuple(void)
 	rt_vector_magnitude(rt_tuple_divide(a, rt_vector_magnitude(a))));
 }
 
+static void	test_matrix(void)
+{
+	t_matrix	*mtx1;
+	t_matrix	*mtx2;
+	t_matrix	*mtx3;
+	t_matrix	*mtx4;
+	double		arr1[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	double		arr2[] = {-1, -2, -3, -4, -5, -6, -7, -8, -9};
+
+	mtx1 = rt_matrix_make(3, 3);
+	rt_matrix_fill(mtx1, arr1, 9);
+	rt_matrix_print(mtx1);
+	mtx2 = rt_matrix_make(3, 3);
+	rt_matrix_fill(mtx2, arr1, 9);
+	rt_matrix_print(mtx2);
+	printf("\n|rt_matrix_equal = %d|\n", rt_matrix_equal(mtx1, mtx2));
+	rt_matrix_fill(mtx2, arr2, 9);
+	rt_matrix_print(mtx2);
+	printf("\n|rt_matrix_equal = %d|\n", rt_matrix_equal(mtx1, mtx2));
+	mtx3 = rt_matrix_times_matrix(mtx1, mtx2);
+	rt_matrix_print(mtx3);
+	mtx4 = rt_matrix_make(2, 2);
+	rt_matrix_fill(mtx4, arr1, 4);
+	rt_matrix_print(mtx4);
+	printf("\n|rt_matrix_equal = %d|\n", rt_matrix_equal(mtx3, mtx4));
+	rt_free_matrix(mtx1);
+	rt_free_matrix(mtx2);
+	rt_free_matrix(mtx3);
+	rt_free_matrix(mtx4);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_minirt	minirt;
@@ -37,6 +68,7 @@ int	main(int argc, char *argv[])
 		rt_parse(&minirt, argv[1]);
 		rt_render(&minirt);
 		test_tuple();
+		test_matrix();
 		rt_exit(&minirt);
 	}
 	return (0);

@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_color.h                                         :+:      :+:    :+:   */
+/*   rt_matrix_test.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/10 12:58:52 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/10 16:53:29 by jyao             ###   ########.fr       */
+/*   Created: 2023/05/11 16:02:13 by jyao              #+#    #+#             */
+/*   Updated: 2023/05/12 15:38:16 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RT_COLOR_H
-# define RT_COLOR_H
+#include	"minirt.h"
 
-# include	"minirt.h"
+t_matrix	*rt_matrix_print(t_matrix *mtx)
+{
+	unsigned int	i;
+	unsigned int	j;
 
-typedef struct s_tuple	t_tuple;
-
-t_tuple			rt_color_clamp(t_tuple color);
-
-t_tuple			rt_color_add(t_tuple color1, t_tuple color2);
-
-t_tuple			rt_color_minus(t_tuple color1, t_tuple color2);
-
-t_tuple			rt_color_times(t_tuple color, double scale);
-
-t_tuple			rt_color_times_color(t_tuple color1, t_tuple color2);
-
-#endif
+	if (mtx == NULL)
+		return (NULL);
+	i = 0;
+	while (i < mtx->row)
+	{
+		printf("\n|");
+		j = 0;
+		while (j < mtx->column)
+		{
+			printf("%f| ", mtx->matrix[i][j]);
+			j++;
+		}
+		i++;
+	}
+	return (mtx);
+}
