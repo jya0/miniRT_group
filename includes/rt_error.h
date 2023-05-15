@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:12:42 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/11 17:15:06 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/15 17:32:50 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,12 @@
 /* matrix */
 # define ERROR_MATRIX_FORMAT	"Error\n wrong matrix format"
 # define ERROR_MATRIX_ASSIGN	"Error\n can't assign matrix"
-# define ERROR_MATRIX_READ		"Error\n cant' read matrix"
+# define ERROR_MATRIX_READ		"Error\n can't read matrix"
+# define ERROR_MATRIX_IDENTITY	"Error\n can't make identity matrix"
+# define ERROR_MATRIX_SUBMATRIX	"Error\n can't make submatrix"
+# define ERROR_MATRIX_DETERMI	"Error\n can't find determinant"
+# define ERROR_MATRIX_MINOR		"Error\n can't find minor"
+# define ERROR_MATRIX_COFACTOR	"Error\n can't find cofactor"
 
 int			rt_error_write(char const *msg, char const *arg);
 

@@ -6,12 +6,13 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:52:08 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/12 16:03:39 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/12 17:08:09 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minirt.h"
 
+/* Fills the matrix from left to right, top to bottom */
 t_matrix	*rt_matrix_fill(t_matrix *mtx_to_fill, \
 double *num_arr, unsigned int num_count)
 {
@@ -38,10 +39,16 @@ double *num_arr, unsigned int num_count)
 
 void	rt_free_matrix(t_matrix *mtx_to_free)
 {
-	while (mtx_to_free->row != 0)
-		free(mtx_to_free->matrix[--mtx_to_free->row]);
-	free(mtx_to_free->matrix);
-	free(mtx_to_free);
+	if (mtx_to_free != NULL)
+	{
+		if (mtx_to_free->matrix != NULL)
+		{
+			while (mtx_to_free->row != 0)
+				free(mtx_to_free->matrix[--mtx_to_free->row]);
+			free(mtx_to_free->matrix);
+		}
+		free(mtx_to_free);
+	}
 }
 
 static t_matrix	*alloc_matrix(unsigned int row, unsigned int column)

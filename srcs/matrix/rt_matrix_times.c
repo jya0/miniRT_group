@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_matrix_maths.c                                  :+:      :+:    :+:   */
+/*   rt_matrix_times.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:17:38 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/12 16:41:46 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/15 13:27:20 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,25 @@ t_matrix	*rt_matrix_times_matrix(t_matrix *mtx1, t_matrix *mtx2)
 	rt_matrix_fill(res_matrix, num_arr, mtx1->row * mtx2->column);
 	free(num_arr);
 	return (res_matrix);
+}
+
+t_matrix	*rt_matrix_times(t_matrix *mtx, double scale)
+{
+	unsigned int	i;
+	unsigned int	j;
+
+	if (mtx == NULL)
+		return (NULL);
+	i = 0;
+	while (i < mtx->row)
+	{
+		j = 0;
+		while (j < mtx->column)
+		{
+			mtx->matrix[i][j] *= scale;
+			j++;
+		}
+		i++;
+	}
+	return (mtx);
 }

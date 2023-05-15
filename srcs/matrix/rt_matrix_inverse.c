@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_matrix_test.c                                   :+:      :+:    :+:   */
+/*   rt_matrix_inverse.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 16:02:13 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/15 13:58:39 by jyao             ###   ########.fr       */
+/*   Created: 2023/05/15 15:22:51 by jyao              #+#    #+#             */
+/*   Updated: 2023/05/15 15:24:36 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minirt.h"
 
-t_matrix	*rt_matrix_print(t_matrix *mtx)
+/* finding the inverse of a matrix */
+/* t_matrix	*rt_matrix_inverse(t_matrix *mtx)
 {
-	unsigned int	i;
-	unsigned int	j;
+	t_matrix	*res_mtx;
 
-	if (mtx == NULL)
-		return (NULL);
-	printf("\n<matrix>");
-	i = 0;
-	while (i < mtx->row)
-	{
-		printf("\n|");
-		j = 0;
-		while (j < mtx->column)
-		{
-			printf("%f| ", mtx->matrix[i][j]);
-			j++;
-		}
-		i++;
-	}
-	return (mtx);
-}
+
+	return (res_mtx);
+} */
