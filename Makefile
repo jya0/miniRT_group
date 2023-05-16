@@ -6,7 +6,7 @@
 #    By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 13:03:29 by jyao              #+#    #+#              #
-#    Updated: 2023/05/15 16:40:45 by jyao             ###   ########.fr        #
+#    Updated: 2023/05/16 12:51:43 by jyao             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ SRCS_LIST			=	main	\
 						$(MATRIX_FOLDER)rt_matrix_transpose								$(MATRIX_FOLDER)rt_matrix_clone	\
 						$(MATRIX_FOLDER)rt_matrix_determinant							$(MATRIX_FOLDER)rt_matrix_submatrix	\
 						$(MATRIX_FOLDER)rt_matrix_minor									$(MATRIX_FOLDER)rt_matrix_cofactor	\
+						$(MATRIX_FOLDER)rt_matrix_inverse								\
 						$(PARSE_FOLDER)rt_parse			$(PARSE_FOLDER)rt_gnl			$(PARSE_FOLDER)rt_atoi	\
 						$(PARSE_FOLDER)rt_parse_load	$(PARSE_FOLDER)rt_parse_check	$(PARSE_FOLDER)rt_parse_element_utils	\
 						$(PARSE_FOLDER)rt_parse_element_set_1							$(PARSE_FOLDER)rt_parse_element_set_2	\

@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:12:42 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/15 17:32:50 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/16 11:58:37 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define ERROR_MATRIX_DETERMI	"Error\n can't find determinant"
 # define ERROR_MATRIX_MINOR		"Error\n can't find minor"
 # define ERROR_MATRIX_COFACTOR	"Error\n can't find cofactor"
+# define ERROR_MATRIX_INVERSE	"Error\n can't find inverse"
 
 int			rt_error_write(char const *msg, char const *arg);
 
