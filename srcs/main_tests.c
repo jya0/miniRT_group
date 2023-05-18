@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:19:47 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/18 13:22:22 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/18 13:54:12 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,17 @@ void	test_tuple(void)
 	printf("dot = %f\n", rt_vector_dot(a, b));
 	printf("magnitude = %f\n", \
 	rt_vector_magnitude(rt_tuple_divide(a, rt_vector_magnitude(a))));
+}
+
+void	test_matrix_sheer(void)
+{
+	t_matrix	*sheer = rt_matrix_sheer(rt_tuple_make(0, 0, 0, 0), rt_tuple_make(0, 0, 1, 0), rt_tuple_make(0, 0, 0, 0));
+	t_matrix	*point = rt_tuple_to_matrix(rt_point_make(2, 3, 4));
+
+	printf("\n----TESTING MATRIX SHEER----\n");
+	rt_free_matrix(rt_matrix_print(rt_matrix_times_matrix(sheer, point)));
+	rt_free_matrix(sheer);
+	rt_free_matrix(point);
 }
 
 void	test_matrix_rotate(void)

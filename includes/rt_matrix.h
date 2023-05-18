@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:52:42 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/18 12:57:59 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/18 13:44:27 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,10 @@ t_matrix		*rt_matrix_rotate_x(double radians);
 t_matrix		*rt_matrix_rotate_y(double radians);
 
 t_matrix		*rt_matrix_rotate_z(double radians);
+
+/* rt_matrix_sheer.c */
+t_matrix		*rt_matrix_sheer(\
+					t_tuple x_rela, t_tuple y_rela, t_tuple z_rela);
 
 /* rt_matrix.c */
 void			rt_free_matrix(t_matrix *mtx_to_free);

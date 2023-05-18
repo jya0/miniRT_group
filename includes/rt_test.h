@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 13:49:49 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/18 13:17:32 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/18 13:51:44 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ void			test_matrix_inverse(void);
 void			test_matrix_maths(void);
 
 void			test_matrix_rotate(void);
+
+void			test_matrix_sheer(void);
 
 #endif
