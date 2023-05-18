@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:12:42 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/16 11:58:37 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/16 14:33:52 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define ERROR_MATRIX_MINOR		"Error\n can't find minor"
 # define ERROR_MATRIX_COFACTOR	"Error\n can't find cofactor"
 # define ERROR_MATRIX_INVERSE	"Error\n can't find inverse"
+# define ERROR_MATRIX_TUPLE		"Error\n can't convert matrix to tuple"
 
 int			rt_error_write(char const *msg, char const *arg);
 

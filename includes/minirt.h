@@ -6,12 +6,13 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 12:59:23 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/10 16:53:42 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/18 13:09:53 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
+# define _USE_MATH_DEFINES
 
 # include	<unistd.h>
 # include	<stdlib.h>

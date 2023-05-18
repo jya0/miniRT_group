@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:52:42 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/16 12:50:47 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/18 12:57:59 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ typedef struct s_matrix {
 	double			**matrix;
 }				t_matrix;
 
-typedef struct s_coord {
+typedef struct s_mtx_index {
 	unsigned int	row;
 	unsigned int	column;
-}				t_coord;
+}				t_mtx_index;
 
 /* rt_matrix_times.c */
 t_matrix		*rt_matrix_times_matrix(t_matrix *mtx1, t_matrix *mtx2);
@@ -36,7 +36,7 @@ t_matrix		*rt_matrix_transpose(t_matrix *mtx);
 
 /* rt_matrix_clone.c */
 t_matrix		*rt_matrix_clone(\
-					t_matrix *mtx, t_coord start, t_coord end);
+					t_matrix *mtx, t_mtx_index start, t_mtx_index end);
 
 /* rt_matrix_detmnt.c */
 double			rt_matrix_detmnt_2x2(t_matrix *mtx);
@@ -64,7 +64,25 @@ double			*rt_matrix_get_column(t_matrix *mtx, unsigned int column);
 t_matrix		*rt_matrix_fill(t_matrix *mtx_to_fill, \
 					double *num_arr, unsigned int num_count);
 
-t_matrix		*rt_matrix_get_identity(t_matrix *mtx);
+t_matrix		*rt_matrix_get_identity(unsigned int size);
+
+/* rt_matrix_tuple.c */
+t_tuple			rt_matrix_to_tuple(t_matrix	*mtx, ssize_t row, ssize_t col);
+
+t_matrix		*rt_tuple_to_matrix(t_tuple tuple);
+
+/* rt_matrix_translate.c */
+t_matrix		*rt_matrix_translate(double x, double y, double z);
+
+/* rt_matrix_scale.c */
+t_matrix		*rt_matrix_scale(double x, double y, double z);
+
+/* rt_matrix_rotate.c */
+t_matrix		*rt_matrix_rotate_x(double radians);
+
+t_matrix		*rt_matrix_rotate_y(double radians);
+
+t_matrix		*rt_matrix_rotate_z(double radians);
 
 /* rt_matrix.c */
 void			rt_free_matrix(t_matrix *mtx_to_free);

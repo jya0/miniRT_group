@@ -6,7 +6,7 @@
 #    By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/19 13:01:55 by fkhan             #+#    #+#              #
-#    Updated: 2023/05/07 14:27:47 by jyao             ###   ########.fr        #
+#    Updated: 2023/05/16 13:08:25 by jyao             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,19 +40,19 @@ OBJECTS				= $(addprefix $(OBJECTS_DIRECTORY), $(OBJECTS_LIST))
 all: $(NAME)
 
 $(NAME): $(OBJECTS_DIRECTORY) $(OBJECTS)
-	@$(LIB) $(NAME) $(OBJECTS)
+	$(LIB) $(NAME) $(OBJECTS)
 
 $(OBJECTS_DIRECTORY):
-	@mkdir -p $(OBJECTS_DIRECTORY)
+	mkdir -p $(OBJECTS_DIRECTORY)
 
 $(OBJECTS_DIRECTORY)%.o: $(SOURCES_DIRECTORY)%.c $(HEADERS)
-	@$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
+	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	@rm -rf $(OBJECTS_DIRECTORY)
+	rm -rf $(OBJECTS_DIRECTORY)
 
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 

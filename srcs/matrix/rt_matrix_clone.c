@@ -6,14 +6,14 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 14:08:43 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/15 15:20:05 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/16 14:06:38 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minirt.h"
 
 static int	check_corner_coords(\
-unsigned int row, unsigned int column, t_coord start, t_coord end)
+unsigned int row, unsigned int column, t_mtx_index start, t_mtx_index end)
 {
 	if (start.row >= row || start.column >= column \
 		|| end.row >= row || end.column >= column \
@@ -24,7 +24,7 @@ unsigned int row, unsigned int column, t_coord start, t_coord end)
 
 /* where start is top left corner, end corner is bottom right corner */
 t_matrix	*rt_matrix_clone(\
-t_matrix *mtx, t_coord start, t_coord end)
+t_matrix *mtx, t_mtx_index start, t_mtx_index end)
 {
 	t_matrix		*clone;
 	unsigned int	count[2];

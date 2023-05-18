@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   rt_matrix_scale.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/31 12:58:48 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/18 13:17:42 by jyao             ###   ########.fr       */
+/*   Created: 2023/05/18 11:14:47 by jyao              #+#    #+#             */
+/*   Updated: 2023/05/18 11:42:25 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include	"minirt.h"
 
-int	main(int argc, char *argv[])
+/* returns the 4x4 scaling matrix */
+t_matrix	*rt_matrix_scale(double x, double y, double z)
 {
-	t_minirt	minirt;
+	t_matrix		*scale;
+	unsigned int	diag;
 
-	if (argc != 2)
-		rt_error_write(ERROR_WRONG_ARGC, NULL);
-	else
-	{
-		minirt = (t_minirt){0};
-		rt_parse(&minirt, argv[1]);
-		rt_render(&minirt);
-		test_tuple();
-		test_matrix_maths();
-		test_matrix_inverse();
-		test_matrix_translate();
-		test_matrix_scale();
-		test_matrix_rotate();
-		rt_exit(&minirt);
-	}
-	return (0);
+	scale = rt_matrix_get_identity(4);
+	if (scale == NULL)
+		return (NULL);
+	diag = 0;
+	scale->matrix[diag][diag] = x;
+	diag++;
+	scale->matrix[diag][diag] = y;
+	diag++;
+	scale->matrix[diag][diag] = z;
+	return (scale);
 }
