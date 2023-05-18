@@ -6,11 +6,30 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:19:47 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/18 13:54:12 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/18 14:57:57 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minirt.h"
+#include	<time.h>
+
+void	test_fma_speed(void)
+{
+	unsigned int	i;
+	clock_t			start, end;
+	double			execution_time;
+
+	start = clock();
+	i = 0;
+	while (i < UINT32_MAX / 10)
+	{
+		i += 1 * 1;
+		// i = fma(1, 1, i);
+	}
+	end = clock();
+	execution_time = (double)(end - start) / CLOCKS_PER_SEC;
+	printf("\n|%.2f seconds|\n", execution_time);
+}
 
 void	test_tuple(void)
 {

@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:17:38 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/15 13:27:20 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/18 14:58:16 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ double *num_arr2, unsigned int num_arr2_len)
 	i = 0;
 	while (i < num_arr1_len && i < num_arr2_len)
 	{
+		// res = fma(num_arr1[i], num_arr2[i], res);
 		res += num_arr1[i] * num_arr2[i];
 		i++;
 	}

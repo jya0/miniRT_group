@@ -6,13 +6,16 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 12:59:23 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/18 13:09:53 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/18 14:49:45 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 # define _USE_MATH_DEFINES
+# define FP_FAST_FMA
+# define FP_FAST_FMAF
+# define FP_FAST_FMAL
 
 # include	<unistd.h>
 # include	<stdlib.h>
