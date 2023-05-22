@@ -6,14 +6,12 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 15:36:03 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/10 12:19:51 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/22 17:07:30 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_PARSE_H
 # define RT_PARSE_H
-
-# include	"minirt.h"
 
 # define BUFFER_SIZE				42
 # define RT_FILE_SUFFIX				".rt"
@@ -30,60 +28,52 @@
 # define FOV_MIN					0
 # define FOV_MAX					180
 
-enum e_element_argc {
+typedef enum e_element_argc {
 	ARGC_AMBIENT	=	3,
 	ARGC_CAMERA		=	4,
 	ARGC_LIGHT		=	3,
 	ARGC_SPHERE		=	4,
 	ARGC_PLANE		=	4,
 	ARGC_CYLINDER	=	6
-};
-
-enum e_trgb {
-	TRSPT,
-	RED,
-	GREEN,
-	BLUE,
-	TRGB_COUNT
-};
+}	t_element_argc;
 
 typedef struct s_element {
 	char				**info;
 	char				*id_str;
-	union u_element_type {
-		struct s_ambient {
+	union u_data_element {
+		struct s_ambient_element {
 			double	intensity;
 			int		trgb[TRGB_COUNT];
 		}			ambient;
-		struct s_camera {
+		struct s_camera_element {
 			double	coord[DIMENSION_NUMBER];
 			double	orien_vect[DIMENSION_NUMBER];
 			int		fov;
 		}			camera;
-		struct s_light {
+		struct s_light_element {
 			double	coord[DIMENSION_NUMBER];
 			double	intensity;
 		}			light;
-		struct s_sphere {
+		struct s_sphere_element {
 			double	coord[DIMENSION_NUMBER];
 			double	diameter;
 			int		trgb[TRGB_COUNT];
 		}			sphere;
-		struct s_plane {
+		struct s_plane_element {
 			double	coord[DIMENSION_NUMBER];
 			double	norm_vect[DIMENSION_NUMBER];
 			int		trgb[TRGB_COUNT];
 		}			plane;
-		struct s_cylinder {
+		struct s_cylinder_element {
 			double	coord[DIMENSION_NUMBER];
 			double	norm_vect[DIMENSION_NUMBER];
 			double	diameter;
 			double	height;
 			int		trgb[TRGB_COUNT];
 		}			cylinder;
-	}					element_type;
+	}					data_element;
 	struct s_element	*next;
-}				t_element;
+}	t_element;
 
 typedef int		(*t_parse_fun)(t_element *element);
 

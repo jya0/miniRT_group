@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:22:55 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/11 15:44:39 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/20 14:52:19 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,9 @@ t_tuple	rt_vector_normalize(t_tuple vector)
 
 /* w is still included in the calculation as the guide mentioned
 ** the dot product calculates up to any dimensions
-** however I still included the error check as we will only be
-** using 3D vectors.
 */
 double	rt_vector_dot(t_tuple vector1, t_tuple vector2)
 {
-	if (vector1.w != 0 || vector2.w != 0)
-		rt_error_write(ERROR_NOT_VECTOR, NULL);
 	return (vector1.x * vector2.x + \
 			vector1.y * vector2.y + \
 			vector1.z * vector2.z + \

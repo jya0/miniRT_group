@@ -6,14 +6,12 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 13:49:49 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/18 14:45:02 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/22 17:17:02 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_TEST_H
 # define RT_TEST_H
-
-# include	"minirt.h"
 
 typedef struct s_tuple	t_tuple;
 
@@ -23,8 +21,12 @@ void			rt_file_print(t_element *head_element);
 
 t_matrix		*rt_matrix_print(t_matrix *mtx);
 
+void			rt_interx_list_print(t_interx *head);
+
 /* main_tests.c */
 void			test_tuple(void);
+
+void			test_intersections(void);
 
 void			test_matrix_scale(void);
 

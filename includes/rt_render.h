@@ -6,14 +6,12 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 12:31:50 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/08 13:17:51 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/22 14:22:25 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_RENDER_H
 # define RT_RENDER_H
-
-# include	"minirt.h"
 
 typedef struct s_minirt	t_minirt;
 

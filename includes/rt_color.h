@@ -6,14 +6,20 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:58:52 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/10 16:53:29 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/22 17:07:33 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_COLOR_H
 # define RT_COLOR_H
 
-# include	"minirt.h"
+typedef enum e_trgb {
+	TRSPT,
+	RED,
+	GREEN,
+	BLUE,
+	TRGB_COUNT
+}	t_trgb;
 
 typedef struct s_tuple	t_tuple;
 

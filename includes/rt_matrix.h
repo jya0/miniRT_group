@@ -6,14 +6,12 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:52:42 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/18 13:44:27 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/22 14:22:17 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_MATRIX_H
 # define RT_MATRIX_H
-
-# include	"minirt.h"
 
 typedef struct s_matrix {
 	unsigned int	row;

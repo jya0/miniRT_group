@@ -6,14 +6,12 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 14:23:30 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/10 12:09:33 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/22 14:22:34 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_TUPLE_H
 # define RT_TUPLE_H
-
-# include	"minirt.h"
 
 typedef struct s_tuple {
 	double	x;
