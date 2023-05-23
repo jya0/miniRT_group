@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_intersect_test.c                                :+:      :+:    :+:   */
+/*   rt_shape_transform.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 13:29:44 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/23 16:00:42 by jyao             ###   ########.fr       */
+/*   Created: 2023/05/23 18:27:48 by jyao              #+#    #+#             */
+/*   Updated: 2023/05/23 18:37:09 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minirt.h"
 
-void	rt_interx_list_print(t_interx *head, int flag)
+t_shape	*rt_shape_transform_set(t_shape *shape, t_matrix *mtx_transform)
 {
-	t_interx	*tmp;
-
-	if (head == NULL)
-		return ;
-	if (flag & FLAG_A)
+	if (shape == NULL || mtx_transform == NULL)
+		return (rt_error_write(ERROR_SHAPE_TRANSFORM, NULL), shape);
+	if (shape->mtx_transform != NULL)
 	{
-		printf("\nforward-->: ");
-		while (head != NULL)
-		{
-			printf("|t_val = %f|", head->t_val);
-			if (head->next == NULL)
-				tmp = head;
-			head = head->next;
-		}
+		rt_free_matrix(shape->mtx_transform);
+		shape->mtx_transform = NULL;
 	}
-	if (flag & FLAG_B)
-	{
-		printf("\nreverse-->: ");
-		while (tmp != NULL)
-		{
-			printf("|t_val = %f|", tmp->t_val);
-			tmp = tmp->prev;
-		}
-	}
+	shape->mtx_transform = mtx_transform;
+	return (shape);
 }

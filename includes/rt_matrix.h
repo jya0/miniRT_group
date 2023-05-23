@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:52:42 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/22 14:22:17 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/23 18:25:43 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ t_matrix		*rt_matrix_fill(t_matrix *mtx_to_fill, \
 t_matrix		*rt_matrix_get_identity(unsigned int size);
 
 /* rt_matrix_tuple.c */
-t_tuple			rt_matrix_to_tuple(t_matrix	*mtx, ssize_t row, ssize_t col);
+t_tuple			rt_matrix_to_tuple(\
+	t_matrix	*mtx, ssize_t row, ssize_t col);
 
 t_matrix		*rt_tuple_to_matrix(t_tuple tuple);
 

@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:12:42 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/22 13:25:08 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/23 18:29:21 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,14 @@
 /* geometry */
 # define ERROR_SHAPE_LIMIT		"Error\n reached shape spawning limit"
 # define ERROR_SPHERE_PARAM		"Error\n invalid sphere parameters"
+# define ERROR_SHAPE_TRANSFORM	"Error\n transform matrix assignment"
 
 /* ray */
 # define ERROR_INTERX_MAKE		"Error\n can't make intersection struct"
 # define ERROR_INTERX_LIST		"Error\n cant't make intersection list"
 # define ERROR_INTERX_ADD		"Error\n can't add the intersection to the list"
 # define ERROR_INTERX_SORT		"Error\n can't solve intersection list"
+# define ERROR_RAY_TRANSFORM	"Error\n can't transform ray"
 
 int			rt_error_write(char const *msg, char const *arg);
 

@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:07:05 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/22 17:09:09 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/23 18:32:34 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	rt_free_shape(t_shape *shape)
 {
 	if (shape != NULL)
 	{
+		if (shape->mtx_transform != NULL)
+			free(shape->mtx_transform);
 		free(shape);
 	}
 }

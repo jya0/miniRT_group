@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:05:26 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/22 17:05:57 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/23 18:44:19 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include	"rt_tuple.h"
 # include	"rt_parse.h"
+# include	"rt_matrix.h"
 
 typedef enum e_shape_type {
 	TYPE_INIT,
@@ -28,6 +29,7 @@ typedef struct s_shape {
 	t_shape_type		shape_type;
 	t_tuple				origin;
 	int					trgb[TRGB_COUNT];
+	t_matrix			*mtx_transform;
 	union u_data_shape {
 		struct s_sphere_shape	{
 			double	diameter;
@@ -52,9 +54,13 @@ t_shape		*rt_plane_make(t_tuple norm_vector);
 t_shape		*rt_cylinder_make(\
 				double diameter, double height, t_tuple norm_vector);
 
-t_shape		*rt_shape_info_fill(t_shape *shape, t_tuple origin, int *trgb);
+/* rt_shape_transform.c */
+t_shape		*rt_shape_transform_set(t_shape *shape, t_matrix *mtx_transform);
 
+/* rt_shape.c */
 t_shape		*rt_shape_make(void);
+
+t_shape		*rt_shape_info_fill(t_shape *shape, t_tuple origin, int *trgb);
 
 void		rt_free_shape(t_shape *shape);
 

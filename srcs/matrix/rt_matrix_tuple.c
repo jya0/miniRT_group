@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:21:57 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/18 11:10:00 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/23 18:25:29 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ t_matrix	*rt_tuple_to_matrix(t_tuple tuple)
 ** non negative values of row or col will be used to get that row or column
 ** as an arr of double
 */
-t_tuple	rt_matrix_to_tuple(t_matrix	*mtx, ssize_t row, ssize_t col)
+t_tuple	rt_matrix_to_tuple(\
+t_matrix	*mtx, ssize_t row, ssize_t col)
 {
 	t_tuple			tuple;
 	double			*num_arr;
@@ -41,8 +42,7 @@ t_tuple	rt_matrix_to_tuple(t_matrix	*mtx, ssize_t row, ssize_t col)
 	ssize_t			j;
 
 	tuple = (t_tuple){0};
-	if (mtx == NULL || (row >= 0 && col >= 0) || (row < 0 && col < 0) \
-		|| row >= mtx->row || col >= mtx->column)
+	if (mtx == NULL || (row >= 0 && col >= 0) || (row < 0 && col < 0))
 		return (rt_error_write(ERROR_MATRIX_TUPLE, NULL), tuple);
 	if (row >= 0)
 		num_arr = rt_matrix_get_row(mtx, row);

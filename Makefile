@@ -6,7 +6,7 @@
 #    By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 13:03:29 by jyao              #+#    #+#              #
-#    Updated: 2023/05/22 17:19:05 by jyao             ###   ########.fr        #
+#    Updated: 2023/05/23 18:49:03 by jyao             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ SRCS_LIST			=	main	main_tests				\
 						$(ERROR_FOLDER)rt_error			\
 						$(EXIT_FOLDER)rt_exit			$(EXIT_FOLDER)rt_free			\
 						$(FLOAT_FOLDER)rt_float			\
-						$(GEOMETRY_FOLDER)rt_shape		$(GEOMETRY_FOLDER)rt_sphere		\
+						$(GEOMETRY_FOLDER)rt_shape		$(GEOMETRY_FOLDER)rt_sphere		$(GEOMETRY_FOLDER)rt_shape_transform	\
 						$(MATRIX_FOLDER)rt_matrix		$(MATRIX_FOLDER)rt_matrix_get	$(MATRIX_FOLDER)rt_matrix_times			\
 						$(MATRIX_FOLDER)rt_matrix_transpose								$(MATRIX_FOLDER)rt_matrix_clone			\
 						$(MATRIX_FOLDER)rt_matrix_determinant							$(MATRIX_FOLDER)rt_matrix_submatrix		\
@@ -73,7 +73,7 @@ SRCS_LIST			=	main	main_tests				\
 						$(PARSE_FOLDER)rt_check_range	$(PARSE_FOLDER)rt_split			\
 						$(RAY_FOLDER)rt_ray				$(RAY_FOLDER)rt_ray_maths		$(RAY_FOLDER)rt_ray_intersect			\
 						$(RAY_FOLDER)rt_ray_intersect_sphere							$(RAY_FOLDER)rt_intersect				\
-						$(RAY_FOLDER)rt_intersect_list									\
+						$(RAY_FOLDER)rt_intersect_list	$(RAY_FOLDER)rt_ray_transform	\
 						$(RENDER_FOLDER)rt_render		\
 						$(TEST_FOLDER)rt_tuple_test		$(TEST_FOLDER)rt_file_test		$(TEST_FOLDER)rt_matrix_test			\
 						$(TEST_FOLDER)rt_intersect_test	\

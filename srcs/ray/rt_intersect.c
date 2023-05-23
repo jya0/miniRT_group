@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 10:12:23 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/22 13:38:51 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/23 15:57:57 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,21 @@ t_interx	*rt_intersect_make(t_shape *shape, t_ray ray, double t_val)
 	intersect->ray = ray;
 	intersect->t_val = t_val;
 	return (intersect);
+}
+
+/* This is just a quick function to return the first node with a postive t_val
+** this works as is, due to the previously implemented functions in
+** rt_intersect_sort()
+ */
+t_interx	*rt_intersect_hit(t_interx	*head)
+{
+	t_interx	*smallest_positive;
+
+	if (head == NULL)
+		return (NULL);
+	smallest_positive = head;
+	while (smallest_positive != NULL && \
+		rt_float_bigger_equal(smallest_positive->t_val, 0) == 0)
+		smallest_positive = smallest_positive->next;
+	return (smallest_positive);
 }
