@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 14:46:37 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/22 13:39:50 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/23 13:23:17 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ int	rt_float_equal(double d1, double d2)
 	return (rt_float_abs(d1 - d2) >= RT_EPSILON);
 }
 
-int	rt_float_bigger(double val1, double val2)
+int	rt_float_bigger_equal(double val1, double val2)
 {
 	if (rt_float_equal(val1, val2) == 0)
-		return (0);
+		return (1);
 	return (val1 > val2);
 }
 
-int	rt_float_smaller(double val1, double val2)
+int	rt_float_smaller_equal(double val1, double val2)
 {
 	if (rt_float_equal(val1, val2) == 0)
-		return (0);
+		return (1);
 	return (val1 < val2);
 }
 

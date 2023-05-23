@@ -6,12 +6,17 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 13:49:49 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/22 17:17:02 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/23 13:30:13 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_TEST_H
 # define RT_TEST_H
+
+typedef enum e_print_flag {
+	FLAG_A = 1,
+	FLAG_B = FLAG_A << 1
+}	t_print_flag;
 
 typedef struct s_tuple	t_tuple;
 
@@ -21,7 +26,7 @@ void			rt_file_print(t_element *head_element);
 
 t_matrix		*rt_matrix_print(t_matrix *mtx);
 
-void			rt_interx_list_print(t_interx *head);
+void			rt_interx_list_print(t_interx *head, int flag);
 
 /* main_tests.c */
 void			test_tuple(void);

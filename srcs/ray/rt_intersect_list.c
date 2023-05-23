@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 11:38:20 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/22 18:26:35 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/23 15:45:33 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_interx **head, t_interx *new_intersect, int (*cmp)(double, double))
 	tmp = *head;
 	while (tmp->next != NULL && cmp(new_intersect->t_val, tmp->t_val) == 0)
 		tmp = tmp->next;
-	if (tmp->next == NULL)
+	if (cmp(new_intersect->t_val, tmp->t_val) == 0)
 	{
 		tmp->next = new_intersect;
 		new_intersect->prev = tmp;
@@ -57,34 +57,40 @@ void	rt_intersect_add_end(t_interx *list1, t_interx *list2)
 	list2->prev = list1;
 }
 
+static void	swap_nodes(t_interx **node1, t_interx **node2)
+{
+	t_interx	*before_swap_zone;
+	t_interx	*after_swap_zone;
+
+	before_swap_zone = (*node1)->prev;
+	after_swap_zone = (*node2)->next;
+	if (before_swap_zone != NULL)
+		before_swap_zone->next = *node2;
+	(*node2)->prev = before_swap_zone;
+	(*node2)->next = *node1;
+	(*node1)->prev = *node2;
+	(*node1)->next = after_swap_zone;
+	if (after_swap_zone != NULL)
+		after_swap_zone->prev = *node1;
+}
+
 /* sort the list of intersections based on the *cmp() */
 void	rt_intersect_sort(t_interx **head, int (*cmp)(double, double))
 {
 	t_interx	*tmp;
-	t_interx	*before_swap_zone;
-	t_interx	*after_swap_zone;
 
-	if (head == NULL || *head == NULL || cmp == NULL)
-		return ;
 	tmp = *head;
-	while (tmp->next != NULL && \
-		(cmp(tmp->t_val, tmp->next->t_val) == 1 || (tmp->t_val >= 0 && tmp->next->t_val < 0)))
-		tmp = tmp->next;
-	printf("|tmp tval = %f|", tmp->t_val);
-	before_swap_zone = tmp->prev;
-	after_swap_zone = tmp->next->next;
-	if (before_swap_zone == NULL)
-		*head = tmp->next;
-	else
-		before_swap_zone->next = tmp->next;
-	tmp->next->prev = before_swap_zone;
-	tmp->next->next = tmp;
-	tmp->prev = tmp->next;
-	tmp->next = after_swap_zone;
-	if (after_swap_zone != NULL)
+	while (tmp->next != NULL)
 	{
-		after_swap_zone->prev = tmp;
-		rt_intersect_sort(head, rt_float_smaller);
+		if (cmp(tmp->t_val, tmp->next->t_val) == 0)
+		{
+			if (tmp->prev == NULL)
+				*head = tmp->next;
+			swap_nodes(&(tmp), &(tmp->next));
+			tmp = *head;
+		}
+		else
+			tmp = tmp->next;
 	}
 }
 
@@ -107,7 +113,7 @@ unsigned int xcount, double *t_vals, t_shape *shape, t_ray ray)
 		if (interx_list == NULL)
 			interx_list = tmp;
 		else
-			rt_intersect_add_sort(&interx_list, tmp, rt_float_smaller);
+			rt_intersect_add_sort(&interx_list, tmp, rt_float_smaller_equal);
 		i++;
 	}
 	return (interx_list);

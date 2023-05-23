@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:19:47 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/22 18:18:34 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/23 15:39:51 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,9 @@ void	test_intersections(void)
 
 	rt_shape_info_fill(sphere1, rt_tuple_make(1, 1, 1, 1), trgb);
 	intersections = rt_ray_intersect(ray, sphere1);
-	// rt_intersect_add_end(intersections, rt_ray_intersect(ray, sphere1));
-	// rt_intersect_add_end(intersections, rt_ray_intersect(ray, sphere1));
-	// rt_intersect_add_end(intersections, rt_ray_intersect(ray, sphere1));
-	rt_intersect_sort(&intersections, rt_float_smaller);
-	rt_interx_list_print(intersections);
+	rt_intersect_add_end(intersections, rt_ray_intersect(ray, sphere1));
+	rt_intersect_sort(&intersections, rt_float_smaller_equal);
+	rt_interx_list_print(intersections, FLAG_A);
 	rt_free_intersections(intersections);
 	rt_free_shape(sphere1);
 }
