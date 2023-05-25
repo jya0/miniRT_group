@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:12:42 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/23 18:29:21 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/24 15:25:36 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,13 @@
 
 /* ray */
 # define ERROR_INTERX_MAKE		"Error\n can't make intersection struct"
-# define ERROR_INTERX_LIST		"Error\n cant't make intersection list"
+# define ERROR_INTERX_LIST		"Error\n can't make intersection list"
 # define ERROR_INTERX_ADD		"Error\n can't add the intersection to the list"
 # define ERROR_INTERX_SORT		"Error\n can't solve intersection list"
 # define ERROR_RAY_TRANSFORM	"Error\n can't transform ray"
+
+/* mlx */
+# define ERROR_MLX_INIT			"Error\n failed to initialise mlx"
 
 int			rt_error_write(char const *msg, char const *arg);
 

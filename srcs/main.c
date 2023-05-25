@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 12:58:48 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/22 18:21:13 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/24 14:07:26 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int argc, char *argv[])
 		test_matrix_sheer();
 		// test_fma_speed();
 		test_intersections();
+		test_ray_transform();
 		rt_exit(&minirt);
 	}
 	return (0);

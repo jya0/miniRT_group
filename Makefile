@@ -6,7 +6,7 @@
 #    By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 13:03:29 by jyao              #+#    #+#              #
-#    Updated: 2023/05/23 18:49:03 by jyao             ###   ########.fr        #
+#    Updated: 2023/05/24 15:17:21 by jyao             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,9 @@ CC 					=	gcc
 CFLAGS 				=	-Wall -Wextra -Werror
 
 #DECLARE DEFINE INCLUDE DIRECTORIES
+OPTIMISE_FLAGS		:=	-Ofast -march=native
 INCLUDES 			=	-I$(HEADERS_FOLDER) -I$(LIBFT_HEADERS) -I$(MINILIBX_HEADERS)
-LIBRARIES_FLAGS 	=	-L$(LIBFT_FOLDER) -L$(MINILIBX_FOLDER) -lmlx -lm -lft -lXext -lX11 -lz
+LIBRARIES_FLAGS 	=	$(OPTIMISE_FLAGS) -L$(LIBFT_FOLDER) -L$(MINILIBX_FOLDER) -lmlx -lm -lft -lXext -lX11 -lz
 LIBRARY_FILES		=	$(LIBFT_FILE)	$(MINILIBX_FILE)
 
 #DECLARE DEFINE ALL LIB PATHS

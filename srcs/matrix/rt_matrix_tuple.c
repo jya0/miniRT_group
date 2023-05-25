@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:21:57 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/23 18:25:29 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/24 14:04:58 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_matrix	*mtx, ssize_t row, ssize_t col)
 		num_arr = rt_matrix_get_column(mtx, col);
 	if (num_arr == NULL)
 		return (tuple);
-	j = mtx->row * (row >= 0) + mtx->column * (col >= 0) - 1;
+	j = mtx->row * (col >= 0) + mtx->column * (row >= 0) - 1;
 	i = j;
 	if (i >= 0)
 		tuple.x = num_arr[j - i--];
@@ -60,5 +60,6 @@ t_matrix	*mtx, ssize_t row, ssize_t col)
 		tuple.z = num_arr[j - i--];
 	if (i >= 0)
 		tuple.w = num_arr[j - i--];
+	free(num_arr);
 	return (tuple);
 }

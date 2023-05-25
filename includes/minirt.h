@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 12:59:23 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/22 14:12:35 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/25 12:30:50 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 typedef struct s_minirt {
 	t_element		*head_element;
 	t_mlx_struct	mlx_struct;
+	t_scene_obj		*camera;
 }	t_minirt;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 13:49:49 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/23 13:30:13 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/24 13:16:03 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void			rt_interx_list_print(t_interx *head, int flag);
 
 /* main_tests.c */
 void			test_tuple(void);
+
+void			test_ray_transform(void);
 
 void			test_intersections(void);
 

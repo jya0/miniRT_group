@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:19:47 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/23 16:00:08 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/24 14:11:16 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	test_fma_speed(void)
 	clock_t			start, end;
 	double			execution_time;
 
+	printf("\n----TESTING FMA SPEED----\n");
 	start = clock();
 	i = 0;
 	while (i < UINT32_MAX / 10)
@@ -31,6 +32,22 @@ void	test_fma_speed(void)
 	printf("\n|%.2f seconds|\n", execution_time);
 }
 
+void	test_ray_transform(void)
+{
+	t_ray		ray = rt_ray_make(rt_point_make(0, 0, 0), rt_vector_make(1, 1, 0));
+	t_shape		*sphere1 = rt_sphere_make(5);
+	t_interx	*intersections;
+	int		trgb[] = {22, 22, 22, 22};
+
+	printf("\n----TESTING RAY TRANSFORM----\n");
+	rt_shape_info_fill(sphere1, rt_point_make(1, 1, 1), trgb);
+	rt_shape_transform_set(sphere1, rt_matrix_translate(1, 1, 1));
+	intersections = rt_ray_intersect(ray, sphere1);
+	rt_interx_list_print(intersections, FLAG_A);
+	rt_free_intersections(intersections);
+	rt_free_shape(sphere1);
+}
+
 void	test_intersections(void)
 {
 	t_shape		*sphere1 = rt_sphere_make(5);
@@ -38,6 +55,7 @@ void	test_intersections(void)
 	t_interx	*intersections;
 	int		trgb[] = {22, 22, 22, 22};
 
+	printf("\n----TESTING INTERSECTIONS----\n");
 	rt_shape_info_fill(sphere1, rt_tuple_make(1, 1, 1, 1), trgb);
 	intersections = rt_ray_intersect(ray, sphere1);
 	rt_intersect_add_end(intersections, rt_ray_intersect(ray, sphere1));

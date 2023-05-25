@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 15:22:51 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/16 12:54:27 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/24 13:19:19 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_matrix	*rt_matrix_inverse(t_matrix *mtx)
 	double		detmnt;
 
 	if (mtx == NULL || mtx->row != mtx->column)
-		return (rt_error_write(ERROR_MATRIX_INVERSE, NULL), NULL);
+		return (rt_error_write(ERROR_MATRIX_INVERSE, NULL), printf("hey!\n"), NULL);
 	detmnt = rt_matrix_detmnt(mtx);
 	if (detmnt == 0)
 		return (rt_error_write(ERROR_MATRIX_INVERSE, NULL), NULL);

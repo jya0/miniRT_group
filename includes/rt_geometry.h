@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:05:26 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/23 18:44:19 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/25 12:41:37 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_shape		*rt_cylinder_make(\
 t_shape		*rt_shape_transform_set(t_shape *shape, t_matrix *mtx_transform);
 
 /* rt_shape.c */
-t_shape		*rt_shape_make(void);
+t_shape		*rt_shape_make(t_shape_type type);
 
 t_shape		*rt_shape_info_fill(t_shape *shape, t_tuple origin, int *trgb);
 
