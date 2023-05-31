@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:39:00 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/24 15:26:16 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/25 15:22:19 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,23 @@ static void	rt_free_element(t_element *head_element)
 	}
 }
 
+static void	rt_free_mlx(t_mlx_struct struct_mlx)
+{
+	if (struct_mlx.canvas != NULL)
+		rt_free_img(struct_mlx.canvas);
+	if (struct_mlx.window != NULL)
+		mlx_destroy_window(struct_mlx.init, struct_mlx.window);
+	if (struct_mlx.init != NULL)
+	{
+		mlx_destroy_display(struct_mlx.init);
+		free(struct_mlx.init);
+	}
+}
+
 void	rt_free(t_minirt *minirt)
 {
 	if (minirt == NULL)
 		return ;
+	rt_free_mlx(minirt->mlx_struct);
 	rt_free_element(minirt->head_element);
 }

@@ -6,12 +6,14 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 15:36:03 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/22 17:07:30 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/31 09:30:36 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_PARSE_H
 # define RT_PARSE_H
+
+# include	"rt_color.h"
 
 # define BUFFER_SIZE				42
 # define RT_FILE_SUFFIX				".rt"
@@ -27,6 +29,8 @@
 # define TRGB_MAX					255
 # define FOV_MIN					0
 # define FOV_MAX					180
+
+typedef struct s_minirt	t_minirt;
 
 typedef enum e_element_argc {
 	ARGC_AMBIENT	=	3,
@@ -71,7 +75,7 @@ typedef struct s_element {
 			double	height;
 			int		trgb[TRGB_COUNT];
 		}			cylinder;
-	}					data_element;
+	}					data;
 	struct s_element	*next;
 }	t_element;
 
@@ -98,7 +102,9 @@ int				rt_check_double_arr_range(\
 int				rt_check_double_range(\
 					double double_val, double min, double max);
 
-int				rt_parse_check(t_element *head_element);
+int				rt_parse_and_check(\
+	t_element *head_element, \
+		unsigned int *shapes_total, unsigned int *objs_total);
 
 double			rt_parse_element_double(char *arg);
 

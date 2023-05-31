@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:12:42 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/24 15:25:36 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/31 10:01:58 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 /* tuple */
 # define ERROR_NOT_VECTOR		"Error\n the argument is not a vector"
 # define ERROR_NOT_POINT		"Error\n the argument is not a point"
+# define ERROR_PARALLEL_VEC		"Error\n parallel vectors!"
 
 /* parse */
 # define ERROR_WRONG_ARGC		"Error\n wrong argc count"
@@ -45,6 +46,7 @@
 # define ERROR_SHAPE_LIMIT		"Error\n reached shape spawning limit"
 # define ERROR_SPHERE_PARAM		"Error\n invalid sphere parameters"
 # define ERROR_SHAPE_TRANSFORM	"Error\n transform matrix assignment"
+# define ERROR_SPHERE_MAKE		"Error\n can't make sphere"
 
 /* ray */
 # define ERROR_INTERX_MAKE		"Error\n can't make intersection struct"
@@ -53,8 +55,19 @@
 # define ERROR_INTERX_SORT		"Error\n can't solve intersection list"
 # define ERROR_RAY_TRANSFORM	"Error\n can't transform ray"
 
+/* render */
+# define ERROR_CAM_MAKE			"Error\n can't make camera"
+# define ERROR_IMG_MAKE			"Error\n can't make mlx img"
+# define ERROR_NOT_NORMALIZE	"Error\n input vector is not normalized"
+
 /* mlx */
 # define ERROR_MLX_INIT			"Error\n failed to initialise mlx"
+
+/* scene */
+# define ERROR_SCENE_MAKE		"Error\n can't make scene"
+# define ERROR_ELM_OVERFLOW		"Error\n elements loading overflow"
+# define ERROR_LOAD_CAM			"Error\n can't load camera"
+# define ERROR_LOAD_SPHERE		"Error\n can't load sphere"
 
 int			rt_error_write(char const *msg, char const *arg);
 

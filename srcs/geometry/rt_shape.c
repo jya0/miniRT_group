@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:07:05 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/25 12:40:45 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/30 12:06:53 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_shape	*rt_shape_make(t_shape_type type)
 	shape->id = get_shape_id();
 	if (shape->id == 0)
 		return (rt_free_shape(shape), NULL);
-	shape->shape_type = type;
+	shape->type = type;
 	shape->mtx_transform = rt_matrix_get_identity(4);
 	return (shape);
 }

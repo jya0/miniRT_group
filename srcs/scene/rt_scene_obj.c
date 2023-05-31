@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_parse.c                                         :+:      :+:    :+:   */
+/*   rt_scene_obj.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/08 17:10:08 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/31 09:30:36 by jyao             ###   ########.fr       */
+/*   Created: 2023/05/25 12:34:57 by jyao              #+#    #+#             */
+/*   Updated: 2023/05/30 14:55:52 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minirt.h"
 
-void	rt_parse(t_minirt *minirt, char *rt_file)
+t_scene_obj	*rt_scene_obj_make(t_scene_obj_type type)
 {
-	unsigned int	shapes_total;
-	unsigned int	objs_total;
+	t_scene_obj	*scene_obj;
 
-	shapes_total = 0;
-	objs_total = 0;
-	minirt->head_element = rt_parse_load(rt_file);
-	if (rt_parse_and_check(minirt->head_element, &shapes_total, &objs_total))
+	scene_obj = (t_scene_obj *)ft_calloc(1, sizeof(t_scene_obj));
+	if (scene_obj == NULL)
+		return (rt_error_write(ERROR_MEM_ALLOC, NULL), NULL);
+	scene_obj->type = type;
+	return (scene_obj);
+}
+
+void	rt_free_scene_obj(t_scene_obj *scene_obj)
+{
+	if(scene_obj != NULL)
 	{
-		rt_error_write(ERROR_FILE_FORMAT, rt_file);
-		rt_exit(minirt);
+		free(scene_obj);
 	}
-	minirt->scene = rt_scene_make(shapes_total, objs_total);
-	if (minirt->scene == NULL)
-		rt_exit(minirt);
 }

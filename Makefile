@@ -6,7 +6,7 @@
 #    By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 13:03:29 by jyao              #+#    #+#              #
-#    Updated: 2023/05/24 15:17:21 by jyao             ###   ########.fr        #
+#    Updated: 2023/05/31 10:14:30 by jyao             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ MATRIX_FOLDER		=	matrix/
 PARSE_FOLDER		=	parse/
 RAY_FOLDER			=	ray/
 RENDER_FOLDER		=	render/
+SCENE_FOLDER		=	scene/
 TEST_FOLDER			=	test/
 TUPLE_FOLDER		=	tuple/
 
@@ -59,7 +60,7 @@ SRCS_LIST			=	main	main_tests				\
 						$(COLOR_FOLDER)rt_color_math	\
 						$(ERROR_FOLDER)rt_error			\
 						$(EXIT_FOLDER)rt_exit			$(EXIT_FOLDER)rt_free			\
-						$(FLOAT_FOLDER)rt_float			\
+						$(FLOAT_FOLDER)rt_float			$(FLOAT_FOLDER)rt_float_maths	\
 						$(GEOMETRY_FOLDER)rt_shape		$(GEOMETRY_FOLDER)rt_sphere		$(GEOMETRY_FOLDER)rt_shape_transform	\
 						$(MATRIX_FOLDER)rt_matrix		$(MATRIX_FOLDER)rt_matrix_get	$(MATRIX_FOLDER)rt_matrix_times			\
 						$(MATRIX_FOLDER)rt_matrix_transpose								$(MATRIX_FOLDER)rt_matrix_clone			\
@@ -69,13 +70,17 @@ SRCS_LIST			=	main	main_tests				\
 						$(MATRIX_FOLDER)rt_matrix_tuple									$(MATRIX_FOLDER)rt_matrix_scale			\
 						$(MATRIX_FOLDER)rt_matrix_rotate								$(MATRIX_FOLDER)rt_matrix_sheer			\
 						$(PARSE_FOLDER)rt_parse			$(PARSE_FOLDER)rt_gnl			$(PARSE_FOLDER)rt_atoi					\
-						$(PARSE_FOLDER)rt_parse_load	$(PARSE_FOLDER)rt_parse_check	$(PARSE_FOLDER)rt_parse_element_utils	\
+						$(PARSE_FOLDER)rt_parse_load	$(PARSE_FOLDER)rt_parse_and_check										\
+						$(PARSE_FOLDER)rt_parse_element_utils							\
 						$(PARSE_FOLDER)rt_parse_element_set_1							$(PARSE_FOLDER)rt_parse_element_set_2	\
 						$(PARSE_FOLDER)rt_check_range	$(PARSE_FOLDER)rt_split			\
 						$(RAY_FOLDER)rt_ray				$(RAY_FOLDER)rt_ray_maths		$(RAY_FOLDER)rt_ray_intersect			\
 						$(RAY_FOLDER)rt_ray_intersect_sphere							$(RAY_FOLDER)rt_intersect				\
 						$(RAY_FOLDER)rt_intersect_list	$(RAY_FOLDER)rt_ray_transform	\
-						$(RENDER_FOLDER)rt_render		\
+						$(RENDER_FOLDER)rt_render		$(RENDER_FOLDER)rt_img			\
+						$(SCENE_FOLDER)rt_scene			$(SCENE_FOLDER)rt_scene_obj		$(SCENE_FOLDER)rt_scene_load			\
+						$(SCENE_FOLDER)rt_camera		\
+						$(SCENE_FOLDER)rt_scene_load_set_1								\
 						$(TEST_FOLDER)rt_tuple_test		$(TEST_FOLDER)rt_file_test		$(TEST_FOLDER)rt_matrix_test			\
 						$(TEST_FOLDER)rt_intersect_test	\
 						$(TUPLE_FOLDER)rt_tuple			$(TUPLE_FOLDER)rt_tuple_maths	$(TUPLE_FOLDER)rt_vector_maths			\
@@ -114,6 +119,7 @@ $(OBJS_FOLDER):
 	mkdir $(OBJS_FOLDER)$(PARSE_FOLDER)
 	mkdir $(OBJS_FOLDER)$(RAY_FOLDER)
 	mkdir $(OBJS_FOLDER)$(RENDER_FOLDER)
+	mkdir $(OBJS_FOLDER)$(SCENE_FOLDER)
 	mkdir $(OBJS_FOLDER)$(TEST_FOLDER)
 	mkdir $(OBJS_FOLDER)$(TUPLE_FOLDER)
 

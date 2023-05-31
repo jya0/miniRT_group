@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:22:55 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/20 14:52:19 by jyao             ###   ########.fr       */
+/*   Updated: 2023/05/30 12:25:12 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,15 @@ double	rt_vector_dot(t_tuple vector1, t_tuple vector2)
 */
 t_tuple	rt_vector_cross(t_tuple vector1, t_tuple vector2)
 {
+	t_tuple	res;
+
 	if (vector1.w != 0 || vector2.w != 0)
 		rt_error_write(ERROR_NOT_VECTOR, NULL);
-	return (rt_vector_make(\
+	res = rt_vector_make(\
 			vector1.y * vector2.z - vector1.z * vector2.y, \
 			vector1.z * vector2.x - vector1.x * vector2.z, \
-			vector1.x * vector2.y - vector1.y * vector2.x));
+			vector1.x * vector2.y - vector1.y * vector2.x);
+	if (rt_float_equal(rt_vector_magnitude(res), 0))
+		rt_error_write(ERROR_PARALLEL_VEC, NULL);
+	return (res);
 }
