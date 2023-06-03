@@ -27,6 +27,7 @@ t_scene	*rt_scene_make(unsigned int shapes_total, unsigned int objs_total)
 			(t_shape **)ft_calloc(shapes_total + 1, sizeof(t_shape *));
 		if (scene->shapes == NULL)
 			return (rt_error_write(ERROR_MEM_ALLOC, NULL), free(scene), NULL);
+		scene->shapes_total = shapes_total;
 	}
 	if (objs_total > 0)
 	{
@@ -35,6 +36,7 @@ t_scene	*rt_scene_make(unsigned int shapes_total, unsigned int objs_total)
 		if (scene->scene_objs == NULL)
 			return (rt_error_write(ERROR_MEM_ALLOC, NULL), \
 				free(scene), free(scene->shapes), NULL);
+		scene->objs_total = objs_total;
 	}
 	return (scene);
 }

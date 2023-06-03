@@ -13,7 +13,7 @@
 NAME 				= libft.a
 CC 					= gcc
 OPTIMISE_FLAGS		:=	-Ofast -march=native
-FLAGS 				= -Wall -Werror -Wextra $(OPTIMISE_FLAGS)
+FLAGS 				= -Wall -Werror -Wextra -Wno-unused-result $(OPTIMISE_FLAGS)
 LIB					= ar -rcs
 INCLUDES 			= -I$(HEADERS_DIRECTORY)
 

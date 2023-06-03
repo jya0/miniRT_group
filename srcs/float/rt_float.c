@@ -17,23 +17,20 @@ double	rt_float_abs(double d)
 	return (d * (1 - 2 * (d < 0)));
 }
 
+/* returns 1 if they are equal, 0 if not */
 int	rt_float_equal(double d1, double d2)
 {
-	return (rt_float_abs(d1 - d2) >= RT_EPSILON);
+	return (rt_float_abs(d1 - d2) < RT_EPSILON);
 }
 
 int	rt_float_bigger_equal(double val1, double val2)
 {
-	if (rt_float_equal(val1, val2) == 0)
-		return (1);
-	return (val1 > val2);
+	return (rt_float_equal(val1, val2) || val1 > val2);
 }
 
 int	rt_float_smaller_equal(double val1, double val2)
 {
-	if (rt_float_equal(val1, val2) == 0)
-		return (1);
-	return (val1 < val2);
+	return (rt_float_equal(val1, val2) || val1 < val2);
 }
 
 double	rt_float_inverse(double divisor)

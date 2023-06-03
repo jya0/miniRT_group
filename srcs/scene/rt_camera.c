@@ -27,18 +27,22 @@ t_scene_obj *camera, t_tuple coord, t_tuple orien_vect, unsigned int fov)
 	camera->data.camera.u_vect = \
 		rt_vector_cross(orien_vect, rt_vector_make(0, 1, 0));
 	camera->data.camera.v_vect = rt_vector_make(1, 0, 0);
-	if (!rt_float_equal(rt_vector_magnitude(camera->data.camera.u_vect), 0))
+	if (rt_float_equal(rt_vector_magnitude(camera->data.camera.u_vect), 0) != 1)
 		camera->data.camera.v_vect = \
-			rt_vector_cross(orien_vect, camera->data.camera.u_vect);
+			rt_vector_cross(camera->data.camera.u_vect, orien_vect);
 	pl_width = tan(rt_deg_to_rad(fov) / 2) * 2;
 	pl_height = pl_width * (float)WIN_Y / (float)WIN_X;
 	pl_ctr = rt_ray_position(rt_ray_make(coord, orien_vect), CAM_DIST);
+	rt_tuple_print(camera->data.camera.u_vect);
+	rt_tuple_print(camera->data.camera.v_vect);
+	rt_tuple_print(pl_ctr);
 	camera->data.camera.pl_top_left = \
 		rt_tuple_add(pl_ctr, \
 			rt_tuple_add(\
 				rt_tuple_times(camera->data.camera.v_vect, pl_height / 2), \
 				rt_tuple_times(camera->data.camera.u_vect, -(pl_width / 2))));
-	camera->data.camera.t_per_px = WIN_X / pl_width;
+	rt_tuple_print(camera->data.camera.pl_top_left);
+	camera->data.camera.t_per_px = pl_width / WIN_X;
 }
 
 /* fov is asking for the horizontal field of view as specified by the subject!

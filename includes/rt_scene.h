@@ -61,6 +61,9 @@ t_scene_obj		*rt_camera_make(\
 t_scene			*rt_scene_make(\
 	unsigned int shapes_total, unsigned int objs_total);
 
+/* rt_scene_load.c */
+int				rt_scene_load(t_minirt *minirt);
+
 /* rt_scene_load_set_1.c */
 int				rt_load_ambient(t_minirt *minirt, t_element *element);
 
