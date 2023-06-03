@@ -12,7 +12,7 @@
 
 #include	"minirt.h"
 
-static int	render_mlx_init(t_minirt *minirt)
+static int	render_init(t_minirt *minirt)
 {
 	if (minirt == NULL)
 		return (1);
@@ -26,6 +26,8 @@ static int	render_mlx_init(t_minirt *minirt)
 		return (rt_error_write(ERROR_MLX_INIT, NULL), 1);
 	minirt->mlx_struct.canvas = \
 		rt_img_make(minirt->mlx_struct.init, WIN_X, WIN_Y);
+	if (rt_scene_load(minirt) != 0)
+		return (1);
 	return (0);
 }
 
@@ -37,8 +39,8 @@ t_scene_obj *camera, int pixel_x, int pixel_y)
 	double	t_val_x;
 	double	t_val_y;
 
-	t_val_x = pixel_x * camera->data.camera.t_per_px + 0.5;
-	t_val_y = -(pixel_y * camera->data.camera.t_per_px + 0.5);
+	t_val_x = (float)(pixel_x + 0.5f) * camera->data.camera.t_per_px;
+	t_val_y = -((float)(pixel_y + 0.5f) * camera->data.camera.t_per_px);
 	ray_pl_origin = \
 		rt_tuple_add(camera->data.camera.pl_top_left, \
 			rt_tuple_add(\
@@ -52,12 +54,11 @@ t_scene_obj *camera, int pixel_x, int pixel_y)
 static void	paint_test(t_minirt *minirt, t_scene *scene)
 {
 	t_interx	*interx_tmp;
+	t_interx	*interx_hit;
 	t_ray		tmp_ray;
 	int			i;
 	int			j;
 
-	minirt->camera = \
-		rt_camera_make(rt_point_make(0, 0, 0), rt_vector_make(0, 0, -1), 90);
 	i = 0;
 	while (i < WIN_Y)
 	{
@@ -65,14 +66,20 @@ static void	paint_test(t_minirt *minirt, t_scene *scene)
 		while (j < WIN_X)
 		{
 			tmp_ray = get_ray_at(minirt->camera, j, i);
+			// rt_tuple_print(tmp_ray.origin);
+			// rt_tuple_print(tmp_ray.direction);
 			interx_tmp = rt_ray_intersect(tmp_ray, scene->shapes[0]);
-			if (interx_tmp != NULL && rt_intersect_hit(interx_tmp)->t_val >= 0)
+			interx_hit = rt_intersect_hit(interx_tmp);
+			// rt_interx_list_print(interx_tmp, FLAG_A);
+			if (interx_hit != NULL && interx_hit->t_val >= 0)
 				rt_img_edit_pixel(minirt->mlx_struct.canvas, COLOR_RED, j, i);
 			rt_free_intersections(interx_tmp);
 			j++;
 		}
 		i++;
+		// rt_error_write("heyhey!\n", NULL);
 	}
+	rt_error_write("finished!\n", NULL);
 }
 
 int	rt_render(t_minirt	*minirt)
@@ -81,7 +88,8 @@ int	rt_render(t_minirt	*minirt)
 
 	if (minirt == NULL)
 		return (1);
-	render_mlx_init(minirt);
+	rt_error_write("----TESTING RENDERING----", NULL);
+	render_init(minirt);
 	mlx = minirt->mlx_struct;
 	paint_test(minirt, minirt->scene);
 	mlx_put_image_to_window(mlx.init, mlx.window, mlx.canvas->img_mlx, 0, 0);

@@ -91,7 +91,7 @@ int	rt_matrix_equal(t_matrix *mtx1, t_matrix *mtx2)
 		j = 0;
 		while (j < mtx1->column)
 		{
-			if (rt_float_equal(mtx1->matrix[i][j], mtx2->matrix[i][j]) != 0)
+			if (rt_float_equal(mtx1->matrix[i][j], mtx2->matrix[i][j]) != 1)
 				return (1);
 			j++;
 		}

@@ -13,8 +13,8 @@
 #ifndef RT_RENDER_H
 # define RT_RENDER_H
 
-# define WIN_X			1280
-# define WIN_Y			720
+# define WIN_X			500
+# define WIN_Y			500
 # define CAM_DIST		1
 # define WIN_NAME		"MINIRT: OOO SHINY!"
 

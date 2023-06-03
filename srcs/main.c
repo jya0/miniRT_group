@@ -22,7 +22,6 @@ int	main(int argc, char *argv[])
 	{
 		minirt = (t_minirt){0};
 		rt_parse(&minirt, argv[1]);
-		rt_render(&minirt);
 		test_tuple();
 		test_matrix_maths();
 		test_matrix_inverse();
@@ -33,6 +32,7 @@ int	main(int argc, char *argv[])
 		// test_fma_speed();
 		test_intersections();
 		test_ray_transform();
+		rt_render(&minirt);
 		rt_exit(&minirt);
 	}
 	return (0);
