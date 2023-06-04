@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:12:42 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/31 10:01:58 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/03 13:11:23 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define ERROR_ELEMENT_FORMAT	"Error\n element has wrong format: "
 # define ERROR_ELEMENT_RANGE	"Error\n element has wrong value range: "
 # define ERROR_ELEMENT_DUP		"Error\n element has duplicate: "
+# define ERROR_NOT_NORMALIZE	"Error\n input vector is not normalized: "
 
 /* matrix */
 # define ERROR_MATRIX_FORMAT	"Error\n wrong matrix format"
@@ -58,7 +59,6 @@
 /* render */
 # define ERROR_CAM_MAKE			"Error\n can't make camera"
 # define ERROR_IMG_MAKE			"Error\n can't make mlx img"
-# define ERROR_NOT_NORMALIZE	"Error\n input vector is not normalized"
 
 /* mlx */
 # define ERROR_MLX_INIT			"Error\n failed to initialise mlx"

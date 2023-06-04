@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:39:00 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/25 15:22:19 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/03 14:58:35 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,5 @@ void	rt_free(t_minirt *minirt)
 		return ;
 	rt_free_mlx(minirt->mlx_struct);
 	rt_free_element(minirt->head_element);
+	rt_free_scene(minirt->scene);
 }

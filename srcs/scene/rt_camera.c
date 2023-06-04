@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 12:39:58 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/31 10:12:08 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/03 13:29:25 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,14 @@ t_scene_obj *camera, t_tuple coord, t_tuple orien_vect, unsigned int fov)
 	pl_width = tan(rt_deg_to_rad(fov) / 2) * 2;
 	pl_height = pl_width * (float)WIN_Y / (float)WIN_X;
 	pl_ctr = rt_ray_position(rt_ray_make(coord, orien_vect), CAM_DIST);
-	rt_tuple_print(camera->data.camera.u_vect);
-	rt_tuple_print(camera->data.camera.v_vect);
-	rt_tuple_print(pl_ctr);
-	camera->data.camera.pl_top_left = \
-		rt_tuple_add(pl_ctr, \
-			rt_tuple_add(\
-				rt_tuple_times(camera->data.camera.v_vect, pl_height / 2), \
-				rt_tuple_times(camera->data.camera.u_vect, -(pl_width / 2))));
-	rt_tuple_print(camera->data.camera.pl_top_left);
+	// rt_tuple_print(camera->data.camera.u_vect);
+	// rt_tuple_print(camera->data.camera.v_vect);
+	// rt_tuple_print(pl_ctr);
+	camera->data.camera.pl_top_left = rt_tuple_add(pl_ctr, \
+		rt_tuple_add(\
+			rt_tuple_times(camera->data.camera.v_vect, pl_height / 2), \
+			rt_tuple_times(camera->data.camera.u_vect, -(pl_width / 2))));
+	// rt_tuple_print(camera->data.camera.pl_top_left);
 	camera->data.camera.t_per_px = pl_width / WIN_X;
 }
 
@@ -60,8 +59,6 @@ t_tuple coord, t_tuple orien_vect, unsigned int fov)
 
 	if (fov == 0 || fov >= FOV_MAX)
 		return (rt_error_write(ERROR_CAM_MAKE, NULL), NULL);
-	if (rt_float_equal(1, rt_vector_magnitude(orien_vect)) != 1)
-		return (rt_error_write(ERROR_NOT_NORMALIZE, NULL), NULL);
 	camera = rt_scene_obj_make(OBJ_T_CAMERA);
 	if (camera == NULL)
 		return (NULL);

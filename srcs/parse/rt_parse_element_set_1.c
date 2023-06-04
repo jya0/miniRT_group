@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:22:33 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/30 12:07:28 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/03 13:27:07 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,22 @@ int	rt_parse_ambient(t_element *element)
 	return (0);
 }
 
+static int	camera_check_range(t_element *camera)
+{
+	if (camera == NULL)
+		return (1);
+	if (rt_check_double_arr_range(camera->data.camera.orien_vect, \
+			-1, 1, DIMENSION_NUMBER) != 0 || rt_check_int_range(\
+				camera->data.camera.fov, 0, 180) != 0)
+		return (rt_error_write(ERROR_ELEMENT_RANGE, camera->id_str), 1);
+	if (rt_float_equal(rt_vector_magnitude(\
+			rt_vector_make(camera->data.camera.orien_vect[0], \
+				camera->data.camera.orien_vect[1], \
+				camera->data.camera.orien_vect[2])), 1) != 1)
+		return (rt_error_write(ERROR_NOT_NORMALIZE, camera->id_str), 1);
+	return (0);
+}
+
 int	rt_parse_camera(t_element *element)
 {
 	static int	camera_flag;
@@ -62,10 +78,8 @@ int	rt_parse_camera(t_element *element)
 	element->data.camera.fov = rt_parse_element_int(element->info[3]);
 	if (rt_atoi(RT_ATOI_FAIL_FLAG) != 0)
 		return (rt_error_write(ERROR_ELEMENT_FORMAT, element->id_str), 1);
-	if (rt_check_double_arr_range(element->data.camera.orien_vect, \
-			-1, 1, DIMENSION_NUMBER) != 0 || rt_check_int_range(\
-				element->data.camera.fov, 0, 180) != 0)
-		return (rt_error_write(ERROR_ELEMENT_RANGE, element->id_str), 1);
+	if (camera_check_range(element) != 0)
+		return (1);
 	camera_flag++;
 	return (0);
 }
@@ -93,60 +107,5 @@ int	rt_parse_light(t_element *element)
 			INTENSITY_MIN, INTENSITY_MAX) != 0)
 		return (rt_error_write(ERROR_ELEMENT_RANGE, element->id_str), 1);
 	light_flag++;
-	return (0);
-}
-
-int	rt_parse_sphere(t_element *element)
-{
-	if (element == NULL)
-		return (1);
-	if (rt_parse_element_argc(element->info) != ARGC_SPHERE)
-		return (rt_error_write(ERROR_ELEMENT_FORMAT, element->id_str), 1);
-	if (rt_parse_element_double_arr(\
-		element->data.sphere.coord, \
-			element->info[1], ",", DIMENSION_NUMBER) != 0)
-		return (rt_error_write(ERROR_ELEMENT_FORMAT, element->id_str), 1);
-	element->data.sphere.diameter = \
-		rt_parse_element_double(element->info[2]);
-	if (rt_atoi(RT_ATOI_FAIL_FLAG) != 0)
-		return (rt_error_write(ERROR_ELEMENT_FORMAT, element->id_str), 1);
-	if (rt_parse_element_int_arr(\
-		&element->data.sphere.trgb[RED], \
-			element->info[3], ",", TRGB_COUNT - 1) != 0)
-		return (rt_error_write(ERROR_ELEMENT_FORMAT, element->id_str), 1);
-	if (rt_check_double_range(\
-		element->data.sphere.diameter, \
-		0, FLT_MAX) != 0 \
-			|| rt_check_int_arr_range(\
-			&element->data.sphere.trgb[RED], \
-			TRGB_MIN, TRGB_MAX, TRGB_COUNT - 1) != 0)
-		return (rt_error_write(ERROR_ELEMENT_RANGE, element->id_str), 1);
-	return (0);
-}
-
-int	rt_parse_plane(t_element *element)
-{
-	if (element == NULL)
-		return (1);
-	if (rt_parse_element_argc(element->info) != ARGC_PLANE)
-		return (rt_error_write(ERROR_ELEMENT_FORMAT, element->id_str), 1);
-	if (rt_parse_element_double_arr(\
-		element->data.plane.coord, \
-			element->info[1], ",", DIMENSION_NUMBER) != 0)
-		return (rt_error_write(ERROR_ELEMENT_FORMAT, element->id_str), 1);
-	if (rt_parse_element_double_arr(\
-		element->data.plane.norm_vect, \
-			element->info[2], ",", DIMENSION_NUMBER) != 0)
-		return (rt_error_write(ERROR_ELEMENT_FORMAT, element->id_str), 1);
-	if (rt_parse_element_int_arr(\
-		&element->data.plane.trgb[RED], \
-			element->info[3], ",", TRGB_COUNT - 1) != 0)
-		return (rt_error_write(ERROR_ELEMENT_FORMAT, element->id_str), 1);
-	if (rt_check_double_arr_range(\
-		element->data.plane.norm_vect, -1, 1, DIMENSION_NUMBER) != 0 \
-			|| rt_check_int_arr_range(\
-			&element->data.plane.trgb[RED], \
-			TRGB_MIN, TRGB_MAX, TRGB_COUNT - 1) != 0)
-		return (rt_error_write(ERROR_ELEMENT_RANGE, element->id_str), 1);
 	return (0);
 }

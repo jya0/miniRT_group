@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:19:47 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/24 14:11:16 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/04 17:53:08 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,35 @@ void	test_fma_speed(void)
 	end = clock();
 	execution_time = (double)(end - start) / CLOCKS_PER_SEC;
 	printf("\n|%.2f seconds|\n", execution_time);
+}
+
+void	test_ray_reflect(void)
+{
+	t_tuple	in = rt_vector_make(0, -1, 0);
+	t_tuple	norm = rt_vector_make(M_SQRT1_2, M_SQRT1_2, 0);
+
+	printf("\n----TESTING RAY REFLECT----\n");
+	rt_tuple_print(rt_ray_reflect(in, norm));
+}
+
+void	test_ray_normal(void)
+{
+	t_shape		*sphere1 = rt_sphere_make(0.5);
+	t_matrix	*scale;
+	t_matrix	*rotate;
+	t_matrix	*combined;
+	int		trgb[] = {22, 22, 22, 22};
+
+	printf("\n----TESTING RAY NORMAL----\n");
+	rt_shape_info_fill(sphere1, rt_point_make(0, 0, 0), trgb);
+	scale = rt_matrix_scale(1, 0.5, 1);
+	rotate = rt_matrix_rotate_z(M_PI/5);
+	combined = rt_matrix_times_matrix(scale, rotate);
+	rt_shape_transform_set(sphere1, combined);
+	rt_tuple_print(rt_ray_normal(sphere1, rt_point_make(0, M_SQRT1_2, -M_SQRT1_2)));
+	rt_free_matrix(scale);
+	rt_free_matrix(rotate);
+	rt_free_shape(sphere1);
 }
 
 void	test_ray_transform(void)

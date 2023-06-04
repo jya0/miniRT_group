@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 17:04:49 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/31 09:30:36 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/04 18:00:08 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char *id_str, unsigned int *shapes_total, unsigned int *objs_total)
 	if (ft_strncmp(id_str, "A", ft_strlen(id_str)) == 0)
 		return ((*objs_total)++, rt_parse_ambient);
 	else if (ft_strncmp(id_str, "C", ft_strlen(id_str)) == 0)
-		return ((*objs_total)++, rt_parse_camera);
+		return (rt_parse_camera);
 	else if (ft_strncmp(id_str, "L", ft_strlen(id_str)) == 0)
 		return ((*objs_total)++, rt_parse_light);
 	else if (ft_strncmp(id_str, "sp", ft_strlen(id_str)) == 0)

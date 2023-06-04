@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:52:42 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/23 18:25:43 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/03 14:39:11 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct s_mtx_index {
 t_matrix		*rt_matrix_times_matrix(t_matrix *mtx1, t_matrix *mtx2);
 
 t_matrix		*rt_matrix_times(t_matrix *mtx, double scale);
+
+t_tuple			rt_matrix_times_tuple(t_matrix *mtx, t_tuple tuple);
 
 /* rt_matrix_transpose.c */
 t_matrix		*rt_matrix_transpose(t_matrix *mtx);

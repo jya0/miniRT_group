@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:08:24 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/31 10:08:14 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/04 18:21:45 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,25 @@ int	rt_load_camera(t_minirt *minirt, t_element *element)
 	elm.fov);
 	if (minirt->camera == NULL)
 		return (rt_error_write(ERROR_LOAD_CAM, NULL), 1);
+	return (0);
+}
+
+int	rt_load_light(t_minirt *minirt, t_element *element)
+{
+	struct s_light_element	elm;
+	t_scene					*scene;
+
+	if (minirt == NULL || element == NULL)
+		return (1);
+	elm = element->data.light;
+	scene = minirt->scene;
+	if (scene->objs_count >= scene->objs_total)
+		return (rt_error_write(ERROR_ELM_OVERFLOW, NULL), 1);
+	scene->objs[scene->objs_count] = \
+		rt_light_make(\
+			rt_point_make(elm.coord[0], elm.coord[1], elm.coord[2]), \
+			elm.intensity);
+	scene->objs_count++;
 	return (0);
 }
 

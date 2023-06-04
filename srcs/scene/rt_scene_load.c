@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:52:51 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/31 09:28:14 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/04 18:22:12 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static t_load_fun	get_load_fun(char *id_str)
 	// 	return (rt_load_ambient);
 	if (ft_strncmp(id_str, "C", ft_strlen(id_str)) == 0)
 		return (rt_load_camera);
-	// else if (ft_strncmp(id_str, "L", ft_strlen(id_str)) == 0)
-	// 	return (rt_load_light);
-	if (ft_strncmp(id_str, "sp", ft_strlen(id_str)) == 0)
+	else if (ft_strncmp(id_str, "L", ft_strlen(id_str)) == 0)
+		return (rt_load_light);
+	else if (ft_strncmp(id_str, "sp", ft_strlen(id_str)) == 0)
 		return (rt_load_sphere);
 	// else if (ft_strncmp(id_str, "pl", ft_strlen(id_str)) == 0)
 	// 	return (rt_load_plane);

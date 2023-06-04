@@ -6,14 +6,15 @@
 #    By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/19 13:01:55 by fkhan             #+#    #+#              #
-#    Updated: 2023/06/03 12:48:06 by jyao             ###   ########.fr        #
+#    Updated: 2023/06/03 14:52:43 by jyao             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 				= libft.a
 CC 					= gcc
+REMOVE_THIS_FLAG	= -Wno-unused-result
 OPTIMISE_FLAGS		:=	-Ofast -march=native
-FLAGS 				= -Wall -Werror -Wextra -Wno-unused-result $(OPTIMISE_FLAGS)
+FLAGS 				= -Wall -Werror -Wextra $(OPTIMISE_FLAGS) $(REMOVE_THIS_FLAG)
 LIB					= ar -rcs
 INCLUDES 			= -I$(HEADERS_DIRECTORY)
 

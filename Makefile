@@ -6,7 +6,7 @@
 #    By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 13:03:29 by jyao              #+#    #+#              #
-#    Updated: 2023/06/03 08:13:00 by jyao             ###   ########.fr        #
+#    Updated: 2023/06/04 17:47:51 by jyao             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CC 					=	gcc
 CFLAGS 				=	-Wall -Wextra -Werror
 
 #DECLARE DEFINE INCLUDE DIRECTORIES
-# OPTIMISE_FLAGS		:=	-Ofast -march=native
+OPTIMISE_FLAGS		:=	-Ofast -march=native
 INCLUDES 			=	-I$(HEADERS_FOLDER) -I$(LIBFT_HEADERS) -I$(MINILIBX_HEADERS)
 LIBRARIES_FLAGS 	=	$(OPTIMISE_FLAGS) -L$(LIBFT_FOLDER) -L$(MINILIBX_FOLDER) -lmlx -lXext -lX11 -lm -lz -lft
 LIBRARY_FILES		=	$(LIBFT_FILE)	$(MINILIBX_FILE)
@@ -76,7 +76,8 @@ SRCS_LIST			=	main	main_tests				\
 						$(PARSE_FOLDER)rt_check_range	$(PARSE_FOLDER)rt_split			\
 						$(RAY_FOLDER)rt_ray				$(RAY_FOLDER)rt_ray_maths		$(RAY_FOLDER)rt_ray_intersect			\
 						$(RAY_FOLDER)rt_ray_intersect_sphere							$(RAY_FOLDER)rt_intersect				\
-						$(RAY_FOLDER)rt_intersect_list	$(RAY_FOLDER)rt_ray_transform	\
+						$(RAY_FOLDER)rt_intersect_list	$(RAY_FOLDER)rt_ray_transform	$(RAY_FOLDER)rt_ray_normal				\
+						$(RAY_FOLDER)rt_ray_normal_sphere								$(RAY_FOLDER)rt_ray_reflect				\
 						$(RENDER_FOLDER)rt_render		$(RENDER_FOLDER)rt_img			\
 						$(SCENE_FOLDER)rt_scene			$(SCENE_FOLDER)rt_scene_obj		$(SCENE_FOLDER)rt_scene_load			\
 						$(SCENE_FOLDER)rt_camera		\

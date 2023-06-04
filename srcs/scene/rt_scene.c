@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:16:34 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/31 09:43:34 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/03 15:01:47 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ t_scene	*rt_scene_make(unsigned int shapes_total, unsigned int objs_total)
 	}
 	if (objs_total > 0)
 	{
-		scene->scene_objs = \
+		scene->objs = \
 			(t_scene_obj **)ft_calloc(objs_total + 1, sizeof(t_scene_obj *));
-		if (scene->scene_objs == NULL)
+		if (scene->objs == NULL)
 			return (rt_error_write(ERROR_MEM_ALLOC, NULL), \
 				free(scene), free(scene->shapes), NULL);
 		scene->objs_total = objs_total;
@@ -41,18 +41,26 @@ t_scene	*rt_scene_make(unsigned int shapes_total, unsigned int objs_total)
 	return (scene);
 }
 
-void	rt_scene_free(t_scene *scene)
+void	rt_free_scene(t_scene *scene)
 {
 	int	i;
 
 	if (scene != NULL)
 	{
-		i = 0;
-		while (scene->shapes[i] != NULL)
-			rt_free_shape(scene->shapes[i++]);
-		i = 0;
-		while (scene->scene_objs[i] != NULL)
-			rt_free_scene_obj(scene->scene_objs[i++]);
+		if (scene->shapes != NULL)
+		{
+			i = 0;
+			while (scene->shapes[i] != NULL)
+				rt_free_shape(scene->shapes[i++]);
+			free(scene->shapes);
+		}
+		if (scene->objs != NULL)
+		{
+			i = 0;
+			while (scene->objs[i] != NULL)
+				rt_free_scene_obj(scene->objs[i++]);
+			free(scene->objs);
+		}
 		free(scene);
 	}
 }

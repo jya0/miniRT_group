@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rt_exit.h                                          :+:      :+:    :+:   */
+/*   rt_ray_normal_sphere.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/08 14:41:28 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/03 14:58:13 by jyao             ###   ########.fr       */
+/*   Created: 2023/06/03 13:49:20 by jyao              #+#    #+#             */
+/*   Updated: 2023/06/03 14:10:57 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RT_EXIT_H
-# define RT_EXIT_H
+#include	"minirt.h"
 
-typedef struct s_minirt	t_minirt;
-
-void	rt_free_rt_split_arr(char **arr);
-
-void	rt_free(t_minirt *minirt);
-
-void	rt_exit(t_minirt *minirt);
-
-#endif
+/* o_point has to be object point */
+t_tuple	rt_ray_normal_sphere(t_shape *sphere, t_tuple o_point)
+{
+	if (sphere == NULL || sphere->id != SHAPE_T_SPHERE)
+		return (o_point);
+	return (rt_tuple_minus(o_point, rt_point_make(0, 0, 0)));
+}

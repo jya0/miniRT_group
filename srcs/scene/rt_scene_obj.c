@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 12:34:57 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/30 14:55:52 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/04 18:22:35 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,33 @@ t_scene_obj	*rt_scene_obj_make(t_scene_obj_type type)
 	return (scene_obj);
 }
 
+t_scene_obj	*rt_light_make(t_tuple coord, double intensity)
+{
+	t_scene_obj	*light;
+
+	light = rt_scene_obj_make(OBJ_T_CAMERA);
+	if (light == NULL)
+		return (NULL);
+	light->data.light.coord = coord;
+	light->data.light.intensity = intensity;
+	return (light);
+}
+
+t_scene_obj	*rt_ambient_make(t_tuple color, double intensity)
+{
+	t_scene_obj	*ambient;
+
+	ambient = rt_scene_obj_make(OBJ_T_AMBIENT);
+	if (ambient == NULL)
+		return (NULL);
+	ambient->data.ambient.color = color;
+	ambient->data.ambient.intensity = intensity;
+	return (ambient);
+}
+
 void	rt_free_scene_obj(t_scene_obj *scene_obj)
 {
-	if(scene_obj != NULL)
+	if (scene_obj != NULL)
 	{
 		free(scene_obj);
 	}

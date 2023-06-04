@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:01:15 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/31 09:41:21 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/04 18:15:09 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@ typedef struct s_scene_obj {
 			t_tuple	pl_top_left;
 			double	t_per_px;
 		}	camera;
+		struct s_light_obj {
+			t_tuple	coord;
+			double	intensity;
+		}	light;
+		struct s_ambient_obj {
+			t_tuple	color;
+			double	intensity;
+		}	ambient;
 	}	data;
 }	t_scene_obj;
 
@@ -44,7 +52,7 @@ typedef struct s_scene {
 	unsigned int	shapes_total;
 	unsigned int	objs_total;
 	t_shape			**shapes;
-	t_scene_obj		**scene_objs;
+	t_scene_obj		**objs;
 }	t_scene;
 
 typedef int (*t_load_fun)(t_minirt *, t_element *);
@@ -57,9 +65,15 @@ void			rt_free_scene_obj(t_scene_obj *scene_obj);
 t_scene_obj		*rt_camera_make(\
 	t_tuple coord, t_tuple orien_vect, unsigned int fov);
 
+t_scene_obj		*rt_light_make(t_tuple coord, double intensity);
+
+t_scene_obj		*rt_ambient_make(t_tuple color, double intensity);
+
 /* rt_scene.c */
 t_scene			*rt_scene_make(\
 	unsigned int shapes_total, unsigned int objs_total);
+
+void			rt_free_scene(t_scene *scene);
 
 /* rt_scene_load.c */
 int				rt_scene_load(t_minirt *minirt);

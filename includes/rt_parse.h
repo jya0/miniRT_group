@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 15:36:03 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/31 09:30:36 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/04 18:23:19 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct s_element {
 	struct s_element	*next;
 }	t_element;
 
-typedef int		(*t_parse_fun)(t_element *element);
+typedef int				(*t_parse_fun)(t_element *element);
 
 char			*rt_gnl(int fd);
 

@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:17:38 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/18 14:58:16 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/03 14:38:38 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,20 @@ t_matrix	*rt_matrix_times(t_matrix *mtx, double scale)
 		i++;
 	}
 	return (mtx);
+}
+
+t_tuple	rt_matrix_times_tuple(t_matrix *mtx, t_tuple tuple)
+{
+	t_matrix	*tuple_mtx;
+	t_matrix	*res_mtx;
+	t_tuple		res_tuple;
+
+	if (mtx == NULL)
+		return (tuple);
+	tuple_mtx = rt_tuple_to_matrix(tuple);
+	res_mtx = rt_matrix_times_matrix(mtx, tuple_mtx);
+	res_tuple = rt_matrix_to_tuple(res_mtx, -1, 0);
+	rt_free_matrix(tuple_mtx);
+	rt_free_matrix(res_mtx);
+	return (res_tuple);
 }
