@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:58:52 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/27 10:29:02 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/09 09:17:08 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,16 @@ typedef enum e_trgb {
 
 typedef struct s_tuple	t_tuple;
 
+/* rt_color.c */
+t_tuple			rt_color_make(double t, double r, double g, double b);
+
 t_tuple			rt_color_clamp(t_tuple color);
 
+t_tuple			rt_trgb_to_color(int *trgb);
+
+int				rt_color_to_trgb(t_tuple color);
+
+/* rt_color_maths.c */
 t_tuple			rt_color_add(t_tuple color1, t_tuple color2);
 
 t_tuple			rt_color_minus(t_tuple color1, t_tuple color2);

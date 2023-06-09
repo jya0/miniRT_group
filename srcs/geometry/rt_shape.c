@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:07:05 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/30 12:06:53 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/09 09:19:17 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@ static size_t	get_shape_id(void)
 	return (id);
 }
 
+t_material	rt_material_make(\
+double ambient, double diffuse, double specular, double shininess)
+{
+	t_material	material;
+
+	material = (t_material){.ambient = ambient, .diffuse = diffuse, \
+				.specular = specular, .shininess = shininess};
+	return (material);
+}
+
 t_shape	*rt_shape_make(t_shape_type type)
 {
 	t_shape	*shape;
@@ -34,18 +44,18 @@ t_shape	*rt_shape_make(t_shape_type type)
 		return (rt_free_shape(shape), NULL);
 	shape->type = type;
 	shape->mtx_transform = rt_matrix_get_identity(4);
+	shape->material = (t_material){.ambient = M_AMBIENT, .diffuse = M_DIFFUSE, \
+						.specular = M_SPECULAR, .shininess = M_SHININESS};
 	return (shape);
 }
 
-t_shape	*rt_shape_info_fill(t_shape *shape, t_tuple origin, int *trgb)
+t_shape	*rt_shape_info_fill(\
+t_shape *shape, t_tuple origin, t_tuple color)
 {
 	if (shape == NULL)
 		return (NULL);
 	shape->origin = origin;
-	shape->trgb[TRSPT] = trgb[TRSPT];
-	shape->trgb[RED] = trgb[RED];
-	shape->trgb[GREEN] = trgb[GREEN];
-	shape->trgb[BLUE] = trgb[BLUE];
+	shape->material.color = color;
 	return (shape);
 }
 

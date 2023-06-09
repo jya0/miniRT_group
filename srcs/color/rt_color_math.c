@@ -6,28 +6,11 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 12:03:13 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/10 12:57:26 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/09 08:40:12 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minirt.h"
-
-t_tuple	rt_color_clamp(t_tuple color)
-{
-	color.x = color.x * (color.x >= TRGB_MIN && color.x <= TRGB_MAX) \
-			+ TRGB_MIN * (color.x < TRGB_MIN) \
-			+ TRGB_MAX * (color.x > TRGB_MAX);
-	color.y = color.y * (color.y >= TRGB_MIN && color.y <= TRGB_MAX) \
-			+ TRGB_MIN * (color.y < TRGB_MIN) \
-			+ TRGB_MAX * (color.y > TRGB_MAX);
-	color.z = color.z * (color.z >= TRGB_MIN && color.z <= TRGB_MAX) \
-			+ TRGB_MIN * (color.z < TRGB_MIN) \
-			+ TRGB_MAX * (color.z > TRGB_MAX);
-	color.w = color.w * (color.w >= TRGB_MIN && color.w <= TRGB_MAX) \
-			+ TRGB_MIN * (color.w < TRGB_MIN) \
-			+ TRGB_MAX * (color.w > TRGB_MAX);
-	return (color);
-}
 
 t_tuple	rt_color_add(t_tuple color1, t_tuple color2)
 {

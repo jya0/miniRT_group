@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:19:47 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/04 17:53:08 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/09 09:33:07 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	test_ray_normal(void)
 	int		trgb[] = {22, 22, 22, 22};
 
 	printf("\n----TESTING RAY NORMAL----\n");
-	rt_shape_info_fill(sphere1, rt_point_make(0, 0, 0), trgb);
+	rt_shape_info_fill(sphere1, rt_point_make(0, 0, 0), rt_trgb_to_color(trgb));
 	scale = rt_matrix_scale(1, 0.5, 1);
 	rotate = rt_matrix_rotate_z(M_PI/5);
 	combined = rt_matrix_times_matrix(scale, rotate);
@@ -69,7 +69,7 @@ void	test_ray_transform(void)
 	int		trgb[] = {22, 22, 22, 22};
 
 	printf("\n----TESTING RAY TRANSFORM----\n");
-	rt_shape_info_fill(sphere1, rt_point_make(1, 1, 1), trgb);
+	rt_shape_info_fill(sphere1, rt_point_make(1, 1, 1), rt_trgb_to_color(trgb));
 	rt_shape_transform_set(sphere1, rt_matrix_translate(1, 1, 1));
 	intersections = rt_ray_intersect(ray, sphere1);
 	rt_interx_list_print(intersections, FLAG_A);
@@ -85,7 +85,7 @@ void	test_intersections(void)
 	int		trgb[] = {22, 22, 22, 22};
 
 	printf("\n----TESTING INTERSECTIONS----\n");
-	rt_shape_info_fill(sphere1, rt_tuple_make(1, 1, 1, 1), trgb);
+	rt_shape_info_fill(sphere1, rt_tuple_make(1, 1, 1, 1), rt_trgb_to_color(trgb));
 	intersections = rt_ray_intersect(ray, sphere1);
 	rt_intersect_add_end(intersections, rt_ray_intersect(ray, sphere1));
 	rt_intersect_add_end(intersections, rt_ray_intersect(ray, sphere1));

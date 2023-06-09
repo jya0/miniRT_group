@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:08:24 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/04 18:21:45 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/09 09:19:29 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ int	rt_load_camera(t_minirt *minirt, t_element *element)
 	elm = element->data.camera;
 	minirt->camera = \
 	rt_camera_make(\
-	rt_point_make(elm.coord[0], elm.coord[1], elm.coord[2]), \
-	rt_vector_make(elm.orien_vect[0], elm.orien_vect[1], elm.orien_vect[2]), \
-	elm.fov);
+		rt_point_make(elm.coord[0], elm.coord[1], elm.coord[2]), \
+		rt_vector_make(elm.orien_vect[0], \
+			elm.orien_vect[1], elm.orien_vect[2]), \
+		elm.fov);
 	if (minirt->camera == NULL)
 		return (rt_error_write(ERROR_LOAD_CAM, NULL), 1);
 	return (0);
@@ -65,7 +66,7 @@ int	rt_load_sphere(t_minirt *minirt, t_element *element)
 	rt_shape_info_fill(\
 		scene->shapes[scene->shapes_count], \
 		rt_point_make(elm.coord[0], elm.coord[1], elm.coord[2]), \
-		elm.trgb);
+		rt_trgb_to_color(elm.trgb));
 	scene->shapes_count++;
 	return (0);
 }

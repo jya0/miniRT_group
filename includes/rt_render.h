@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 12:31:50 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/30 14:02:43 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/09 09:34:34 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # define WIN_NAME		"MINIRT: OOO SHINY!"
 
 typedef struct s_minirt	t_minirt;
+
+typedef struct s_scene_obj	t_scene_obj;
 
 typedef struct s_img {
 	void			*mlx;
@@ -37,6 +39,10 @@ typedef struct s_mlx_struct {
 
 /* rt_render.c */
 int				rt_render(t_minirt	*minirt);
+
+/* rt_lighting.c */
+t_tuple			rt_lighting(\
+t_tuple point_of_interx, t_interx *interx_info, t_scene_obj	*light);
 
 /* rt_img.c */
 t_img			*rt_img_make(\

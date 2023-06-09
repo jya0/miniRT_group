@@ -6,7 +6,7 @@
 #    By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 13:03:29 by jyao              #+#    #+#              #
-#    Updated: 2023/06/04 17:47:51 by jyao             ###   ########.fr        #
+#    Updated: 2023/06/09 09:20:57 by jyao             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ TEST_FOLDER			=	test/
 TUPLE_FOLDER		=	tuple/
 
 SRCS_LIST			=	main	main_tests				\
-						$(COLOR_FOLDER)rt_color_math	\
+						$(COLOR_FOLDER)rt_color			$(COLOR_FOLDER)rt_color_math	\
 						$(ERROR_FOLDER)rt_error			\
 						$(EXIT_FOLDER)rt_exit			$(EXIT_FOLDER)rt_free			\
 						$(FLOAT_FOLDER)rt_float			$(FLOAT_FOLDER)rt_float_maths	\
@@ -78,7 +78,7 @@ SRCS_LIST			=	main	main_tests				\
 						$(RAY_FOLDER)rt_ray_intersect_sphere							$(RAY_FOLDER)rt_intersect				\
 						$(RAY_FOLDER)rt_intersect_list	$(RAY_FOLDER)rt_ray_transform	$(RAY_FOLDER)rt_ray_normal				\
 						$(RAY_FOLDER)rt_ray_normal_sphere								$(RAY_FOLDER)rt_ray_reflect				\
-						$(RENDER_FOLDER)rt_render		$(RENDER_FOLDER)rt_img			\
+						$(RENDER_FOLDER)rt_render		$(RENDER_FOLDER)rt_img			$(RENDER_FOLDER)rt_lighting				\
 						$(SCENE_FOLDER)rt_scene			$(SCENE_FOLDER)rt_scene_obj		$(SCENE_FOLDER)rt_scene_load			\
 						$(SCENE_FOLDER)rt_camera		\
 						$(SCENE_FOLDER)rt_scene_load_set_1								\

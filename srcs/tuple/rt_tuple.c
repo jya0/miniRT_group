@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 14:30:41 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/30 12:16:44 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/09 08:38:53 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,6 @@ t_tuple	rt_point_make(double x, double y, double z)
 t_tuple	rt_vector_make(double x, double y, double z)
 {
 	return (rt_tuple_make(x, y, z, 0));
-}
-
-t_tuple	rt_color_make(double t, double r, double g, double b)
-{
-	return (rt_tuple_make(t, r, g, b));
 }
 
 int	rt_tuple_equal(t_tuple a, t_tuple b)
