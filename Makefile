@@ -6,7 +6,7 @@
 #    By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 13:03:29 by jyao              #+#    #+#              #
-#    Updated: 2023/06/11 08:06:11 by jyao             ###   ########.fr        #
+#    Updated: 2023/06/11 08:57:10 by jyao             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,17 +32,31 @@ LIBFT_FOLDER 		=	$(LIBS_FOLDER)libft/
 LIBFT_FILE 			=	$(LIBFT_FOLDER)libft.a
 LIBFT_HEADERS 		=	$(LIBFT_FOLDER)includes/
 
+#a better way than the one below
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Darwin)
+MINILIBX_FOLDER 	=	$(LIBS_FOLDER)minilibx/
+MINILIBX_FILE 		=	$(MINILIBX_FOLDER)libmlx.a
+MINILIBX_HEADERS	=	$(MINILIBX_FOLDER)osx/src
+MINILIBX_FLAGS		=	-L$(MINILIBX_FOLDER) -lmlx -framework OpenGL -framework AppKit
+else
+MINILIBX_FOLDER 	=	$(LIBS_FOLDER)minilibx/
+MINILIBX_FILE 		=	$(MINILIBX_FOLDER)libmlx.a
+MINILIBX_HEADERS	=	$(MINILIBX_FOLDER)linux/src
+MINILIBX_FLAGS		=	-L$(MINILIBX_FOLDER) -lmlx -lXext -lX11 -lm -lz
+endif
+
 # this is for linux version
 # MINILIBX_FOLDER 	=	$(LIBS_FOLDER)minilibx-linux/
 # MINILIBX_FILE 		=	$(MINILIBX_FOLDER)libmlx.a
-# MINILIBX_HEADERS	=	$(MINILIBX_FOLDER)
+# MINILIBX_HEADERS	=	$(MINILIBX_FOLDER)/linux/src
 # MINILIBX_FLAGS		=	-L$(MINILIBX_FOLDER) -lmlx -lXext -lX11 -lm -lz
 
 # this is for macos version
-MINILIBX_FOLDER 	=	$(LIBS_FOLDER)minilibx-mac-osx/
-MINILIBX_FILE 		=	$(MINILIBX_FOLDER)libmlx.a
-MINILIBX_HEADERS	=	$(MINILIBX_FOLDER)
-MINILIBX_FLAGS		=	-L$(MINILIBX_FOLDER) -lmlx -framework OpenGL -framework AppKit
+# MINILIBX_FOLDER 	=	$(LIBS_FOLDER)minilibx/
+# MINILIBX_FILE 		=	$(MINILIBX_FOLDER)libmlx.a
+# MINILIBX_HEADERS	=	$(MINILIBX_FOLDER)/osx/src
+# MINILIBX_FLAGS		=	-L$(MINILIBX_FOLDER) -lmlx -framework OpenGL -framework AppKit
 
 #DECLARE DEFINE ALL INTERNAL HEADERS
 HEADERS_FOLDER 		=	./includes/
@@ -139,7 +153,7 @@ clean:
 
 fclean: clean
 	make -C $(LIBFT_FOLDER) fclean
-	make -C $(MINILIBX_FOLDER) clean
+	make -C $(MINILIBX_FOLDER) fclean
 	rm -rf $(NAME)
 
 re: fclean all

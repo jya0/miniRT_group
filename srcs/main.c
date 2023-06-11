@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 12:58:48 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/09 09:33:53 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/11 19:37:49 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argc, char *argv[])
 		test_intersections();
 		test_ray_transform();
 		test_ray_normal();
-		// test_ray_reflect();
+		test_ray_reflect();
 		rt_render(&minirt);
 		rt_exit(&minirt);
 	}

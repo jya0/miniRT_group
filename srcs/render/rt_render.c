@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:10:37 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/03 13:45:05 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/11 18:14:24 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ static void	paint_test(t_minirt *minirt, t_scene *scene)
 	int			i;
 	int			j;
 
-	int			k;
-	k = 0;
+	int			num_of_interx = 0;
 
 	i = 0;
 	while (i < WIN_Y)
@@ -83,7 +82,10 @@ static void	paint_test(t_minirt *minirt, t_scene *scene)
 				rt_img_edit_pixel(minirt->mlx_struct.canvas, \
 					rt_color_to_trgb(pix_color), \
 					j, i);
-				k++;
+				if (i == 249 && j == 249)
+					rt_tuple_print(rt_ray_normal(scene->shapes[0], rt_ray_position(interx_hit->ray, interx_hit->t_val)));
+				// rt_img_edit_pixel(minirt->mlx_struct.canvas, COLOR_BLUE, j, i);
+				num_of_interx++;
 			}
 			rt_free_intersections(interx_tmp);
 			j++;
@@ -92,7 +94,15 @@ static void	paint_test(t_minirt *minirt, t_scene *scene)
 		// rt_error_write("heyhey!\n", NULL);
 	}
 	rt_error_write("finished!\n", NULL);
-	printf("\n|hit = %d diffuse = %d |\n", k, rt_lighting(rt_point_make(0,0,0), NULL, NULL));
+	printf("\n|hit = %d|\n", num_of_interx);
+	rt_lighting(rt_point_make(0,0,0), NULL, NULL);
+}
+
+static int	test_render(t_mlx_struct *mlx)
+{
+	mlx_put_image_to_window(mlx->init, mlx->window, mlx->canvas->img_mlx, 0, 0);
+	mlx_string_put(mlx->init, mlx->window, 50, 50, COLOR_RED, "HELLO THERE!!!");
+	return (0);
 }
 
 int	rt_render(t_minirt	*minirt)
@@ -105,7 +115,7 @@ int	rt_render(t_minirt	*minirt)
 	render_init(minirt);
 	mlx = minirt->mlx_struct;
 	paint_test(minirt, minirt->scene);
-	mlx_put_image_to_window(mlx.init, mlx.window, mlx.canvas->img_mlx, 0, 0);
+	mlx_loop_hook(mlx.init, test_render, &mlx);
 	mlx_loop(minirt->mlx_struct.init);
 	return (0);
 }

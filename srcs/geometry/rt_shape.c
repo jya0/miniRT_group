@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:07:05 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/09 09:19:17 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/11 10:46:20 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,10 @@ t_shape	*rt_shape_make(t_shape_type type)
 	return (shape);
 }
 
-t_shape	*rt_shape_info_fill(\
-t_shape *shape, t_tuple origin, t_tuple color)
+t_shape	*rt_shape_info_fill(t_shape *shape, t_tuple color)
 {
 	if (shape == NULL)
 		return (NULL);
-	shape->origin = origin;
 	shape->material.color = color;
 	return (shape);
 }

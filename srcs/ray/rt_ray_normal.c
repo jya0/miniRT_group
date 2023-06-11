@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 13:45:34 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/03 15:08:29 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/11 19:36:42 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ t_tuple	rt_ray_normal(t_shape *shape, t_tuple w_point)
 	if (shape == NULL)
 		return (rt_vector_make(0, 0, 0));
 	inv_mtx = rt_matrix_inverse(shape->mtx_transform);
-	obj_norm = rt_ray_normal_sphere(shape, \
-		rt_matrix_times_tuple(inv_mtx, w_point));
+	obj_norm = rt_vector_normalize(rt_ray_normal_sphere(shape, \
+		rt_matrix_times_tuple(inv_mtx, w_point)));
 	world_norm = rt_matrix_times_tuple(rt_matrix_transpose(inv_mtx), obj_norm);
 	world_norm.w = 0;
 	rt_free_matrix(inv_mtx);

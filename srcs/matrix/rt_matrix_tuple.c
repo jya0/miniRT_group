@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:21:57 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/03 14:35:41 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/11 10:34:33 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,26 @@ t_matrix	*mtx, ssize_t row, ssize_t col)
 		return (tuple);
 	j = mtx->row * (col >= 0) + mtx->column * (row >= 0) - 1;
 	i = j;
-	if (i >= 0)
-		tuple.x = num_arr[j - i--];
-	if (i >= 0)
-		tuple.y = num_arr[j - i--];
-	if (i >= 0)
-		tuple.z = num_arr[j - i--];
-	if (i >= 0)
-		tuple.w = num_arr[j - i--];
+	tuple.x = (i >= 0) * num_arr[j - i--];
+	tuple.y = (i >= 0) * num_arr[j - i--];
+	tuple.z = (i >= 0) * num_arr[j - i--];
+	tuple.w = (i >= 0) * num_arr[j - i--];
 	free(num_arr);
 	return (tuple);
+}
+
+t_tuple	rt_matrix_times_tuple(t_matrix *mtx, t_tuple tuple)
+{
+	t_matrix	*tuple_mtx;
+	t_matrix	*res_mtx;
+	t_tuple		res_tuple;
+
+	if (mtx == NULL)
+		return (tuple);
+	tuple_mtx = rt_tuple_to_matrix(tuple);
+	res_mtx = rt_matrix_times_matrix(mtx, tuple_mtx);
+	res_tuple = rt_matrix_to_tuple(res_mtx, -1, 0);
+	rt_free_matrix(tuple_mtx);
+	rt_free_matrix(res_mtx);
+	return (res_tuple);
 }

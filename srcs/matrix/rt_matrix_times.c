@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:17:38 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/03 14:38:38 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/11 10:37:48 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,30 @@ t_matrix	*rt_matrix_times_matrix(t_matrix *mtx1, t_matrix *mtx2)
 	return (res_matrix);
 }
 
+/*
+** here mtx1 and mtx2 must be malloced!
+** very risk function I know!
+** use only if mtx1 and mtx2 are malloced and will not be
+** used ever again after calling this function!
+*/
+t_matrix	*rt_matrix_times_matrix_free(t_matrix *mtx1, t_matrix *mtx2)
+{
+	t_matrix	*res_matrix;
+	double		*num_arr;
+
+	if (mtx1 == NULL || mtx2 == NULL)
+		return (NULL);
+	if (mtx1->column != mtx2->row)
+		return (rt_error_write(ERROR_MATRIX_FORMAT, NULL), NULL);
+	res_matrix = rt_matrix_make(mtx1->row, mtx2->column);
+	num_arr = matrix_times_matrix_res(mtx1, mtx2);
+	rt_matrix_fill(res_matrix, num_arr, mtx1->row * mtx2->column);
+	free(num_arr);
+	rt_free_matrix(mtx1);
+	rt_free_matrix(mtx2);
+	return (res_matrix);
+}
+
 t_matrix	*rt_matrix_times(t_matrix *mtx, double scale)
 {
 	unsigned int	i;
@@ -97,20 +121,4 @@ t_matrix	*rt_matrix_times(t_matrix *mtx, double scale)
 		i++;
 	}
 	return (mtx);
-}
-
-t_tuple	rt_matrix_times_tuple(t_matrix *mtx, t_tuple tuple)
-{
-	t_matrix	*tuple_mtx;
-	t_matrix	*res_mtx;
-	t_tuple		res_tuple;
-
-	if (mtx == NULL)
-		return (tuple);
-	tuple_mtx = rt_tuple_to_matrix(tuple);
-	res_mtx = rt_matrix_times_matrix(mtx, tuple_mtx);
-	res_tuple = rt_matrix_to_tuple(res_mtx, -1, 0);
-	rt_free_matrix(tuple_mtx);
-	rt_free_matrix(res_mtx);
-	return (res_tuple);
 }
