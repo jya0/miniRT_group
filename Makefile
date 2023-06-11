@@ -17,7 +17,7 @@ NAME 				=	minirt
 
 #DECLARE DEFINE COMPILATION RULES
 CC 					=	gcc
-CFLAGS 				=	-Wall -Wextra -Werror
+# CFLAGS 				=	-Wall -Wextra -Werror
 
 #DECLARE DEFINE INCLUDE DIRECTORIES
 OPTIMISE_FLAGS		:=	-Ofast -march=native

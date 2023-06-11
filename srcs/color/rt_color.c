@@ -53,9 +53,10 @@ int	rt_color_to_trgb(t_tuple color)
 	int	g;
 	int	b;
 
-	t = roundf(color.x) * TRGB_MAX;
-	r = roundf(color.y) * TRGB_MAX;
-	g = roundf(color.z) * TRGB_MAX;
-	b = roundf(color.w) * TRGB_MAX;
+	t = roundf(color.x * TRGB_MAX);
+	r = roundf(color.y * TRGB_MAX);
+	g = roundf(color.z * TRGB_MAX);
+	b = roundf(color.w * TRGB_MAX);
+	// printf("color is %d", ((t << 24) + (r << 16) + (g << 8) + b));
 	return ((t << 24) + (r << 16) + (g << 8) + b);
 }

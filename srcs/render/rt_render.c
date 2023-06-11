@@ -46,7 +46,8 @@ t_scene_obj *camera, int pixel_x, int pixel_y)
 			rt_tuple_add(\
 				rt_tuple_times(camera->data.camera.u_vect, t_val_x), \
 				rt_tuple_times(camera->data.camera.v_vect, t_val_y)));
-	ray.direction = rt_tuple_minus(ray_pl_origin, camera->data.camera.coord);
+	ray.direction = rt_vector_normalize(\
+		rt_tuple_minus(ray_pl_origin, camera->data.camera.coord));
 	ray.origin = camera->data.camera.coord;
 	return (ray);
 }
@@ -56,8 +57,12 @@ static void	paint_test(t_minirt *minirt, t_scene *scene)
 	t_interx	*interx_tmp;
 	t_interx	*interx_hit;
 	t_ray		tmp_ray;
+	t_tuple		pix_color;
 	int			i;
 	int			j;
+
+	int			k;
+	k = 0;
 
 	i = 0;
 	while (i < WIN_Y)
@@ -72,7 +77,14 @@ static void	paint_test(t_minirt *minirt, t_scene *scene)
 			interx_hit = rt_intersect_hit(interx_tmp);
 			// rt_interx_list_print(interx_tmp, FLAG_A);
 			if (interx_hit != NULL && interx_hit->t_val >= 0)
-				rt_img_edit_pixel(minirt->mlx_struct.canvas, COLOR_RED, j, i);
+			{
+				pix_color = rt_lighting(rt_ray_position(interx_hit->ray, interx_hit->t_val), interx_hit, scene->objs[0]);
+				// rt_tuple_print(pix_color);
+				rt_img_edit_pixel(minirt->mlx_struct.canvas, \
+					rt_color_to_trgb(pix_color), \
+					j, i);
+				k++;
+			}
 			rt_free_intersections(interx_tmp);
 			j++;
 		}
@@ -80,6 +92,7 @@ static void	paint_test(t_minirt *minirt, t_scene *scene)
 		// rt_error_write("heyhey!\n", NULL);
 	}
 	rt_error_write("finished!\n", NULL);
+	printf("\n|hit = %d diffuse = %d |\n", k, rt_lighting(rt_point_make(0,0,0), NULL, NULL));
 }
 
 int	rt_render(t_minirt	*minirt)
