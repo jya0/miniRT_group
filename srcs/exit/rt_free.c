@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:39:00 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/03 14:58:35 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/11 08:07:00 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	rt_free_mlx(t_mlx_struct struct_mlx)
 		mlx_destroy_window(struct_mlx.init, struct_mlx.window);
 	if (struct_mlx.init != NULL)
 	{
-		mlx_destroy_display(struct_mlx.init);
+		// mlx_destroy_display(struct_mlx.init);
 		free(struct_mlx.init);
 	}
 }
