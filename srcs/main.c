@@ -33,8 +33,8 @@ int	main(int argc, char *argv[])
 		test_intersections();
 		test_ray_transform();
 		test_ray_normal();
-		test_ray_reflect();
-		// rt_render(&minirt);
+		// test_ray_reflect();
+		rt_render(&minirt);
 		rt_exit(&minirt);
 	}
 	return (0);
