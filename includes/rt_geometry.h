@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:05:26 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/11 10:27:32 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/12 10:35:41 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_shape {
 	t_shape_type		type;
 	t_tuple				origin;
 	t_matrix			*mtx_transform;
+	t_matrix			*inv_mtx;
 	t_material			material;
 	union u_data_shape {
 		struct s_sphere_shape	{

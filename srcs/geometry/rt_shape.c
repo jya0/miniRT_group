@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:07:05 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/11 10:46:20 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/12 10:36:14 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	rt_free_shape(t_shape *shape)
 	{
 		if (shape->mtx_transform != NULL)
 			rt_free_matrix(shape->mtx_transform);
+		if (shape->inv_mtx != NULL)
+			rt_free_matrix(shape->inv_mtx);
 		free(shape);
 	}
 }

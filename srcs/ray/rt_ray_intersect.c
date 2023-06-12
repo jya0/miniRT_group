@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:14:38 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/11 09:18:34 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/12 10:40:56 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,10 @@ double	*rt_quadratic_formula(double a, double b, double c)
 t_interx	*rt_ray_intersect(t_ray ray, t_shape *shape)
 {
 	t_interx	*intersect;
-	t_matrix	*inv_mtx;
 
 	if (shape == NULL || shape->type == SHAPE_T_INIT)
 		return (NULL);
-	inv_mtx = rt_matrix_inverse(shape->mtx_transform);
-	ray = rt_ray_transform(ray, inv_mtx);
-	rt_free_matrix(inv_mtx);
+	ray = rt_ray_transform(ray, shape->inv_mtx);
 	intersect = rt_ray_intersect_sphere(ray, shape);
 	return (intersect);
 }
