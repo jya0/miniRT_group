@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_error.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:12:42 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/03 13:11:23 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/08 13:58:29 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@
 # define ERROR_SCENE_MAKE		"Error\n can't make scene"
 # define ERROR_ELM_OVERFLOW		"Error\n elements loading overflow"
 # define ERROR_LOAD_CAM			"Error\n can't load camera"
+# define ERROR_LOAD_AMBIENT		"Error\n can't load ambient"
+# define ERROR_LOAD_LIGHT		"Error\n can't load light"
 # define ERROR_LOAD_SPHERE		"Error\n can't load sphere"
 
 int			rt_error_write(char const *msg, char const *arg);

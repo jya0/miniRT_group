@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_camera.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 12:39:58 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/03 13:29:25 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/05 12:19:01 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,47 @@ t_scene_obj *camera, t_tuple coord, t_tuple orien_vect, unsigned int fov)
 	if (camera == NULL)
 		return ;
 	camera->data.camera.coord = coord;
-	camera->data.camera.orien_vect = orien_vect;
+	camera->data.camera.orien_vect = \
+		rt_tuple_negate(rt_vector_normalize(orien_vect));
 	camera->data.camera.fov = fov;
 	camera->data.camera.u_vect = \
-		rt_vector_cross(orien_vect, rt_vector_make(0, 1, 0));
+		rt_vector_normalize(\
+		rt_vector_cross(orien_vect, rt_vector_make(0, 1, 0)));
 	camera->data.camera.v_vect = rt_vector_make(1, 0, 0);
 	if (rt_float_equal(rt_vector_magnitude(camera->data.camera.u_vect), 0) != 1)
 		camera->data.camera.v_vect = \
-			rt_vector_cross(camera->data.camera.u_vect, orien_vect);
+			rt_vector_normalize(\
+			rt_vector_cross(camera->data.camera.u_vect, orien_vect));
 	pl_width = tan(rt_deg_to_rad(fov) / 2) * 2;
 	pl_height = pl_width * (float)WIN_Y / (float)WIN_X;
 	pl_ctr = rt_ray_position(rt_ray_make(coord, orien_vect), CAM_DIST);
+	// rt_tuple_print(camera->data.camera.u_vect);
+	// rt_tuple_print(camera->data.camera.v_vect);
+	// rt_tuple_print(pl_ctr);
+	camera->data.camera.pl_top_left = rt_tuple_add(pl_ctr, \
+		rt_tuple_add(\
+			rt_tuple_times(camera->data.camera.v_vect, pl_height / 2), \
+			rt_tuple_times(camera->data.camera.u_vect, -(pl_width / 2))));
+	// rt_tuple_print(camera->data.camera.pl_top_left);
+	camera->data.camera.t_per_px = pl_width / WIN_X;
+}
+
+static void	assign_default_camera(t_scene_obj *camera, unsigned int fov)
+{
+	t_tuple		pl_ctr;
+	double		pl_width;
+	double		pl_height;
+
+	if (camera == NULL)
+		return ;
+	camera->data.camera.coord = rt_point_make(0, 0, 0);
+	camera->data.camera.orien_vect = rt_vector_make(0, 0, 1);
+	camera->data.camera.fov = fov;
+	camera->data.camera.u_vect = rt_vector_make(1, 0, 0);
+	camera->data.camera.v_vect = rt_vector_make(0, 1, 0);
+	pl_width = tan(rt_deg_to_rad(fov) / 2) * 2;
+	pl_height = pl_width * (float)WIN_Y / (float)WIN_X;
+	pl_ctr = rt_point_make(0, 0, 1);
 	// rt_tuple_print(camera->data.camera.u_vect);
 	// rt_tuple_print(camera->data.camera.v_vect);
 	// rt_tuple_print(pl_ctr);
@@ -63,5 +93,6 @@ t_tuple coord, t_tuple orien_vect, unsigned int fov)
 	if (camera == NULL)
 		return (NULL);
 	assign_camera_values(camera, coord, orien_vect, fov);
+	// assign_default_camera(camera, fov);
 	return (camera);
 }

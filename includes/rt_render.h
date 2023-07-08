@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_render.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 12:31:50 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/09 09:34:34 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/08 14:10:43 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int				rt_render(t_minirt	*minirt);
 
 /* rt_lighting.c */
 t_tuple			rt_lighting(\
-t_tuple point_of_interx, t_interx *interx_info, t_scene_obj	*light);
+t_tuple point_of_interx, t_interx *interx_info, t_minirt *minirt);
 
 /* rt_img.c */
 t_img			*rt_img_make(\

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_render.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:10:37 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/11 18:14:24 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/08 14:11:24 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,19 @@ static void	paint_test(t_minirt *minirt, t_scene *scene)
 			// rt_interx_list_print(interx_tmp, FLAG_A);
 			if (interx_hit != NULL && interx_hit->t_val >= 0)
 			{
-				pix_color = rt_lighting(rt_ray_position(interx_hit->ray, interx_hit->t_val), interx_hit, scene->objs[0]);
+				pix_color = rt_lighting(rt_ray_position(interx_hit->ray, interx_hit->t_val), interx_hit, minirt);
+/* 				pix_color = rt_color_make(0, 1, 1, 1);
+				if (rt_vector_dot(rt_tuple_negate(interx_hit->ray.direction), rt_ray_normal(interx_hit->shape, rt_ray_position(interx_hit->ray, interx_hit->t_val))) < 0.5)
+					pix_color = rt_color_make(0, 1, 0, 0); */
 				// rt_tuple_print(pix_color);
 				rt_img_edit_pixel(minirt->mlx_struct.canvas, \
 					rt_color_to_trgb(pix_color), \
 					j, i);
 				if (i == 249 && j == 249)
+				{
 					rt_tuple_print(rt_ray_normal(scene->shapes[0], rt_ray_position(interx_hit->ray, interx_hit->t_val)));
+					printf("\n\nt_val = %f\n\n", interx_hit->t_val);
+				}
 				// rt_img_edit_pixel(minirt->mlx_struct.canvas, COLOR_BLUE, j, i);
 				num_of_interx++;
 			}
@@ -95,7 +101,6 @@ static void	paint_test(t_minirt *minirt, t_scene *scene)
 	}
 	rt_error_write("finished!\n", NULL);
 	printf("\n|hit = %d|\n", num_of_interx);
-	rt_lighting(rt_point_make(0,0,0), NULL, NULL);
 }
 
 static int	test_render(t_mlx_struct *mlx)

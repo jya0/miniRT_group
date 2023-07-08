@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_scene_load.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:52:51 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/11 09:14:54 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/08 13:45:03 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static t_load_fun	get_load_fun(char *id_str)
 {
-	// // if (ft_strncmp(id_str, "A", ft_strlen(id_str)) == 0)
-	// 	return (rt_load_ambient);
+	if (ft_strncmp(id_str, "A", ft_strlen(id_str)) == 0)
+		return (rt_load_ambient);
 	if (ft_strncmp(id_str, "C", ft_strlen(id_str)) == 0)
 		return (rt_load_camera);
 	else if (ft_strncmp(id_str, "L", ft_strlen(id_str)) == 0)

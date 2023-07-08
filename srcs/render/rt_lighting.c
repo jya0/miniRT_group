@@ -3,14 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   rt_lighting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:01:44 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/11 19:06:44 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/08 17:14:26 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minirt.h"
+
+
+static t_tuple norm_rgb(t_tuple color)
+{
+	float dummy;
+
+	// color = rt_color_times(color, 255);
+	dummy = color.y + color.z + color.w;
+	color.y = color.y / dummy;
+	color.z = color.z / dummy;
+	color.w = color.w / dummy;
+	return (color);
+}
+static t_tuple	get_all_color(\
+t_tuple surface, t_tuple ambient, t_tuple diffuse, float light_dot_norm)
+{
+	t_tuple	amb;
+	t_tuple	dif;
+
+	amb = norm_rgb(amb);
+	dif = rt_tuple_times(diffuse, 255);
+	amb = rt_tuple_times(rt_color_times_color(surface, ambient), 0.2);
+	dif = rt_tuple_times(rt_color_times_color(surface, diffuse), light_dot_norm);
+	if (!rt_float_bigger_equal(light_dot_norm, 0))
+		dif = rt_color_make(0, 0, 0, 0);
+	return (rt_color_add(amb, dif));
+}
 
 static t_tuple	get_ambient(t_tuple effective_color, t_material material)
 {
@@ -56,7 +83,7 @@ t_tuple ambient, t_tuple diffuse, t_tuple specular)
 }
 
 t_tuple	rt_lighting(\
-t_tuple point_of_interx, t_interx *interx_info, t_scene_obj	*light)
+t_tuple point_of_interx, t_interx *interx_info, t_minirt *minirt)
 {
 	t_tuple	eye_vect;
 	t_tuple	norm_vect;
@@ -66,42 +93,43 @@ t_tuple point_of_interx, t_interx *interx_info, t_scene_obj	*light)
 
 	static int num_theres_light;
 
-	if (interx_info == NULL || light == NULL)
+	if (interx_info == NULL || minirt == NULL)
 		return (printf("\n|num_theres_light = %d|\n", num_theres_light), rt_color_make(0, 0, 0, 0));
 	effective_color = \
 		rt_color_times(\
-			interx_info->shape->material.color, light->data.light.intensity);
-	eye_vect = rt_tuple_negate(interx_info->ray.direction);
+			interx_info->shape->material.color, minirt->light->data.light.intensity);
+	eye_vect = rt_vector_normalize(rt_tuple_negate(interx_info->ray.direction));
 	// rt_tuple_print(interx_info->ray.direction);
 	// rt_tuple_print(eye_vect);
+	if (!rt_float_smaller_equal(light_dot_norm, 0))
+		num_theres_light++;
 	norm_vect = rt_ray_normal(interx_info->shape, point_of_interx);
-	norm_vect.z *= -1;
-	if (rt_float_equal(point_of_interx.x, 0) && rt_float_equal(point_of_interx.y, 0))
-		rt_tuple_print(norm_vect);
+	// rt_tuple_print(norm_vect);
+	// return (rt_color_times(effective_color, rt_vector_dot(norm_vect, eye_vect)));
 	// rt_tuple_print(norm_vect);
 	// printf("_____________________\n");
 	// rt_tuple_print(light->data.light.coord);
 	// rt_tuple_print(point_of_interx);
 	light_vect = \
 		rt_vector_normalize(\
-			rt_tuple_minus(light->data.light.coord, point_of_interx));
+		rt_tuple_minus(minirt->light->data.light.coord, point_of_interx));
 	// rt_tuple_print(norm_vect);
 	// rt_tuple_print(light_vect);
 	light_dot_norm = rt_vector_dot(light_vect, norm_vect);
-	if (!rt_float_smaller_equal(light_dot_norm, 0))
-		num_theres_light++;
+	// return (get_all_color(interx_info->shape->material.color, minirt->ambient->data.ambient.color, rt_color_make(0, 1, 1, 1), light_dot_norm));
+	// return (effective_color);
 	// return (get_ambient(effective_color, interx_info->shape->material));
-	return (get_diffuse(effective_color, interx_info->shape->material, light_dot_norm));
+	// return (get_diffuse(effective_color, interx_info->shape->material, light_dot_norm));
 	/* return (get_specular(light_dot_norm, \
 			rt_vector_dot(rt_ray_reflect(rt_tuple_negate(light_vect), \
 				norm_vect), eye_vect), \
 			interx_info->shape->material, light->data.light.intensity)); */
-/* return (get_phong_model_color(\
+	return (get_phong_model_color(\
 		get_ambient(effective_color, interx_info->shape->material), \
 		get_diffuse(effective_color, \
 			interx_info->shape->material, light_dot_norm), \
 		get_specular(light_dot_norm, \
 		rt_vector_dot(rt_ray_reflect(rt_tuple_negate(light_vect), norm_vect), \
 			eye_vect), \
-		interx_info->shape->material, light->data.light.intensity))); */
+		interx_info->shape->material, minirt->light->data.light.intensity)));
 }

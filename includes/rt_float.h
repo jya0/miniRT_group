@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   rt_float.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 14:53:27 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/30 12:38:13 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/08 15:38:20 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_FLOAT_H
 # define RT_FLOAT_H
 
-# define RT_EPSILON	0.00001f
+# define RT_EPSILON	0.00000001f
 
 /* rt_float.c */
 double		rt_float_abs(double d);

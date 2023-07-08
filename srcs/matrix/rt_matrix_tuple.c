@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:21:57 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/11 10:34:33 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/13 15:21:13 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,29 @@ t_matrix	*rt_tuple_to_matrix(t_tuple tuple)
 	return (mtx_tuple);
 }
 
+static t_tuple	num_arr_to_tuple(double *num_arr, int arr_size)
+{
+	t_tuple	tuple;
+	int		i;
+	int		j;
+
+	tuple = (t_tuple){0};
+	if (num_arr != NULL && arr_size > 0)
+	{
+		j = arr_size - 1;
+		i = j;
+		if (i >= 0)
+			tuple.x = num_arr[j - i--];
+		if (i >= 0)
+			tuple.y = num_arr[j - i--];
+		if (i >= 0)
+			tuple.z = num_arr[j - i--];
+		if (i >= 0)
+			tuple.w = num_arr[j - i--];
+	}
+	return (tuple);
+}
+
 /* if row or col is set to negative it will not retrieve any tuple
 ** only row or col can be positive, but not both, they are mutex
 ** non negative values of row or col will be used to get that row or column
@@ -38,8 +61,6 @@ t_matrix	*mtx, ssize_t row, ssize_t col)
 {
 	t_tuple			tuple;
 	double			*num_arr;
-	ssize_t			i;
-	ssize_t			j;
 
 	tuple = (t_tuple){0};
 	if (mtx == NULL || (row >= 0 && col >= 0) || (row < 0 && col < 0))
@@ -50,12 +71,9 @@ t_matrix	*mtx, ssize_t row, ssize_t col)
 		num_arr = rt_matrix_get_column(mtx, col);
 	if (num_arr == NULL)
 		return (tuple);
-	j = mtx->row * (col >= 0) + mtx->column * (row >= 0) - 1;
-	i = j;
-	tuple.x = (i >= 0) * num_arr[j - i--];
-	tuple.y = (i >= 0) * num_arr[j - i--];
-	tuple.z = (i >= 0) * num_arr[j - i--];
-	tuple.w = (i >= 0) * num_arr[j - i--];
+	tuple = \
+		num_arr_to_tuple(num_arr, \
+			mtx->row * (col >= 0) + mtx->column * (row >= 0));
 	free(num_arr);
 	return (tuple);
 }

@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:22:55 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/30 12:25:12 by jyao             ###   ########.fr       */
+/*   Updated: 2023/06/13 16:59:50 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_tuple	rt_vector_normalize(t_tuple vector)
 {
 	if (vector.w != 0)
 		rt_error_write(ERROR_NOT_VECTOR, NULL);
+	// rt_tuple_print(vector);
 	return (rt_tuple_divide(vector, rt_vector_magnitude(vector)));
 }
 

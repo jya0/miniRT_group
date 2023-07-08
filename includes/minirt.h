@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 12:59:23 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/30 14:14:46 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/08 13:53:22 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct s_minirt {
 	t_element		*head_element;
 	t_mlx_struct	mlx_struct;
 	t_scene_obj		*camera;
+	t_scene_obj		*ambient;
+	t_scene_obj		*light;
 	t_scene			*scene;
 }	t_minirt;
 
