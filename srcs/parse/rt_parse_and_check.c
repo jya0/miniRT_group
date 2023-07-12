@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 17:04:49 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/08 13:55:08 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/12 09:02:12 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	is_supported_element(t_element *element)
 }
 
 static t_parse_fun	get_parse_fun(\
-char *id_str, unsigned int *shapes_total, unsigned int *objs_total)
+char *id_str, unsigned int *shapes_total)
 {
 	if (ft_strncmp(id_str, "A", ft_strlen(id_str)) == 0)
 		return (rt_parse_ambient);
@@ -40,7 +40,7 @@ char *id_str, unsigned int *shapes_total, unsigned int *objs_total)
 }
 
 int	rt_parse_and_check(\
-t_element *head_element, unsigned int *shapes_total, unsigned int *objs_total)
+t_element *head_element, unsigned int *shapes_total)
 {
 	t_element	*tmp_element;
 	t_parse_fun	parse_fun;
@@ -54,7 +54,7 @@ t_element *head_element, unsigned int *shapes_total, unsigned int *objs_total)
 		if (is_supported_element(tmp_element) != 0)
 			return (1);
 		parse_fun = \
-			get_parse_fun(tmp_element->id_str, shapes_total, objs_total);
+			get_parse_fun(tmp_element->id_str, shapes_total);
 		if (parse_fun == NULL || parse_fun(tmp_element) != 0)
 			return (1);
 		tmp_element = tmp_element->next;

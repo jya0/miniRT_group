@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_parse.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 15:36:03 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/04 18:23:19 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/12 08:51:52 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,7 @@ int				rt_check_double_range(\
 					double double_val, double min, double max);
 
 int				rt_parse_and_check(\
-	t_element *head_element, \
-		unsigned int *shapes_total, unsigned int *objs_total);
+	t_element *head_element, unsigned int *shapes_total);
 
 double			rt_parse_element_double(char *arg);
 

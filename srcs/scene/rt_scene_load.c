@@ -6,11 +6,19 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:52:51 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/08 13:45:03 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/12 08:58:12 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minirt.h"
+
+static int	check_ACL(t_minirt *minirt)
+{
+	if (minirt->ambient == NULL || minirt->camera == NULL \
+		|| minirt->light == NULL)
+		return (rt_error_write(ERROR_LOAD_ACL, NULL));
+	return (0);
+}
 
 static t_load_fun	get_load_fun(char *id_str)
 {
@@ -42,5 +50,7 @@ int	rt_scene_load(t_minirt *minirt)
 			return (1);
 		tmp_element = tmp_element->next;
 	}
+	if (check_ACL(minirt))
+		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:12:42 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/08 13:58:29 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/12 08:59:48 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@
 /* render */
 # define ERROR_CAM_MAKE			"Error\n can't make camera"
 # define ERROR_IMG_MAKE			"Error\n can't make mlx img"
+# define ERROR_RENDER_INIT		"Error\n can't init render"
 
 /* mlx */
 # define ERROR_MLX_INIT			"Error\n failed to initialise mlx"
@@ -70,6 +71,7 @@
 # define ERROR_LOAD_AMBIENT		"Error\n can't load ambient"
 # define ERROR_LOAD_LIGHT		"Error\n can't load light"
 # define ERROR_LOAD_SPHERE		"Error\n can't load sphere"
+# define ERROR_LOAD_ACL			"Error\n can't load A/C/L"
 
 int			rt_error_write(char const *msg, char const *arg);
 

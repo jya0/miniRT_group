@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:10:37 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/08 14:11:24 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/12 09:00:04 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	render_init(t_minirt *minirt)
 		return (rt_error_write(ERROR_MLX_INIT, NULL), 1);
 	minirt->mlx_struct.canvas = \
 		rt_img_make(minirt->mlx_struct.init, WIN_X, WIN_Y);
-	if (rt_scene_load(minirt) != 0)
+	if (rt_scene_load(minirt))
 		return (1);
 	return (0);
 }
@@ -61,8 +61,6 @@ static void	paint_test(t_minirt *minirt, t_scene *scene)
 	int			i;
 	int			j;
 
-	int			num_of_interx = 0;
-
 	i = 0;
 	while (i < WIN_Y)
 	{
@@ -70,37 +68,20 @@ static void	paint_test(t_minirt *minirt, t_scene *scene)
 		while (j < WIN_X)
 		{
 			tmp_ray = get_ray_at(minirt->camera, j, i);
-			// rt_tuple_print(tmp_ray.origin);
-			// rt_tuple_print(tmp_ray.direction);
 			interx_tmp = rt_ray_intersect(tmp_ray, scene->shapes[0]);
 			interx_hit = rt_intersect_hit(interx_tmp);
-			// rt_interx_list_print(interx_tmp, FLAG_A);
 			if (interx_hit != NULL && interx_hit->t_val >= 0)
 			{
 				pix_color = rt_lighting(rt_ray_position(interx_hit->ray, interx_hit->t_val), interx_hit, minirt);
-/* 				pix_color = rt_color_make(0, 1, 1, 1);
-				if (rt_vector_dot(rt_tuple_negate(interx_hit->ray.direction), rt_ray_normal(interx_hit->shape, rt_ray_position(interx_hit->ray, interx_hit->t_val))) < 0.5)
-					pix_color = rt_color_make(0, 1, 0, 0); */
-				// rt_tuple_print(pix_color);
 				rt_img_edit_pixel(minirt->mlx_struct.canvas, \
 					rt_color_to_trgb(pix_color), \
 					j, i);
-				if (i == 249 && j == 249)
-				{
-					rt_tuple_print(rt_ray_normal(scene->shapes[0], rt_ray_position(interx_hit->ray, interx_hit->t_val)));
-					printf("\n\nt_val = %f\n\n", interx_hit->t_val);
-				}
-				// rt_img_edit_pixel(minirt->mlx_struct.canvas, COLOR_BLUE, j, i);
-				num_of_interx++;
 			}
 			rt_free_intersections(interx_tmp);
 			j++;
 		}
 		i++;
-		// rt_error_write("heyhey!\n", NULL);
 	}
-	rt_error_write("finished!\n", NULL);
-	printf("\n|hit = %d|\n", num_of_interx);
 }
 
 static int	test_render(t_mlx_struct *mlx)
@@ -117,7 +98,8 @@ int	rt_render(t_minirt	*minirt)
 	if (minirt == NULL)
 		return (1);
 	rt_error_write("----TESTING RENDERING----", NULL);
-	render_init(minirt);
+	if (render_init(minirt))
+		return (rt_error_write(ERROR_RENDER_INIT, NULL));
 	mlx = minirt->mlx_struct;
 	paint_test(minirt, minirt->scene);
 	mlx_loop_hook(mlx.init, test_render, &mlx);

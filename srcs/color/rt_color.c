@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_color.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 08:38:59 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/09 09:23:21 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/12 08:39:21 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,5 @@ int	rt_color_to_trgb(t_tuple color)
 	r = roundf(color.y * TRGB_MAX);
 	g = roundf(color.z * TRGB_MAX);
 	b = roundf(color.w * TRGB_MAX);
-	// printf("color is %d", ((t << 24) + (r << 16) + (g << 8) + b));
 	return ((t << 24) + (r << 16) + (g << 8) + b);
 }

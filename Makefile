@@ -6,7 +6,7 @@
 #    By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 13:03:29 by jyao              #+#    #+#              #
-#    Updated: 2023/07/08 14:20:56 by jyao             ###   ########.fr        #
+#    Updated: 2023/07/12 08:36:51 by jyao             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,11 @@ NAME 				=	minirt
 
 #DECLARE DEFINE COMPILATION RULES
 CC 					=	gcc
-# CFLAGS 				=	-Wall -Wextra -Werror
+CFLAGS 				=	-Wall -Wextra -Werror -g3
 
 #DECLARE DEFINE INCLUDE DIRECTORIES
-OPTIMISE_FLAGS		:=	-g3
 INCLUDES 			=	-I$(HEADERS_FOLDER) -I$(LIBFT_HEADERS) -I$(MINILIBX_HEADERS)
-LIBRARIES_FLAGS 	=	$(OPTIMISE_FLAGS) -L$(LIBFT_FOLDER) -lft $(MINILIBX_FLAGS)
+LIBRARIES_FLAGS 	=	-L$(LIBFT_FOLDER) -lft $(MINILIBX_FLAGS)
 LIBRARY_FILES		=	$(LIBFT_FILE)	$(MINILIBX_FILE)
 
 #DECLARE DEFINE ALL LIB PATHS
@@ -116,7 +115,7 @@ OBJS = $(addprefix $(OBJS_FOLDER), $(addsuffix .o, $(SRCS_LIST)))
 
 #DEFINE RULE FOR COMPILING OBJS
 $(OBJS_FOLDER)%.o : $(SRCS_FOLDER)%.c
-	$(CC) -g3 $(CFLAGS) $(INCLUDES) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 all: $(NAME)
 
@@ -125,7 +124,7 @@ all: $(NAME)
 
 #DEFINE RULE FOR COMPILING NAME
 $(NAME): $(LIBRARY_FILES) $(OBJS_FOLDER) $(OBJS)
-	$(CC) -g3 $(CFLAGS) $(OBJS) $(LIBRARIES_FLAGS) -o $@
+	$(CC) $(CFLAGS) $(OBJS) $(LIBRARIES_FLAGS) -o $@
 
 $(LIBRARY_FILES):
 	make -C $(LIBFT_FOLDER)

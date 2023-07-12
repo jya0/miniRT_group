@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:35:58 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/08 17:12:30 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/12 08:40:05 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ t_shape	*rt_sphere_make(t_tuple origin, double diameter)
 		return (NULL);
 	radius = diameter / 2;
 	sphere->data.sphere.radius = radius;
-	// printf("\n|radius is %f|\n", sphere->data)
 	sphere->origin = origin;
 	mtx_transform = \
 		rt_matrix_times_matrix_free(\

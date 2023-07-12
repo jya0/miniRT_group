@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_scene.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:01:15 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/04 18:15:09 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/12 08:51:39 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_scene_obj		*rt_ambient_make(t_tuple color, double intensity);
 
 /* rt_scene.c */
 t_scene			*rt_scene_make(\
-	unsigned int shapes_total, unsigned int objs_total);
+	unsigned int shapes_total);
 
 void			rt_free_scene(t_scene *scene);
 
