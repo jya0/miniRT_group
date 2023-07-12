@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:35:58 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/12 08:40:05 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/12 13:30:07 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ t_shape	*rt_sphere_make(t_tuple origin, double diameter)
 	sphere->origin = origin;
 	mtx_transform = \
 		rt_matrix_times_matrix_free(\
-			rt_matrix_scale(radius, radius, radius), \
-			rt_matrix_translate(origin.x, origin.y, origin.z));
+			rt_matrix_translate(origin.x, origin.y, origin.z), \
+			rt_matrix_scale(radius, radius, radius));
 	rt_shape_transform_set(sphere, mtx_transform);
 	return (sphere);
 }

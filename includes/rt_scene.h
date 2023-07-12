@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:01:15 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/12 08:51:39 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/12 13:11:12 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef enum e_scene_obj_type {
 
 typedef struct s_scene_obj {
 	t_scene_obj_type	type;
+	t_matrix			*mtx_transform;
+	t_matrix			*inv_mtx;
 	union u_data_obj {
 		struct s_camera_obj {
 			t_tuple	coord;
@@ -53,12 +55,18 @@ typedef struct s_scene {
 	unsigned int	objs_total;
 	t_shape			**shapes;
 	t_scene_obj		**objs;
+	t_scene_obj		*camera;
+	t_scene_obj		*ambient;
+	t_scene_obj		*light;
 }	t_scene;
 
-typedef int (*t_load_fun)(t_minirt *, t_element *);
+typedef int (*t_load_fun)(t_scene *, t_element *);
 
 /* rt_scene_obj.c */
 t_scene_obj		*rt_scene_obj_make(t_scene_obj_type type);
+
+t_scene_obj		*rt_scene_obj_transform_set(\
+	t_scene_obj *scene_obj, t_matrix *mtx_transform);
 
 void			rt_free_scene_obj(t_scene_obj *scene_obj);
 
@@ -79,16 +87,19 @@ void			rt_free_scene(t_scene *scene);
 int				rt_scene_load(t_minirt *minirt);
 
 /* rt_scene_load_set_1.c */
-int				rt_load_ambient(t_minirt *minirt, t_element *element);
+int				rt_load_ambient(t_scene *scene, t_element *element);
 
-int				rt_load_camera(t_minirt *minirt, t_element *element);
+int				rt_load_camera(t_scene *scene, t_element *element);
 
-int				rt_load_light(t_minirt *minirt, t_element *element);
+int				rt_load_light(t_scene *scene, t_element *element);
 
-int				rt_load_sphere(t_minirt *minirt, t_element *element);
+int				rt_load_sphere(t_scene *scene, t_element *element);
 
-int				rt_load_plane(t_minirt *minirt, t_element *element);
+int				rt_load_plane(t_scene *scene, t_element *element);
 
-int				rt_load_cylinder(t_minirt *minirt, t_element *element);
+int				rt_load_cylinder(t_scene *scene, t_element *element);
+
+/* rt_scene_intersect.c */
+t_interx		*rt_scene_intersect(t_scene *scene, t_ray ray);
 
 #endif

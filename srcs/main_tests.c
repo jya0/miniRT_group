@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_tests.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 11:19:47 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/11 10:49:55 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/12 13:47:33 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	test_ray_transform(void)
 void	test_intersections(void)
 {
 	t_shape		*sphere1 = rt_sphere_make(rt_point_make(1, 1, 1), 5);
+	t_shape		*sphere2 = rt_sphere_make(rt_point_make(-2, -2, -2), 5);
 	t_ray		ray = rt_ray_make(rt_point_make(0, 0, 0), rt_vector_make(1, 1, 0));
 	t_interx	*intersections;
 	int		trgb[] = {22, 22, 22, 22};
@@ -90,13 +91,14 @@ void	test_intersections(void)
 	rt_intersect_add_end(intersections, rt_ray_intersect(ray, sphere1));
 	rt_intersect_add_end(intersections, rt_ray_intersect(ray, sphere1));
 	rt_intersect_add_end(intersections, rt_ray_intersect(ray, sphere1));
-	rt_intersect_add_end(intersections, rt_ray_intersect(ray, sphere1));
-	rt_intersect_add_end(intersections, rt_ray_intersect(ray, sphere1));
+	rt_intersect_add_end(intersections, rt_ray_intersect(ray, sphere2));
+	rt_intersect_add_end(intersections, rt_ray_intersect(ray, sphere2));
 	rt_intersect_sort(&intersections, rt_float_smaller_equal);
 	rt_interx_list_print(rt_intersect_hit(intersections), FLAG_A);
 	rt_interx_list_print(intersections, FLAG_A);
 	rt_free_intersections(intersections);
 	rt_free_shape(sphere1);
+	rt_free_shape(sphere2);
 }
 
 void	test_tuple(void)

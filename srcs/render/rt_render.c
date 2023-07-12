@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:10:37 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/12 09:00:04 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/12 16:33:18 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static int	render_init(t_minirt *minirt)
 	minirt->mlx_struct.init = mlx_init();
 	if (minirt->mlx_struct.init == NULL)
 		return (rt_error_write(ERROR_MLX_INIT, NULL), 1);
-	rt_error_write("HEY!\n", NULL);
 	minirt->mlx_struct.window = \
 		mlx_new_window(minirt->mlx_struct.init, WIN_X, WIN_Y, WIN_NAME);
 	if (minirt->mlx_struct.window == NULL)
@@ -35,20 +34,21 @@ static t_ray	get_ray_at(\
 t_scene_obj *camera, int pixel_x, int pixel_y)
 {
 	t_ray	ray;
-	t_tuple	ray_pl_origin;
 	double	t_val_x;
 	double	t_val_y;
 
 	t_val_x = (float)(pixel_x + 0.5f) * camera->data.camera.t_per_px;
 	t_val_y = -((float)(pixel_y + 0.5f) * camera->data.camera.t_per_px);
-	ray_pl_origin = \
+	ray.direction = rt_tuple_add(rt_vector_make(0, 0, -1), \
 		rt_tuple_add(camera->data.camera.pl_top_left, \
 			rt_tuple_add(\
 				rt_tuple_times(camera->data.camera.u_vect, t_val_x), \
-				rt_tuple_times(camera->data.camera.v_vect, t_val_y)));
+				rt_tuple_times(camera->data.camera.v_vect, t_val_y))));
+	ray.direction.w = 0;
 	ray.direction = rt_vector_normalize(\
-		rt_tuple_minus(ray_pl_origin, camera->data.camera.coord));
-	ray.origin = camera->data.camera.coord;
+		rt_matrix_times_tuple(camera->inv_mtx, ray.direction));
+	ray.origin = rt_matrix_times_tuple(camera->inv_mtx, \
+		rt_point_make(0, 0, 0));
 	return (ray);
 }
 
@@ -67,12 +67,13 @@ static void	paint_test(t_minirt *minirt, t_scene *scene)
 		j = 0;
 		while (j < WIN_X)
 		{
-			tmp_ray = get_ray_at(minirt->camera, j, i);
-			interx_tmp = rt_ray_intersect(tmp_ray, scene->shapes[0]);
+			tmp_ray = get_ray_at(scene->camera, j, i);
+			interx_tmp = rt_scene_intersect(scene, tmp_ray);
+			// interx_tmp = rt_ray_intersect(tmp_ray, scene->shapes[0]);
 			interx_hit = rt_intersect_hit(interx_tmp);
 			if (interx_hit != NULL && interx_hit->t_val >= 0)
 			{
-				pix_color = rt_lighting(rt_ray_position(interx_hit->ray, interx_hit->t_val), interx_hit, minirt);
+				pix_color = rt_lighting(rt_ray_position(interx_hit->ray, interx_hit->t_val), interx_hit, scene);
 				rt_img_edit_pixel(minirt->mlx_struct.canvas, \
 					rt_color_to_trgb(pix_color), \
 					j, i);

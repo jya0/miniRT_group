@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_intersect_list.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 11:38:20 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/23 15:45:33 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/12 16:33:13 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ void	rt_intersect_sort(t_interx **head, int (*cmp)(double, double))
 {
 	t_interx	*tmp;
 
+	if (head == NULL || *head == NULL)
+		return ;
 	tmp = *head;
 	while (tmp->next != NULL)
 	{

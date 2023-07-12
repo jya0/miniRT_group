@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:01:44 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/12 08:44:20 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/12 15:59:18 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_tuple ambient, t_tuple diffuse, t_tuple specular)
 }
 
 t_tuple	rt_lighting(\
-t_tuple point_of_interx, t_interx *interx_info, t_minirt *minirt)
+t_tuple point_of_interx, t_interx *interx_info, t_scene *scene)
 {
 	t_tuple	eye_vect;
 	t_tuple	norm_vect;
@@ -55,16 +55,16 @@ t_tuple point_of_interx, t_interx *interx_info, t_minirt *minirt)
 	t_tuple	effective_color;
 	double	light_dot_norm;
 
-	if (interx_info == NULL || minirt == NULL)
+	if (interx_info == NULL || scene == NULL)
 		return (rt_color_make(0, 0, 0, 0));
 	effective_color = \
 		rt_color_times(interx_info->shape->material.color, \
-			minirt->light->data.light.intensity);
+			scene->light->data.light.intensity);
 	eye_vect = rt_vector_normalize(rt_tuple_negate(interx_info->ray.direction));
 	norm_vect = rt_ray_normal(interx_info->shape, point_of_interx);
 	light_vect = \
 		rt_vector_normalize(\
-		rt_tuple_minus(minirt->light->data.light.coord, point_of_interx));
+			rt_tuple_minus(scene->light->data.light.coord, point_of_interx));
 	light_dot_norm = rt_vector_dot(light_vect, norm_vect);
 	return (get_phong_model_color(\
 		get_ambient(effective_color, interx_info->shape->material), \
@@ -73,5 +73,5 @@ t_tuple point_of_interx, t_interx *interx_info, t_minirt *minirt)
 		get_specular(light_dot_norm, \
 		rt_vector_dot(rt_ray_reflect(rt_tuple_negate(light_vect), norm_vect), \
 			eye_vect), \
-		interx_info->shape->material, minirt->light->data.light.intensity)));
+		interx_info->shape->material, scene->light->data.light.intensity)));
 }

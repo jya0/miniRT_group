@@ -6,7 +6,7 @@
 #    By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 13:03:29 by jyao              #+#    #+#              #
-#    Updated: 2023/07/12 08:36:51 by jyao             ###   ########.fr        #
+#    Updated: 2023/07/12 13:32:19 by jyao             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,7 +101,7 @@ SRCS_LIST			=	main	main_tests				\
 						$(RAY_FOLDER)rt_ray_normal_sphere								$(RAY_FOLDER)rt_ray_reflect				\
 						$(RENDER_FOLDER)rt_render		$(RENDER_FOLDER)rt_img			$(RENDER_FOLDER)rt_lighting				\
 						$(SCENE_FOLDER)rt_scene			$(SCENE_FOLDER)rt_scene_obj		$(SCENE_FOLDER)rt_scene_load			\
-						$(SCENE_FOLDER)rt_camera		\
+						$(SCENE_FOLDER)rt_camera		$(SCENE_FOLDER)rt_scene_intersect							\
 						$(SCENE_FOLDER)rt_scene_load_set_1								\
 						$(TEST_FOLDER)rt_tuple_test		$(TEST_FOLDER)rt_file_test		$(TEST_FOLDER)rt_matrix_test			\
 						$(TEST_FOLDER)rt_intersect_test	\

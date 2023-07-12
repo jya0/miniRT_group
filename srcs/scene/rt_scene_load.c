@@ -6,16 +6,17 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:52:51 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/12 08:58:12 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/12 09:57:55 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minirt.h"
 
-static int	check_ACL(t_minirt *minirt)
+static int	check_ACL(t_scene *scene)
 {
-	if (minirt->ambient == NULL || minirt->camera == NULL \
-		|| minirt->light == NULL)
+	if (scene == NULL || \
+		scene->ambient == NULL || scene->camera == NULL \
+		|| scene->light == NULL)
 		return (rt_error_write(ERROR_LOAD_ACL, NULL));
 	return (0);
 }
@@ -46,11 +47,11 @@ int	rt_scene_load(t_minirt *minirt)
 	while (tmp_element != NULL)
 	{
 		load_fun = get_load_fun(tmp_element->id_str);
-		if (load_fun == NULL || load_fun(minirt, tmp_element) != 0)
+		if (load_fun == NULL || load_fun(minirt->scene, tmp_element) != 0)
 			return (1);
 		tmp_element = tmp_element->next;
 	}
-	if (check_ACL(minirt))
+	if (check_ACL(minirt->scene))
 		return (1);
 	return (0);
 }

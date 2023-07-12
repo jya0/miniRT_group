@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_scene_obj.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 12:34:57 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/04 18:22:35 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/12 11:16:59 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,25 @@ t_scene_obj	*rt_ambient_make(t_tuple color, double intensity)
 	return (ambient);
 }
 
+t_scene_obj	*rt_scene_obj_transform_set(\
+t_scene_obj *scene_obj, t_matrix *mtx_transform)
+{
+	if (scene_obj == NULL || mtx_transform == NULL)
+		return (rt_error_write(ERROR_SHAPE_TRANSFORM, NULL), scene_obj);
+	rt_free_matrix(scene_obj->mtx_transform);
+	rt_free_matrix(scene_obj->inv_mtx);
+	scene_obj->mtx_transform = mtx_transform;
+	scene_obj->inv_mtx = rt_matrix_inverse(mtx_transform);
+	rt_matrix_print(scene_obj->inv_mtx);
+	return (scene_obj);
+}
+
 void	rt_free_scene_obj(t_scene_obj *scene_obj)
 {
 	if (scene_obj != NULL)
 	{
+		rt_free_matrix(scene_obj->mtx_transform);
+		rt_free_matrix(scene_obj->inv_mtx);
 		free(scene_obj);
 	}
 }
