@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 13:45:34 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/12 16:44:06 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/12 16:49:40 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,4 @@ t_tuple	rt_ray_normal(t_shape *shape, t_tuple w_point)
 	rt_matrix_transpose(shape->inv_mtx);
 	world_norm.w = 0;
 	return (rt_vector_normalize(world_norm));
-	// return (rt_vector_normalize(obj_norm));
 }

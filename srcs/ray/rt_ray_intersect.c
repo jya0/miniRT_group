@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:14:38 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/12 16:44:11 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/12 16:51:43 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_interx	*rt_ray_intersect(t_ray ray, t_shape *shape)
 
 	if (shape == NULL || shape->type == SHAPE_T_INIT)
 		return (NULL);
-	ray = rt_ray_transform(ray, shape->inv_mtx);
+	// ray = rt_ray_transform(ray, shape->inv_mtx);
 	intersect = rt_ray_intersect_sphere(ray, shape);
 	return (intersect);
 }
