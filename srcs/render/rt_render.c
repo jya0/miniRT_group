@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_render.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:10:37 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/15 13:23:28 by ooutabac         ###   ########.fr       */
+/*   Updated: 2023/07/15 15:26:18 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_scene_obj *camera, int pixel_x, int pixel_y)
 
 static void	make_image(t_mlx_struct *mlx, t_scene *scn)
 {
-	t_interx	*i_lst;
+	t_interx	*i_list;
 	t_interx	*i_hit;
 	t_ray		cam_ray;
 	t_tuple		pix_color;
@@ -68,14 +68,14 @@ static void	make_image(t_mlx_struct *mlx, t_scene *scn)
 		while (i[1] < WIN_X)
 		{
 			cam_ray = get_ray_at(scn->camera, i[1], i[0]);
-			i_lst = rt_scene_intersect(scn, cam_ray);
-			i_hit = rt_intersect_hit(i_lst);
-			if (i_hit != NULL && i_hit->t_val >= 0)
+			i_list = rt_scene_intersect(scn, cam_ray);
+			i_hit = rt_intersect_hit(i_list);
+			if (i_hit != NULL && rt_float_bigger_equal(i_hit->t_val, 0))
 			{
 				pix_color = rt_lighting(i_hit, scn);
 				rt_img_edit_pixel(mlx->canvas, pix_color, i[1], i[0]);
 			}
-			rt_free_intersections(i_lst);
+			rt_free_intersections(i_list);
 			i[1]++;
 		}
 		i[0]++;

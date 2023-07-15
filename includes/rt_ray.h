@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_ray.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:42:19 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/15 13:23:13 by ooutabac         ###   ########.fr       */
+/*   Updated: 2023/07/15 15:38:32 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ typedef struct s_interx {
 	t_tuple			interx_p;
 	t_tuple			eye_vect;
 	t_tuple			norm_vect;
+	t_tuple			over_point;
+	unsigned char	inside;
 	struct s_interx	*prev;
 	struct s_interx	*next;
 }	t_interx;

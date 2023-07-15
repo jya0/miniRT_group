@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:01:44 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/15 13:12:44 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 15:45:19 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ t_tuple	rt_lighting(t_interx *i_hit, t_scene *scene)
 		rt_vector_normalize(\
 			rt_tuple_minus(scene->light->data.light.coord, i_hit->interx_p));
 	light_dot_norm = rt_vector_dot(light_vect, i_hit->norm_vect);
+	if (rt_lighting_shadow(scene, i_hit->over_point))
+		return (get_ambient(effective_color, \
+			i_hit->shape->material, scene->ambient));
 	return (get_phong_model_color(\
 		get_ambient(effective_color, i_hit->shape->material, scene->ambient), \
 		get_diffuse(effective_color, \

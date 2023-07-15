@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 10:12:23 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/15 12:58:40 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 15:39:26 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,18 @@ void	rt_free_intersections(t_interx *head)
 	}
 }
 
+static void	if_ray_inside(t_interx *intersect)
+{
+	double	eye_dot_norm;
+
+	eye_dot_norm = rt_vector_dot(intersect->eye_vect, intersect->norm_vect);
+	if (!rt_float_bigger_equal(eye_dot_norm, 0))
+	{
+		intersect->inside = 1;
+		intersect->norm_vect = rt_tuple_negate(intersect->norm_vect);
+	}
+}
+
 t_interx	*rt_intersect_make(t_shape *shape, t_ray ray, double t_val)
 {
 	t_interx	*intersect;
@@ -42,6 +54,10 @@ t_interx	*rt_intersect_make(t_shape *shape, t_ray ray, double t_val)
 	intersect->interx_p = rt_ray_position(ray, t_val);
 	intersect->eye_vect = rt_vector_normalize(rt_tuple_negate(ray.direction));
 	intersect->norm_vect = rt_ray_normal(shape, intersect->interx_p);
+	intersect->over_point = \
+		rt_tuple_add(intersect->interx_p, \
+			rt_tuple_times(intersect->norm_vect, RT_EPSILON));
+	if_ray_inside(intersect);
 	return (intersect);
 }
 

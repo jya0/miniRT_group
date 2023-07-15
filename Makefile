@@ -6,9 +6,10 @@
 #    By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 13:03:29 by jyao              #+#    #+#              #
-#    Updated: 2023/07/15 14:37:54 by ooutabac         ###   ########.fr        #
+#    Updated: 2023/07/15 16:38:13 by ooutabac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 
 # -*- Makefile for MiniRT -*-
@@ -105,6 +106,7 @@ SRCS_LIST			=	main	main_tests				\
 						$(RAY_FOLDER)rt_ray_intersect_plane								$(RAY_FOLDER)rt_ray_normal_plane		\
 						$(RAY_FOLDER)rt_ray_intersect_cylinder							$(RAY_FOLDER)rt_ray_normal_cylinder		\
 						$(RENDER_FOLDER)rt_render		$(RENDER_FOLDER)rt_img			$(RENDER_FOLDER)rt_lighting				\
+						$(RENDER_FOLDER)rt_lighting_shadow								\
 						$(SCENE_FOLDER)rt_scene			$(SCENE_FOLDER)rt_scene_obj		$(SCENE_FOLDER)rt_scene_load			\
 						$(SCENE_FOLDER)rt_camera		$(SCENE_FOLDER)rt_scene_intersect							\
 						$(SCENE_FOLDER)rt_scene_load_set_1								\
