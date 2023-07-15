@@ -6,13 +6,13 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:52:51 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/15 16:47:35 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 16:49:35 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minirt.h"
 
-static int	check_ACL(t_scene *scene)
+static int	check_acl(t_scene *scene)
 {
 	if (scene == NULL || \
 		scene->ambient == NULL || scene->camera == NULL \
@@ -51,7 +51,7 @@ int	rt_scene_load(t_minirt *minirt)
 			return (1);
 		tmp_element = tmp_element->next;
 	}
-	if (check_ACL(minirt->scene))
+	if (check_acl(minirt->scene))
 		return (1);
 	return (0);
 }
