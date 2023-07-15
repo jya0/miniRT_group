@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:01:44 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/12 16:59:34 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 10:28:35 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ t_tuple point_of_interx, t_interx *interx_info, t_scene *scene)
 		rt_color_times(interx_info->shape->material.color, \
 			scene->light->data.light.intensity);
 	eye_vect = rt_vector_normalize(rt_tuple_negate(interx_info->ray.direction));
-	// norm_vect = rt_ray_normal(interx_info->shape, point_of_interx);
-	norm_vect = rt_vector_normalize(rt_tuple_minus(point_of_interx, interx_info->shape->origin));
+	norm_vect = rt_ray_normal(interx_info->shape, point_of_interx);
 	light_vect = \
 		rt_vector_normalize(\
 			rt_tuple_minus(scene->light->data.light.coord, point_of_interx));

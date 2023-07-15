@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:10:37 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/12 16:33:18 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 10:26:31 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ static void	paint_test(t_minirt *minirt, t_scene *scene)
 		{
 			tmp_ray = get_ray_at(scene->camera, j, i);
 			interx_tmp = rt_scene_intersect(scene, tmp_ray);
-			// interx_tmp = rt_ray_intersect(tmp_ray, scene->shapes[0]);
 			interx_hit = rt_intersect_hit(interx_tmp);
 			if (interx_hit != NULL && interx_hit->t_val >= 0)
 			{
