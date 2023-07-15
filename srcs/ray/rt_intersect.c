@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_intersect.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 10:12:23 by jyao              #+#    #+#             */
-/*   Updated: 2023/05/23 15:57:57 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 12:58:40 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ t_interx	*rt_intersect_make(t_shape *shape, t_ray ray, double t_val)
 	intersect->shape = shape;
 	intersect->ray = ray;
 	intersect->t_val = t_val;
+	intersect->interx_p = rt_ray_position(ray, t_val);
+	intersect->eye_vect = rt_vector_normalize(rt_tuple_negate(ray.direction));
+	intersect->norm_vect = rt_ray_normal(shape, intersect->interx_p);
 	return (intersect);
 }
 

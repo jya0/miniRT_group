@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_img.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 14:52:35 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/11 08:34:47 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 12:25:18 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@ t_img	*rt_img_make(void *mlx, unsigned int width, unsigned int height)
 	return (img);
 }
 
-void	rt_img_edit_pixel(t_img *img, int pixel_color, \
+void	rt_img_edit_pixel(t_img *img, t_tuple color, \
 unsigned int x, unsigned int y)
 {
 	char	*pixel_addr;
+	int		pixel_color;
 
+	pixel_color = rt_color_to_trgb(color);
 	pixel_color = mlx_get_color_value(img->mlx, pixel_color);
 	pixel_addr = img->img_addr + (y * img->ln_size) \
 		+ (x * (img->bpp / 8));

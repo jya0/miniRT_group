@@ -6,9 +6,10 @@
 /*   By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:10:37 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/13 15:51:45 by ooutabac         ###   ########.fr       */
+/*   Updated: 2023/07/15 13:23:28 by ooutabac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include	"minirt.h"
 
@@ -37,8 +38,8 @@ t_scene_obj *camera, int pixel_x, int pixel_y)
 	double	t_val_x;
 	double	t_val_y;
 
-	t_val_x = (float)(pixel_x + 0.5f) * camera->data.camera.t_per_px;
-	t_val_y = -((float)(pixel_y + 0.5f) * camera->data.camera.t_per_px);
+	t_val_x = (pixel_x + 0.5f) * camera->data.camera.t_per_px;
+	t_val_y = -(pixel_y + 0.5f) * camera->data.camera.t_per_px;
 	ray.direction = rt_tuple_add(rt_vector_make(0, 0, -1), \
 		rt_tuple_add(camera->data.camera.pl_top_left, \
 			rt_tuple_add(\
@@ -52,58 +53,51 @@ t_scene_obj *camera, int pixel_x, int pixel_y)
 	return (ray);
 }
 
-static void	paint_test(t_minirt *minirt, t_scene *scene)
+static void	make_image(t_mlx_struct *mlx, t_scene *scn)
 {
-	t_interx	*interx_tmp;
-	t_interx	*interx_hit;
-	t_ray		tmp_ray;
+	t_interx	*i_lst;
+	t_interx	*i_hit;
+	t_ray		cam_ray;
 	t_tuple		pix_color;
-	int			i;
-	int			j;
+	int			i[2];
 
-	i = 0;
-	while (i < WIN_Y)
+	i[0] = 0;
+	while (i[0] < WIN_Y)
 	{
-		j = 0;
-		while (j < WIN_X)
+		i[1] = 0;
+		while (i[1] < WIN_X)
 		{
-			tmp_ray = get_ray_at(scene->camera, j, i);
-			interx_tmp = rt_scene_intersect(scene, tmp_ray);
-			// interx_tmp = rt_ray_intersect(tmp_ray, scene->shapes[0]);
-			interx_hit = rt_intersect_hit(interx_tmp);
-			if (interx_hit != NULL && interx_hit->t_val >= 0)
+			cam_ray = get_ray_at(scn->camera, i[1], i[0]);
+			i_lst = rt_scene_intersect(scn, cam_ray);
+			i_hit = rt_intersect_hit(i_lst);
+			if (i_hit != NULL && i_hit->t_val >= 0)
 			{
-				pix_color = rt_lighting(rt_ray_position(interx_hit->ray, interx_hit->t_val), interx_hit, scene);
-				rt_img_edit_pixel(minirt->mlx_struct.canvas, \
-					rt_color_to_trgb(pix_color), \
-					j, i);
+				pix_color = rt_lighting(i_hit, scn);
+				rt_img_edit_pixel(mlx->canvas, pix_color, i[1], i[0]);
 			}
-			rt_free_intersections(interx_tmp);
-			j++;
+			rt_free_intersections(i_lst);
+			i[1]++;
 		}
-		i++;
+		i[0]++;
 	}
 }
 
-static int	test_render(t_mlx_struct *mlx)
+static int	put_image(t_mlx_struct *mlx)
 {
 	mlx_put_image_to_window(mlx->init, mlx->window, mlx->canvas->img_mlx, 0, 0);
-	mlx_string_put(mlx->init, mlx->window, 50, 50, COLOR_RED, "HELLO THERE!!!");
 	return (0);
 }
 
 int	rt_render(t_minirt	*minirt)
 {
-	t_mlx_struct	mlx;
-
 	if (minirt == NULL)
 		return (1);
 	rt_error_write("----TESTING RENDERING----", NULL);
 	if (render_init(minirt))
 		return (rt_error_write(ERROR_RENDER_INIT, NULL));
-	mlx = minirt->mlx_struct;
-	paint_test(minirt, minirt->scene);
-	mlx_loop_hook(mlx.init, test_render, &mlx);
+	make_image(&minirt->mlx_struct, minirt->scene);
+	rt_event(minirt);
+	mlx_loop_hook(minirt->mlx_struct.init, put_image, &minirt->mlx_struct);
 	mlx_loop(minirt->mlx_struct.init);
 	return (0);
 }

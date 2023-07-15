@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 12:31:50 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/12 09:52:55 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 13:01:02 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,13 @@ typedef struct s_mlx_struct {
 int				rt_render(t_minirt	*minirt);
 
 /* rt_lighting.c */
-t_tuple			rt_lighting(\
-t_tuple point_of_interx, t_interx *interx_info, t_scene *scene);
+t_tuple			rt_lighting(t_interx *i_hit, t_scene *scene);
 
 /* rt_img.c */
 t_img			*rt_img_make(\
 	void *mlx, unsigned int width, unsigned int height);
 
-void			rt_img_edit_pixel(t_img *img, int pixel_color, \
+void			rt_img_edit_pixel(t_img *img, t_tuple color, \
 	unsigned int x, unsigned int y);
 
 void			rt_free_img(t_img *img);

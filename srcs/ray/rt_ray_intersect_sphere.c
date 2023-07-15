@@ -6,9 +6,10 @@
 /*   By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 11:47:13 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/13 15:19:47 by ooutabac         ###   ########.fr       */
+/*   Updated: 2023/07/15 13:23:26 by ooutabac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include	"minirt.h"
 
@@ -53,7 +54,7 @@ t_interx	*rt_ray_intersect_sphere(t_ray ray, t_shape *sphere)
 	sp_to_ray = rt_tuple_minus(ray.origin, sphere->origin);
 	abc[0] = rt_vector_dot(ray.direction, ray.direction);
 	abc[1] = 2 * rt_vector_dot(ray.direction, sp_to_ray);
-	abc[2] = rt_vector_dot(sp_to_ray, sp_to_ray) - 1;
+	abc[2] = rt_vector_dot(sp_to_ray, sp_to_ray) - sphere->data.sphere.radius * sphere->data.sphere.radius;
 	solutions = rt_quadratic_formula(abc[0], abc[1], abc[2]);
 	if (solutions == NULL)
 		return (NULL);

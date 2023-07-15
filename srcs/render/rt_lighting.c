@@ -6,15 +6,22 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:01:44 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/12 16:59:34 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 13:12:44 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minirt.h"
 
-static t_tuple	get_ambient(t_tuple effective_color, t_material material)
+static t_tuple	get_ambient(\
+t_tuple effective_color, t_material material, t_scene_obj *ambient)
 {
-	return (rt_color_times(effective_color, material.ambient));
+	t_tuple	amb_eff_color;
+	double	amb_intensity;
+
+	amb_intensity = ambient->data.ambient.intensity * material.ambient;
+	amb_eff_color = \
+		rt_color_times_color(effective_color, ambient->data.ambient.color);
+	return (rt_color_times(effective_color, amb_intensity));
 }
 
 static t_tuple	get_diffuse(\
@@ -46,33 +53,28 @@ t_tuple ambient, t_tuple diffuse, t_tuple specular)
 			rt_color_add(diffuse, specular))));
 }
 
-t_tuple	rt_lighting(\
-t_tuple point_of_interx, t_interx *interx_info, t_scene *scene)
+t_tuple	rt_lighting(t_interx *i_hit, t_scene *scene)
 {
-	t_tuple	eye_vect;
-	t_tuple	norm_vect;
 	t_tuple	light_vect;
 	t_tuple	effective_color;
 	double	light_dot_norm;
 
-	if (interx_info == NULL || scene == NULL)
+	if (i_hit == NULL || scene == NULL)
 		return (rt_color_make(0, 0, 0, 0));
 	effective_color = \
-		rt_color_times(interx_info->shape->material.color, \
+		rt_color_times(i_hit->shape->material.color, \
 			scene->light->data.light.intensity);
-	eye_vect = rt_vector_normalize(rt_tuple_negate(interx_info->ray.direction));
-	// norm_vect = rt_ray_normal(interx_info->shape, point_of_interx);
-	norm_vect = rt_vector_normalize(rt_tuple_minus(point_of_interx, interx_info->shape->origin));
 	light_vect = \
 		rt_vector_normalize(\
-			rt_tuple_minus(scene->light->data.light.coord, point_of_interx));
-	light_dot_norm = rt_vector_dot(light_vect, norm_vect);
+			rt_tuple_minus(scene->light->data.light.coord, i_hit->interx_p));
+	light_dot_norm = rt_vector_dot(light_vect, i_hit->norm_vect);
 	return (get_phong_model_color(\
-		get_ambient(effective_color, interx_info->shape->material), \
+		get_ambient(effective_color, i_hit->shape->material, scene->ambient), \
 		get_diffuse(effective_color, \
-			interx_info->shape->material, light_dot_norm), \
+			i_hit->shape->material, light_dot_norm), \
 		get_specular(light_dot_norm, \
-		rt_vector_dot(rt_ray_reflect(rt_tuple_negate(light_vect), norm_vect), \
-			eye_vect), \
-		interx_info->shape->material, scene->light->data.light.intensity)));
+			rt_vector_dot(\
+				rt_ray_reflect(rt_tuple_negate(light_vect), i_hit->norm_vect), \
+				i_hit->eye_vect), \
+		i_hit->shape->material, scene->light->data.light.intensity)));
 }
