@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 10:12:23 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/15 15:39:26 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 22:01:55 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,13 @@ t_interx	*rt_intersect_make(t_shape *shape, t_ray ray, double t_val)
 	intersect->ray = ray;
 	intersect->t_val = t_val;
 	intersect->interx_p = rt_ray_position(ray, t_val);
-	intersect->eye_vect = rt_vector_normalize(rt_tuple_negate(ray.direction));
-	intersect->norm_vect = rt_ray_normal(shape, intersect->interx_p);
+	intersect->eye_vect = rt_tuple_negate(ray.direction);
+	intersect->norm_vect = \
+		rt_vector_normalize(rt_ray_normal(shape, intersect->interx_p));
+	if_ray_inside(intersect);
 	intersect->over_point = \
 		rt_tuple_add(intersect->interx_p, \
 			rt_tuple_times(intersect->norm_vect, RT_EPSILON));
-	if_ray_inside(intersect);
 	return (intersect);
 }
 

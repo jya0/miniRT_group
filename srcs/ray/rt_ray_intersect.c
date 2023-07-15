@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_ray_intersect.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:14:38 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/13 15:47:32 by ooutabac         ###   ########.fr       */
+/*   Updated: 2023/07/15 20:51:36 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_interx	*rt_ray_intersect(t_ray ray, t_shape *shape)
 		intersect = rt_ray_intersect_sphere(ray, shape);
 	if (shape->type == SHAPE_T_PLANE)
 		intersect = rt_ray_intersect_plane(ray, shape);
-	// if (shape->type == SHAPE_T_CYLINDER)
-	// 	intersect = rt_ray_intersect_cylinder(ray, shape);
+	if (shape->type == SHAPE_T_CYLINDER)
+		intersect = rt_ray_intersect_cylinder(ray, shape);
 	return (intersect);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_ray_normal.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 13:45:34 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/15 17:13:42 by ooutabac         ###   ########.fr       */
+/*   Updated: 2023/07/15 20:52:57 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_tuple	rt_ray_normal(t_shape *shape, t_tuple w_point)
 		world_norm = rt_ray_normal_sphere(shape, w_point);
 	if (shape->type == SHAPE_T_PLANE)
 		world_norm = rt_ray_normal_plane(shape);
-	// if (shape->type == SHAPE_T_CYLINDER)
-	// 	world_norm = rt_ray_normal_cylinder(shape);
+	if (shape->type == SHAPE_T_CYLINDER)
+		world_norm = rt_ray_normal_cylinder(shape, w_point);
 	return (rt_vector_normalize(world_norm));
 }

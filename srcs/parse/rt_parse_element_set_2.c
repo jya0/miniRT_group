@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_parse_element_set_2.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:22:24 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/15 17:38:45 by ooutabac         ###   ########.fr       */
+/*   Updated: 2023/07/15 21:27:19 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,11 @@ static int	cylinder_check_range(t_element *cylinder)
 					cylinder->data.cylinder.height, \
 					0, FLT_MAX) != 0)
 		return (rt_error_write(ERROR_ELEMENT_RANGE, cylinder->id_str), 1);
-	if (rt_float_equal(rt_vector_magnitude(\
+/* 	if (rt_float_equal(rt_vector_magnitude(\
 			rt_vector_make(cylinder->data.cylinder.norm_vect[0], \
 				cylinder->data.cylinder.norm_vect[1], \
 				cylinder->data.cylinder.norm_vect[2])), 1) != 1)
-		return (rt_error_write(ERROR_NOT_NORMALIZE, cylinder->id_str), 1);
+		return (rt_error_write(ERROR_NOT_NORMALIZE, cylinder->id_str), 1); */
 	return (0);
 }
 

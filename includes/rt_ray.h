@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_ray.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:42:19 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/15 17:08:56 by ooutabac         ###   ########.fr       */
+/*   Updated: 2023/07/15 23:16:28 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,30 @@ typedef struct s_interx {
 	struct s_interx	*next;
 }	t_interx;
 
+enum e_cylinder_variables {
+	CV_A = 0,
+	CV_B,
+	CV_BA,
+	CV_PA,
+	CV_OC,
+	CVT_COUNT,
+	CV_BABA = 0,
+	CV_BARD,
+	CV_BAOC,
+	CV_K2,
+	CV_K1,
+	CV_K0,
+	CV_H,
+	CV_T,
+	CV_Y,
+	CVF_COUNT
+};
+
+typedef struct s_variables {
+	t_tuple	*tuples;
+	double	*floats;
+}	t_variables;
+
 /* rt_ray.c */
 t_ray		rt_ray_make(t_tuple origin, t_tuple direction);
 
@@ -78,6 +102,9 @@ t_interx	*rt_ray_intersect_sphere(t_ray ray, t_shape *sphere);
 /* rt_ray_intersect_plane.c */
 t_interx	*rt_ray_intersect_plane(t_ray ray, t_shape *plane);
 
+/* rt_ray_intersect_cylinder.c */
+t_interx	*rt_ray_intersect_cylinder(t_ray ray, t_shape *cylinder);
+
 /* rt_ray_transform.c */
 t_ray		rt_ray_transform(t_ray ray, t_matrix *mtx_transform);
 
@@ -89,6 +116,9 @@ t_tuple		rt_ray_normal_sphere(t_shape *sphere, t_tuple w_point);
 
 /* rt_ray_normal_plane.c */
 t_tuple		rt_ray_normal_plane(t_shape *plane);
+
+/* rt_ray_normal_cylinder.c */
+t_tuple		rt_ray_normal_cylinder(t_shape *cylinder, t_tuple w_point);
 
 /* rt_ray_reflect.c */
 t_tuple		rt_ray_reflect(t_tuple in_vect, t_tuple norm_vect);
