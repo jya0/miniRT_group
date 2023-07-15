@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_cylinder.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
+/*   By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 13:39:04 by ooutabac          #+#    #+#             */
-/*   Updated: 2023/07/15 16:40:40 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 17:41:02 by ooutabac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_shape	*rt_cylinder_make(\
 	cylinder->origin = origin;
 	cylinder->data.cylinder.radius = radius;
 	cylinder->data.cylinder.height = height;
-	cylinder->data.cylinder.norm_vector = norm_vector;
+	cylinder->data.cylinder.norm_vector = rt_vector_normalize(norm_vector);
 	mtx_transform = \
 		rt_matrix_times_matrix_free(\
 			rt_matrix_translate(origin.x, origin.y, origin.z), \

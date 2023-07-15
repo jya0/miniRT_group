@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_camera.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
+/*   By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 12:39:58 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/12 16:02:44 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 17:40:47 by ooutabac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ t_tuple coord, t_tuple orien_vect, unsigned int fov)
 	camera = rt_scene_obj_make(OBJ_T_CAMERA);
 	if (camera == NULL)
 		return (NULL);
-	assign_camera_values(camera, coord, orien_vect, fov);
+	assign_camera_values(camera, coord, rt_vector_normalize(orien_vect), fov);
 	transform = get_camera_transform(camera);
 	rt_scene_obj_transform_set(camera, transform);
 	return (camera);

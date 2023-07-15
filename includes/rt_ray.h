@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_ray.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
+/*   By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:42:19 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/15 15:38:32 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 17:08:56 by ooutabac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ t_tuple		rt_ray_normal(t_shape *shape, t_tuple w_point);
 t_tuple		rt_ray_normal_sphere(t_shape *sphere, t_tuple w_point);
 
 /* rt_ray_normal_plane.c */
-t_tuple		rt_ray_normal_plane(t_shape *plane, t_tuple o_point);
+t_tuple		rt_ray_normal_plane(t_shape *plane);
 
 /* rt_ray_reflect.c */
 t_tuple		rt_ray_reflect(t_tuple in_vect, t_tuple norm_vect);

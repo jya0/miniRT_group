@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_shape.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:07:05 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/12 10:36:14 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 17:49:10 by ooutabac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ t_shape	*rt_shape_info_fill(t_shape *shape, t_tuple color)
 	if (shape == NULL)
 		return (NULL);
 	shape->material.color = color;
+	if (shape->type == SHAPE_T_PLANE)
+	{
+		shape->material.shininess = 0;
+		shape->material.specular = 0;
+	}
 	return (shape);
 }
 

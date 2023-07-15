@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+         #
+#    By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 13:03:29 by jyao              #+#    #+#              #
-#    Updated: 2023/07/15 16:43:12 by jyao             ###   ########.fr        #
+#    Updated: 2023/07/15 17:16:02 by ooutabac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,7 @@ SRCS_LIST			=	main	main_tests				\
 						$(EXIT_FOLDER)rt_exit			$(EXIT_FOLDER)rt_free			\
 						$(FLOAT_FOLDER)rt_float			$(FLOAT_FOLDER)rt_float_maths	\
 						$(GEOMETRY_FOLDER)rt_shape		$(GEOMETRY_FOLDER)rt_sphere		$(GEOMETRY_FOLDER)rt_shape_transform	\
+						$(GEOMETRY_FOLDER)rt_plane		$(GEOMETRY_FOLDER)rt_cylinder	\
 						$(MATRIX_FOLDER)rt_matrix		$(MATRIX_FOLDER)rt_matrix_get	$(MATRIX_FOLDER)rt_matrix_times			\
 						$(MATRIX_FOLDER)rt_matrix_transpose								$(MATRIX_FOLDER)rt_matrix_clone			\
 						$(MATRIX_FOLDER)rt_matrix_determinant							$(MATRIX_FOLDER)rt_matrix_submatrix		\
