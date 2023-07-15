@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:42:19 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/15 10:28:21 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 12:19:39 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_interx {
 	t_shape			*shape;
 	t_ray			ray;
 	double			t_val;
+	t_tuple			interx_p;
 	struct s_interx	*prev;
 	struct s_interx	*next;
 }	t_interx;

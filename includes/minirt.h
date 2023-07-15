@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 12:59:23 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/12 09:50:05 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 10:42:06 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include	"mlx.h"
 # include	"rt_color.h"
 # include	"rt_error.h"
+# include	"rt_event.h"
 # include	"rt_exit.h"
 # include	"rt_float.h"
 # include	"rt_geometry.h"

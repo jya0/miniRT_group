@@ -6,7 +6,7 @@
 #    By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 13:03:29 by jyao              #+#    #+#              #
-#    Updated: 2023/07/12 13:32:19 by jyao             ###   ########.fr        #
+#    Updated: 2023/07/15 10:51:23 by jyao             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ HEADERS 			=	$(addprefix $(HEADERS_FOLDER), $(HEADERS_LIST))
 SRCS_FOLDER			:=	./srcs/
 COLOR_FOLDER		=	color/
 ERROR_FOLDER		=	error/
+EVENT_FOLDER		=	event/
 EXIT_FOLDER			=	exit/
 FLOAT_FOLDER		=	float/
 GEOMETRY_FOLDER		=	geometry/
@@ -80,6 +81,7 @@ TUPLE_FOLDER		=	tuple/
 SRCS_LIST			=	main	main_tests				\
 						$(COLOR_FOLDER)rt_color			$(COLOR_FOLDER)rt_color_math	\
 						$(ERROR_FOLDER)rt_error			\
+						$(EVENT_FOLDER)rt_event			\
 						$(EXIT_FOLDER)rt_exit			$(EXIT_FOLDER)rt_free			\
 						$(FLOAT_FOLDER)rt_float			$(FLOAT_FOLDER)rt_float_maths	\
 						$(GEOMETRY_FOLDER)rt_shape		$(GEOMETRY_FOLDER)rt_sphere		$(GEOMETRY_FOLDER)rt_shape_transform	\
@@ -134,6 +136,7 @@ $(OBJS_FOLDER):
 	mkdir $(OBJS_FOLDER)
 	mkdir $(OBJS_FOLDER)$(COLOR_FOLDER)
 	mkdir $(OBJS_FOLDER)$(ERROR_FOLDER)
+	mkdir $(OBJS_FOLDER)$(EVENT_FOLDER)
 	mkdir $(OBJS_FOLDER)$(EXIT_FOLDER)
 	mkdir $(OBJS_FOLDER)$(FLOAT_FOLDER)
 	mkdir $(OBJS_FOLDER)$(GEOMETRY_FOLDER)

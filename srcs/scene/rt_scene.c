@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:16:34 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/12 10:00:00 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 12:43:12 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ void	rt_free_scene(t_scene *scene)
 		if (scene->ambient != NULL)
 			rt_free_scene_obj(scene->ambient);
 		if (scene->camera != NULL)
-			rt_free_scene_obj(scene->ambient);
+			rt_free_scene_obj(scene->camera);
 		if (scene->light != NULL)
-			rt_free_scene_obj(scene->ambient);
+			rt_free_scene_obj(scene->light);
 		free(scene);
 	}
 }
