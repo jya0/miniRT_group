@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_error.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
+/*   By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:12:42 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/12 08:59:48 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 13:42:52 by ooutabac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@
 # define ERROR_SPHERE_PARAM		"Error\n invalid sphere parameters"
 # define ERROR_SHAPE_TRANSFORM	"Error\n transform matrix assignment"
 # define ERROR_SPHERE_MAKE		"Error\n can't make sphere"
+# define ERROR_PLANE_MAKE		"Error\n can't make plane"
+# define ERROR_CYLINDER_MAKE	"Error\n can't make cylinder"
 
 /* ray */
 # define ERROR_INTERX_MAKE		"Error\n can't make intersection struct"
@@ -71,6 +73,8 @@
 # define ERROR_LOAD_AMBIENT		"Error\n can't load ambient"
 # define ERROR_LOAD_LIGHT		"Error\n can't load light"
 # define ERROR_LOAD_SPHERE		"Error\n can't load sphere"
+# define ERROR_LOAD_PLANE		"Error\n can't load plane"
+# define ERROR_LOAD_CYLINDER	"Error\n can't load cylinder"
 # define ERROR_LOAD_ACL			"Error\n can't load A/C/L"
 
 int			rt_error_write(char const *msg, char const *arg);
