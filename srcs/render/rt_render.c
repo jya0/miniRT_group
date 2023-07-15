@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:10:37 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/15 12:40:41 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 13:01:19 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	make_image(t_mlx_struct *mlx, t_scene *scn)
 			i_hit = rt_intersect_hit(i_lst);
 			if (i_hit != NULL && i_hit->t_val >= 0)
 			{
-				pix_color = rt_lighting(i_hit->interx_p, i_hit, scn);
+				pix_color = rt_lighting(i_hit, scn);
 				rt_img_edit_pixel(mlx->canvas, pix_color, i[1], i[0]);
 			}
 			rt_free_intersections(i_lst);

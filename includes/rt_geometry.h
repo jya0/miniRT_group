@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_geometry.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 12:05:26 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/12 10:35:41 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 13:04:29 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include	"rt_parse.h"
 # include	"rt_matrix.h"
 
-# define M_AMBIENT		0.1
+# define M_AMBIENT		1.0
 # define M_DIFFUSE		0.9
 # define M_SPECULAR		0.9
 # define M_SHININESS	200
