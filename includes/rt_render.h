@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 12:31:50 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/15 13:01:02 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 15:26:31 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ int				rt_render(t_minirt	*minirt);
 
 /* rt_lighting.c */
 t_tuple			rt_lighting(t_interx *i_hit, t_scene *scene);
+
+/* rt_lighting_shadow.c */
+int				rt_lighting_shadow(t_scene *scene, t_tuple interx_p);
 
 /* rt_img.c */
 t_img			*rt_img_make(\

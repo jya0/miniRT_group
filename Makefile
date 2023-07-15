@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+         #
+#    By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 13:03:29 by jyao              #+#    #+#              #
-#    Updated: 2023/07/15 13:22:14 by ooutabac         ###   ########.fr        #
+#    Updated: 2023/07/15 14:54:50 by jyao             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,6 +104,7 @@ SRCS_LIST			=	main	main_tests				\
 						$(RAY_FOLDER)rt_ray_normal_sphere								$(RAY_FOLDER)rt_ray_reflect				\
 						$(RAY_FOLDER)rt_ray_intersect_plane								$(RAY_FOLDER)rt_ray_normal_plane		\
 						$(RENDER_FOLDER)rt_render		$(RENDER_FOLDER)rt_img			$(RENDER_FOLDER)rt_lighting				\
+						$(RENDER_FOLDER)rt_lighting_shadow								\
 						$(SCENE_FOLDER)rt_scene			$(SCENE_FOLDER)rt_scene_obj		$(SCENE_FOLDER)rt_scene_load			\
 						$(SCENE_FOLDER)rt_camera		$(SCENE_FOLDER)rt_scene_intersect							\
 						$(SCENE_FOLDER)rt_scene_load_set_1								\
