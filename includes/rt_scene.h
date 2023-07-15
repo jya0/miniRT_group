@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:01:15 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/12 13:11:12 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/15 16:44:20 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,14 @@ void			rt_free_scene(t_scene *scene);
 /* rt_scene_load.c */
 int				rt_scene_load(t_minirt *minirt);
 
-/* rt_scene_load_set_1.c */
+/* rt_scene_load_scene_obj.c */
 int				rt_load_ambient(t_scene *scene, t_element *element);
 
 int				rt_load_camera(t_scene *scene, t_element *element);
 
 int				rt_load_light(t_scene *scene, t_element *element);
 
+/* rt_scene_load_geometry.c */
 int				rt_load_sphere(t_scene *scene, t_element *element);
 
 int				rt_load_plane(t_scene *scene, t_element *element);

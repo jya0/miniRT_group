@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rt_cylinder.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 13:39:04 by ooutabac          #+#    #+#             */
-/*   Updated: 2023/07/15 14:37:06 by ooutabac         ###   ########.fr       */
+/*   Updated: 2023/07/15 16:40:40 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_shape		*rt_cylinder_make(\
+t_shape	*rt_cylinder_make(\
 	t_tuple origin,	double diameter, double height, t_tuple norm_vector)
 {
 	t_shape		*cylinder;
@@ -25,8 +25,10 @@ t_shape		*rt_cylinder_make(\
 	if (cylinder == NULL)
 		return (NULL);
 	radius = diameter / 2;
-	cylinder->data.cylinder.radius = radius;
 	cylinder->origin = origin;
+	cylinder->data.cylinder.radius = radius;
+	cylinder->data.cylinder.height = height;
+	cylinder->data.cylinder.norm_vector = norm_vector;
 	mtx_transform = \
 		rt_matrix_times_matrix_free(\
 			rt_matrix_translate(origin.x, origin.y, origin.z), \

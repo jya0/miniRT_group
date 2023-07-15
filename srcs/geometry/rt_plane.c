@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rt_plane.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 13:39:14 by ooutabac          #+#    #+#             */
-/*   Updated: 2023/07/15 16:14:47 by ooutabac         ###   ########.fr       */
+/*   Updated: 2023/07/15 16:41:03 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_shape		*rt_plane_make(t_tuple origin, t_tuple norm_vector)
+t_shape	*rt_plane_make(t_tuple origin, t_tuple norm_vector)
 {
 	t_shape		*plane;
 	t_matrix	*mtx_transform;
