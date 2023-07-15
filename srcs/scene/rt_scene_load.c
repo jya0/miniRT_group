@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_scene_load.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
+/*   By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:52:51 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/12 09:57:55 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/13 16:16:48 by ooutabac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static t_load_fun	get_load_fun(char *id_str)
 		return (rt_load_light);
 	else if (ft_strncmp(id_str, "sp", ft_strlen(id_str)) == 0)
 		return (rt_load_sphere);
-	// else if (ft_strncmp(id_str, "pl", ft_strlen(id_str)) == 0)
-	// 	return (rt_load_plane);
+/* 	else if (ft_strncmp(id_str, "pl", ft_strlen(id_str)) == 0)
+		return (rt_load_plane); */
 	// else if (ft_strncmp(id_str, "cy", ft_strlen(id_str)) == 0)
 	// 	return (rt_load_cylinder);
 	return (NULL);

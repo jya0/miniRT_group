@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_ray.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:42:19 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/04 17:47:08 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/13 16:11:13 by ooutabac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@ double		*rt_quadratic_formula(double a, double b, double c);
 /* rt_ray_intersect_sphere.c */
 t_interx	*rt_ray_intersect_sphere(t_ray ray, t_shape *sphere);
 
+/* rt_ray_intersect_plane.c */
+t_interx	*rt_ray_intersect_plane(t_ray ray, t_shape *plane);
+
 /* rt_ray_transform.c */
 t_ray		rt_ray_transform(t_ray ray, t_matrix *mtx_transform);
 
@@ -74,6 +77,9 @@ t_tuple		rt_ray_normal(t_shape *shape, t_tuple w_point);
 
 /* rt_ray_normal_sphere.c */
 t_tuple		rt_ray_normal_sphere(t_shape *sphere, t_tuple o_point);
+
+/* rt_ray_normal_plane.c */
+t_tuple		rt_ray_normal_plane(t_shape *plane, t_tuple o_point);
 
 /* rt_ray_reflect.c */
 t_tuple		rt_ray_reflect(t_tuple in_vect, t_tuple norm_vect);

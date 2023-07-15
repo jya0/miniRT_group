@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+         #
+#    By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 13:03:29 by jyao              #+#    #+#              #
-#    Updated: 2023/07/12 13:32:19 by jyao             ###   ########.fr        #
+#    Updated: 2023/07/13 16:15:51 by ooutabac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME 				=	minirt
 
 #DECLARE DEFINE COMPILATION RULES
 CC 					=	gcc
-CFLAGS 				=	-Wall -Wextra -Werror -g3
+CFLAGS 				=	-Wall -Wextra -Werror -g3 -fsanitize=address
 
 #DECLARE DEFINE INCLUDE DIRECTORIES
 INCLUDES 			=	-I$(HEADERS_FOLDER) -I$(LIBFT_HEADERS) -I$(MINILIBX_HEADERS)
@@ -99,6 +99,7 @@ SRCS_LIST			=	main	main_tests				\
 						$(RAY_FOLDER)rt_ray_intersect_sphere							$(RAY_FOLDER)rt_intersect				\
 						$(RAY_FOLDER)rt_intersect_list	$(RAY_FOLDER)rt_ray_transform	$(RAY_FOLDER)rt_ray_normal				\
 						$(RAY_FOLDER)rt_ray_normal_sphere								$(RAY_FOLDER)rt_ray_reflect				\
+						$(RAY_FOLDER)rt_ray_intersect_plane								$(RAY_FOLDER)rt_ray_normal_plane		\
 						$(RENDER_FOLDER)rt_render		$(RENDER_FOLDER)rt_img			$(RENDER_FOLDER)rt_lighting				\
 						$(SCENE_FOLDER)rt_scene			$(SCENE_FOLDER)rt_scene_obj		$(SCENE_FOLDER)rt_scene_load			\
 						$(SCENE_FOLDER)rt_camera		$(SCENE_FOLDER)rt_scene_intersect							\
