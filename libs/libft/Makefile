@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+         #
+#    By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/19 13:01:55 by fkhan             #+#    #+#              #
-#    Updated: 2023/06/03 14:52:43 by jyao             ###   ########.fr        #
+#    Updated: 2023/07/17 17:04:50 by jyao             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 				= libft.a
-CC 					= gcc
+CC 					= cc
 REMOVE_THIS_FLAG	= -Wno-unused-result
 OPTIMISE_FLAGS		:=	-Ofast -march=native
 FLAGS 				= -Wall -Werror -Wextra $(OPTIMISE_FLAGS) $(REMOVE_THIS_FLAG)

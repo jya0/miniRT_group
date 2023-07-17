@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+         #
+#    By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 13:03:29 by jyao              #+#    #+#              #
-#    Updated: 2023/07/15 17:16:02 by ooutabac         ###   ########.fr        #
+#    Updated: 2023/07/17 17:03:58 by jyao             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,10 @@
 # -*- Makefile for MiniRT -*-
 
 #DECLARE DEFINE PROJECT FILE NAME
-NAME 				=	minirt
+NAME 				=	miniRT
 
 #DECLARE DEFINE COMPILATION RULES
-CC 					=	gcc
+CC 					=	cc
 CFLAGS 				=	-Wall -Wextra -Werror -g3
 
 #DECLARE DEFINE INCLUDE DIRECTORIES
