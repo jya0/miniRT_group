@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:10:37 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/17 18:37:36 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/17 19:37:45 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ t_scene_obj *camera, int pixel_x, int pixel_y)
 	double	t_val_x;
 	double	t_val_y;
 
-	t_val_x = (pixel_x + 0.5f) * camera->data.camera.t_per_px;
-	t_val_y = -(pixel_y + 0.5f) * camera->data.camera.t_per_px;
+	t_val_x = ((float)pixel_x + 0.5f) * camera->data.camera.t_per_px;
+	t_val_y = -((float)pixel_y + 0.5f) * camera->data.camera.t_per_px;
 	ray_pl_origin = \
 		rt_tuple_add(camera->data.camera.pl_top_left, \
 			rt_tuple_add(\
