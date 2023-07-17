@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:10:37 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/17 15:24:55 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/17 18:37:36 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,20 @@ static t_ray	get_ray_at(\
 t_scene_obj *camera, int pixel_x, int pixel_y)
 {
 	t_ray	ray;
+	t_tuple	ray_pl_origin;
 	double	t_val_x;
 	double	t_val_y;
 
 	t_val_x = (pixel_x + 0.5f) * camera->data.camera.t_per_px;
 	t_val_y = -(pixel_y + 0.5f) * camera->data.camera.t_per_px;
-	ray.direction = rt_tuple_add(rt_vector_make(0, 0, -1), \
+	ray_pl_origin = \
 		rt_tuple_add(camera->data.camera.pl_top_left, \
 			rt_tuple_add(\
 				rt_tuple_times(camera->data.camera.u_vect, t_val_x), \
-				rt_tuple_times(camera->data.camera.v_vect, t_val_y))));
-	ray.direction.w = 0;
+				rt_tuple_times(camera->data.camera.v_vect, t_val_y)));
 	ray.direction = rt_vector_normalize(\
-		rt_matrix_times_tuple(camera->inv_mtx, ray.direction));
-	ray.origin = rt_matrix_times_tuple(camera->inv_mtx, \
-		rt_point_make(0, 0, 0));
+		rt_tuple_minus(ray_pl_origin, camera->data.camera.coord));
+	ray.origin = camera->data.camera.coord;
 	return (ray);
 }
 

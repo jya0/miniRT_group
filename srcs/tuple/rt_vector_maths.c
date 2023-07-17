@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:22:55 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/17 15:23:39 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/17 19:21:55 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ double	rt_vector_dot(t_tuple vector1, t_tuple vector2)
 /* cross product gets more complex with 4 dimensions,
 ** as we only need 3D vectors here we keep it simple.
 */
+// if (rt_float_equal(rt_vector_magnitude(res), 0))
+// 	rt_error_write(ERROR_PARALLEL_VEC, NULL);
 t_tuple	rt_vector_cross(t_tuple vector1, t_tuple vector2)
 {
 	t_tuple	res;
@@ -54,7 +56,5 @@ t_tuple	rt_vector_cross(t_tuple vector1, t_tuple vector2)
 			vector1.y * vector2.z - vector1.z * vector2.y, \
 			vector1.z * vector2.x - vector1.x * vector2.z, \
 			vector1.x * vector2.y - vector1.y * vector2.x);
-	if (rt_float_equal(rt_vector_magnitude(res), 0))
-		rt_error_write(ERROR_PARALLEL_VEC, NULL);
 	return (res);
 }
