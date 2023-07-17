@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 12:31:50 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/17 14:58:54 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/17 15:24:33 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # define WIN_Y			500
 # define CAM_DIST		1
 # define WIN_NAME		"MINIRT: OOO SHINY!"
+
+# define RENDER_MSG		"RENDERING...\n"
 
 typedef struct s_minirt			t_minirt;
 

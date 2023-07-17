@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:10:37 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/17 15:13:32 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/17 15:24:55 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,8 @@ int	rt_render(t_minirt	*minirt)
 		return (1);
 	if (render_init(minirt))
 		return (rt_error_write(ERROR_RENDER_INIT, NULL));
-	rt_error_write("RENDERING...", NULL);
+	write(2, RENDER_MSG, ft_strlen(RENDER_MSG));
 	make_image(&minirt->mlx_struct, minirt->scene);
-	rt_error_write("DONE", NULL);
 	rt_event(minirt);
 	mlx_loop_hook(minirt->mlx_struct.init, put_image, &minirt->mlx_struct);
 	mlx_loop(minirt->mlx_struct.init);
