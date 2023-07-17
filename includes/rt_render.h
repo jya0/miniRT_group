@@ -6,24 +6,23 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 12:31:50 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/15 15:26:31 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/16 16:31:20 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_RENDER_H
 # define RT_RENDER_H
 
-# define WIN_X			500
-# define WIN_Y			500
+# define WIN_X			1500
+# define WIN_Y			1500
 # define CAM_DIST		1
 # define WIN_NAME		"MINIRT: OOO SHINY!"
 
-typedef struct s_minirt	t_minirt;
+typedef struct s_minirt			t_minirt;
 
-typedef struct s_scene t_scene;
+typedef struct s_scene			t_scene;
 
-typedef struct s_scene_obj	t_scene_obj;
-
+typedef struct s_scene_obj		t_scene_obj;
 
 typedef struct s_img {
 	void			*mlx;
