@@ -39,7 +39,7 @@ static t_element	*new_element(char *line)
 	t_element	*new_element;
 	char		**info;
 
-	if (line == NULL || *line == '\n')
+	if (line == NULL || ft_strchr(SPACE_CHARSET, *line) != NULL)
 		return (NULL);
 	info = rt_split(line, SPACE_CHARSET);
 	if (info == NULL)

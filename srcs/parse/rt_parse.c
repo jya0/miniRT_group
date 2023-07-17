@@ -16,6 +16,7 @@ void	rt_parse(t_minirt *minirt, char *rt_file)
 {
 	unsigned int	shapes_total;
 
+	shapes_total = 0;
 	minirt->head_element = rt_parse_load(rt_file);
 	if (rt_parse_and_check(minirt->head_element, &shapes_total))
 	{

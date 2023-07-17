@@ -21,7 +21,7 @@ t_tuple effective_color, t_material material, t_scene_obj *ambient)
 	amb_intensity = ambient->data.ambient.intensity * material.ambient;
 	amb_eff_color = \
 		rt_color_times_color(effective_color, ambient->data.ambient.color);
-	return (rt_color_times(effective_color, amb_intensity));
+	return (rt_color_times(amb_eff_color, amb_intensity));
 }
 
 static t_tuple	get_diffuse(\

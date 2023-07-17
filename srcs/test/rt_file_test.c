@@ -23,9 +23,10 @@ void	rt_file_print(t_element *head_element)
 		i = 0;
 		while (tmp->info[i] != NULL)
 		{
-			printf("%s", tmp->info[i]);
+			printf("%s    ", tmp->info[i]);
 			i++;
 		}
+		printf("\n");
 		tmp = tmp->next;
 	}
 }

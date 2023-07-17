@@ -45,10 +45,7 @@ static void	rt_free_mlx(t_mlx_struct struct_mlx)
 	if (struct_mlx.window != NULL)
 		mlx_destroy_window(struct_mlx.init, struct_mlx.window);
 	if (struct_mlx.init != NULL)
-	{
-		// mlx_destroy_display(struct_mlx.init);
 		free(struct_mlx.init);
-	}
 }
 
 void	rt_free(t_minirt *minirt)

@@ -96,6 +96,7 @@ int	rt_render(t_minirt	*minirt)
 		return (rt_error_write(ERROR_RENDER_INIT, NULL));
 	make_image(&minirt->mlx_struct, minirt->scene);
 	rt_event(minirt);
+	rt_exit(minirt);
 	mlx_loop_hook(minirt->mlx_struct.init, put_image, &minirt->mlx_struct);
 	mlx_loop(minirt->mlx_struct.init);
 	return (0);

@@ -19,7 +19,7 @@ NAME 				=	minirt
 
 #DECLARE DEFINE COMPILATION RULES
 CC 					=	gcc
-CFLAGS 				=	-Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS 				=	-Wall -Wextra -Werror -g3
 
 #DECLARE DEFINE INCLUDE DIRECTORIES
 INCLUDES 			=	-I$(HEADERS_FOLDER) -I$(LIBFT_HEADERS) -I$(MINILIBX_HEADERS)
@@ -50,7 +50,7 @@ endif
 # this is for linux version
 # MINILIBX_FOLDER 	=	$(LIBS_FOLDER)minilibx-linux/
 # MINILIBX_FILE 		=	$(MINILIBX_FOLDER)libmlx.a
-# MINILIBX_HEADERS	=	$(MINILIBX_FOLDER)/linux/src
+# MINILIBX_HEADERS	=	$(MINILIBX_FOLDER)/
 # MINILIBX_FLAGS		=	-L$(MINILIBX_FOLDER) -lmlx -lXext -lX11 -lm -lz
 
 # this is for macos version
@@ -166,4 +166,19 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+
+# ---------SECTION FOR VALGRIND RUN WITH ARGS RULE---------
+RUN := valgrind
+VALGRIND_FLAGS := --leak-check=full --show-leak-kinds=all --suppressions=valgrind_mlx.supp
+# If the first argument is "run"...
+ifeq ($(RUN), $(firstword $(MAKECMDGOALS)))
+# use the rest as arguments for "run"
+RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+# ...and turn them into do-nothing targets
+$(eval $(RUN_ARGS):;@:)
+endif
+
+$(RUN): $(NAME)
+	$(RUN) $(VALGRIND_FLAGS) ./$(NAME) $(RUN_ARGS)
+
+.PHONY: all clean fclean re $(RUN)

@@ -1,0 +1,6 @@
+{
+	<supress all libs of linux-gnu>
+	Memcheck:Leak
+	...
+	obj:*/usr/lib/x86_64-linux-gnu/*
+}
