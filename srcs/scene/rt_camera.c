@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_camera.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ooutabac <ooutabac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 12:39:58 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/15 17:40:47 by ooutabac         ###   ########.fr       */
+/*   Updated: 2023/07/17 15:07:42 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static t_matrix	*get_camera_mtx_orien(t_scene_obj *camera)
 	mtx->matrix[2][0] = camera->data.camera.orien_vect.x;
 	mtx->matrix[2][1] = camera->data.camera.orien_vect.y;
 	mtx->matrix[2][2] = camera->data.camera.orien_vect.z;
-	rt_matrix_print(mtx);
 	return (mtx);
 }
 

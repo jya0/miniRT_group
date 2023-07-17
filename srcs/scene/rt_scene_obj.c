@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 12:34:57 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/15 16:50:11 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/17 15:07:46 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ t_scene_obj *scene_obj, t_matrix *mtx_transform)
 	rt_free_matrix(scene_obj->inv_mtx);
 	scene_obj->mtx_transform = mtx_transform;
 	scene_obj->inv_mtx = rt_matrix_inverse(mtx_transform);
-	rt_matrix_print(scene_obj->inv_mtx);
 	return (scene_obj);
 }
 

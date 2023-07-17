@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 16:38:18 by ooutabac          #+#    #+#             */
-/*   Updated: 2023/07/15 23:14:52 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/17 14:58:34 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,16 +91,9 @@ t_interx	*rt_ray_intersect_cylinder(t_ray ray, t_shape *cylinder)
 		if (solution == -1)
 			solution = cy_intersect_body(vars_cy.floats);
 		if (solution == -1)
-		{
 			solution = cy_intersect_cap(vars_cy.floats);
-			// if (solution >= 0)
-			// 	rt_error_write("YES!\n", NULL);
-		}
 		if (solution >= 0)
-		{
 			interx_list = rt_interx_list_make(1, &solution, cylinder, ray);
-			// rt_error_write("YES!\n", NULL);
-		}
 	}
 	free(vars_cy.floats);
 	free(vars_cy.tuples);

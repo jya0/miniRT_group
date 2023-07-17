@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rt_matrix_times.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jyao <jyao@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 14:17:38 by jyao              #+#    #+#             */
-/*   Updated: 2023/06/11 10:37:48 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/17 14:56:05 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"minirt.h"
 
+// res = fma(num_arr1[i], num_arr2[i], res);
 static double	arr_dot_arr(\
 double *num_arr1, unsigned int num_arr1_len, \
 double *num_arr2, unsigned int num_arr2_len)
@@ -25,7 +26,6 @@ double *num_arr2, unsigned int num_arr2_len)
 	i = 0;
 	while (i < num_arr1_len && i < num_arr2_len)
 	{
-		// res = fma(num_arr1[i], num_arr2[i], res);
 		res += num_arr1[i] * num_arr2[i];
 		i++;
 	}

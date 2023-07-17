@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 11:47:13 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/15 16:51:47 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/17 14:54:03 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ t_interx	*rt_ray_intersect_sphere(t_ray ray, t_shape *sphere)
 	t_tuple		sp_to_ray;
 	double		abc[3];
 
-	// if (sphere == NULL || sphere->type != SHAPE_T_SPHERE)
-	// 	return (NULL);
+	if (sphere == NULL || sphere->type != SHAPE_T_SPHERE)
+		return (NULL);
 	sp_to_ray = rt_tuple_minus(ray.origin, sphere->origin);
 	abc[0] = rt_vector_dot(ray.direction, ray.direction);
 	abc[1] = 2 * rt_vector_dot(ray.direction, sp_to_ray);

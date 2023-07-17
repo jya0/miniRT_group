@@ -6,15 +6,15 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 12:31:50 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/16 16:31:20 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/17 14:58:54 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_RENDER_H
 # define RT_RENDER_H
 
-# define WIN_X			1500
-# define WIN_Y			1500
+# define WIN_X			500
+# define WIN_Y			500
 # define CAM_DIST		1
 # define WIN_NAME		"MINIRT: OOO SHINY!"
 
