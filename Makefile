@@ -6,7 +6,7 @@
 #    By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 13:03:29 by jyao              #+#    #+#              #
-#    Updated: 2023/07/17 17:03:58 by jyao             ###   ########.fr        #
+#    Updated: 2023/07/18 13:11:28 by jyao             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,7 @@ SCENE_FOLDER		=	scene/
 TEST_FOLDER			=	test/
 TUPLE_FOLDER		=	tuple/
 
-SRCS_LIST			=	main	main_tests				\
+SRCS_LIST			=	main							\
 						$(COLOR_FOLDER)rt_color			$(COLOR_FOLDER)rt_color_math	\
 						$(ERROR_FOLDER)rt_error			\
 						$(EVENT_FOLDER)rt_event			\
