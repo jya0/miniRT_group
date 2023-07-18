@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:01:15 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/15 16:44:20 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/18 15:04:56 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_scene {
 	t_scene_obj		*light;
 }	t_scene;
 
-typedef int (*t_load_fun)(t_scene *, t_element *);
+typedef int	(*t_load_fun)(t_scene *, t_element *);
 
 /* rt_scene_obj.c */
 t_scene_obj		*rt_scene_obj_make(t_scene_obj_type type);
