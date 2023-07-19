@@ -6,7 +6,7 @@
 #    By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/31 13:03:29 by jyao              #+#    #+#              #
-#    Updated: 2023/07/18 13:11:28 by jyao             ###   ########.fr        #
+#    Updated: 2023/07/19 14:02:44 by jyao             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,9 +36,9 @@ LIBFT_HEADERS 		=	$(LIBFT_FOLDER)includes/
 #a better way than the one below
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
-MINILIBX_FOLDER 	=	$(LIBS_FOLDER)minilibx/
+MINILIBX_FOLDER 	=	$(LIBS_FOLDER)minilibx_osx/
 MINILIBX_FILE 		=	$(MINILIBX_FOLDER)libmlx.a
-MINILIBX_HEADERS	=	$(MINILIBX_FOLDER)osx/src
+MINILIBX_HEADERS	=	$(MINILIBX_FOLDER)
 MINILIBX_FLAGS		=	-L$(MINILIBX_FOLDER) -lmlx -framework OpenGL -framework AppKit
 else
 MINILIBX_FOLDER 	=	$(LIBS_FOLDER)minilibx/
