@@ -6,7 +6,7 @@
 /*   By: jyao <jyao@student.42abudhabi.ae>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 08:38:59 by jyao              #+#    #+#             */
-/*   Updated: 2023/07/15 14:25:24 by jyao             ###   ########.fr       */
+/*   Updated: 2023/07/19 12:07:09 by jyao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ t_tuple	rt_trgb_to_color(int *trgb)
 {
 	t_tuple	color;
 
-	color.x = (float)(trgb[TRSPT] / TRGB_MAX);
-	color.y = (float)(trgb[RED] / TRGB_MAX);
-	color.z = (float)(trgb[GREEN] / TRGB_MAX);
-	color.w = (float)(trgb[BLUE] / TRGB_MAX);
+	color.x = (float)trgb[TRSPT] / (float)TRGB_MAX;
+	color.y = (float)trgb[RED] / (float)TRGB_MAX;
+	color.z = (float)trgb[GREEN] / (float)TRGB_MAX;
+	color.w = (float)trgb[BLUE] / (float)TRGB_MAX;
 	return (color);
 }
 
